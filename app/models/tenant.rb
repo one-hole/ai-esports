@@ -10,6 +10,10 @@ class Tenant < ApplicationRecord
     self.save
   end
 
+  def expired?
+    Time.now > expire_time
+  end
+
   private
     def generate_api_key
       loop do
