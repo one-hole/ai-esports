@@ -1,0 +1,2 @@
+class KogSeries < MatchSeries
+end

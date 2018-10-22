@@ -1,0 +1,2 @@
+class CsgoSeries < MatchSeries
+end
