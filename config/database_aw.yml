@@ -1,0 +1,17 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 20
+  password: mypassword
+
+development:
+  <<: *default
+  database: arc-warden_dev
+  username: root
+  host: 127.0.0.1
+
+test:
+  <<: *default
+  username: root
+  database: arc-warden_test
+  host: 127.0.0.1
