@@ -1,0 +1,2 @@
+class LolTeam < Team
+end

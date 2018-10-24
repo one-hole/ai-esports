@@ -24,4 +24,12 @@ class Api::BaseController < ApplicationController
     def validate_api_version
       raise HttpHeaderError unless request.headers['Api-Version'].present?
     end
+
+    def current_page
+      params.fetch(:page, 1)
+    end
+
+    def per_page
+      params.fetch(:per_page, 10)
+    end
 end

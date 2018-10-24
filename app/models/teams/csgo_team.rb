@@ -1,0 +1,2 @@
+class CsgoTeam < Team
+end
