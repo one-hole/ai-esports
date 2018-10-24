@@ -27,15 +27,12 @@ group :development, :test do
   gem 'awesome_print'
   gem 'rspec-rails', '~> 3.7'
   gem 'factory_bot_rails', '~> 4.10'
+  gem 'mina'
+  gem 'mina-puma', require: false
 end
 
 group :test do
   gem 'database_cleaner'
-end
-
-group :development do
-  gem 'mina'
-  gem 'mina-puma', github: "dryrails/mina-puma"
 end
 
 group :development do

@@ -1,5 +1,6 @@
 require 'mina/rails'
 require 'mina/git'
+require 'mina/puma'
 require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 
 if ENV['on'].nil?
@@ -42,6 +43,7 @@ task :deploy do
       in_path(fetch(:current_path)) do
         command %{mkdir -p tmp/}
         command %{touch tmp/restart.txt}
+        invoke :'puma:phased_restart'
       end
     end
   end
