@@ -13,8 +13,12 @@ module Api
 
     protected
       def verify?
-        decrypt = Rsa::Tools.pri_decrypt(current_tenant.private_key, sign)
-        return decrypt == original_data
+        begin
+          decrypt = Rsa::Tools.pri_decrypt(current_tenant.private_key, sign)
+          return decrypt == original_data
+        rescue
+          return false
+        end
       end
 
       def authenticate
