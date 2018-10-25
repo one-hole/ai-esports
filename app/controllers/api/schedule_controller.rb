@@ -8,9 +8,15 @@ module Api
         load_series, each_serializer: ScheduleSerializer, root: 'data', meta: meta
     end
 
+    def show
+      load_single_series
+      render json: 
+        @single_series, serializer: SeriesSerializer, root: 'data'
+    end
+
     private
       def unsort_series
-        @unsort_series ||= MatchSeries.select(needed_column).non_hidden.non_pending.with_game(game_id).includes(:league, :left_team, :right_team)
+        MatchSeries.select(needed_column).non_hidden.non_pending.with_game(game_id).includes(:league, :left_team, :right_team)
       end
 
       def load_series
@@ -19,6 +25,11 @@ module Api
 
       def game_id
         params.fetch(:game_id, 1)
+      end
+
+      def load_single_series
+        @single_series ||= MatchSeries.find_by(id: params[:id])
+        raise SeriesNotFoundError unless @single_series
       end
 
       def needed_column

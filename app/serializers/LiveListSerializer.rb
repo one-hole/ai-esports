@@ -1,0 +1,3 @@
+class LiveListSerializer < ScheduleSerializer
+
+end
