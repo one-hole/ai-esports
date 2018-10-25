@@ -1,7 +1,6 @@
 class LiveListSerializer < ScheduleSerializer
   attributes :left_score, :right_score, :match
 
-
   def game_no
     object.left_score + object.right_score + 1
   end

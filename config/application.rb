@@ -40,6 +40,7 @@ module AiEsports
     # Skip views, helpers and assets when generating a new resource.
     config.autoload_paths += Dir["#{Rails.root}/app/models/series"]
     config.autoload_paths += Dir["#{Rails.root}/app/models/teams"]
+    config.autoload_paths += Dir["#{Rails.root}/app/models/matches"]
     config.api_only = true
 
     ActiveModelSerializers.config.adapter = :json

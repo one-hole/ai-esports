@@ -3,7 +3,7 @@ module Api
 
     def index
       render json:
-        load_series, each_serializer: ScheduleSerializer, root: 'data'
+        load_series, each_serializer: LiveListSerializer, root: 'data'
     end
 
     private
