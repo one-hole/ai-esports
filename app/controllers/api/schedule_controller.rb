@@ -22,7 +22,7 @@ module Api
       end
 
       def needed_column
-        [:id, :left_team_id, :right_team_id, :game_id, :round, :start_time, :league_id]
+        [:id, :left_team_id, :right_team_id, :game_id, :round, :start_time, :league_id, :status]
       end
 
       def meta
