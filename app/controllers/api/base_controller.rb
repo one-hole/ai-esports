@@ -1,6 +1,6 @@
 class Api::BaseController < ApplicationController
 
-  before_action :validate_request, :authenticate
+  before_action :authenticate, :validate_request
 
   protected
     def authenticate
