@@ -19,9 +19,5 @@ module Api
         [:id, :left_team_id, :right_team_id, :game_id, :round, :start_time, :league_id, :status, :left_score, :right_score]
       end
 
-      def game_id
-        params.fetch(:game_id, 1)
-      end
-
   end
 end

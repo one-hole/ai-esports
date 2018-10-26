@@ -10,7 +10,7 @@ module Api
 
     def show
       load_single_series
-      render json: 
+      render json:
         @single_series, serializer: SeriesSerializer, root: 'data'
     end
 
@@ -40,7 +40,7 @@ module Api
         {
           current_page: current_page,
           per: per_page,
-          total_page: MatchSeries.non_hidden.non_pending.with_game(game_id).count
+          total_count: MatchSeries.non_hidden.non_pending.with_game(game_id).count
         }
       end
   end

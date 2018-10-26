@@ -32,4 +32,9 @@ class Api::BaseController < ApplicationController
     def per_page
       params.fetch(:per_page, 10)
     end
+      
+    def game_id
+      params.fetch(:game_id, 1).to_i
+    end
+
 end
