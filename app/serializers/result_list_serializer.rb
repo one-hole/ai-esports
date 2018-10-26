@@ -19,6 +19,7 @@ class ResultListSerializer < ScheduleSerializer
 
   # ------ Dota 2比赛信息 ------------------
   class Dota2MatchSerializer < ActiveModel::Serializer
+    attributes :id
     attributes :left_team_win
     attributes :left_team_kills, :right_team_kills
     attributes :left_team_ten_kills, :left_team_first_blood
