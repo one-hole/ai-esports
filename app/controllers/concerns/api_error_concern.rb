@@ -25,4 +25,10 @@ module ApiErrorConcern
     end
   end
 
+  class TeamNotFoundError < ApiError
+    def initialize
+      super code: 5000, text: '查询的队伍没有找到', status: 404
+    end
+  end
+
 end
