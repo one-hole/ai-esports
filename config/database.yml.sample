@@ -9,7 +9,7 @@ development:
   <<: *default
   database: ai-esports-dev
   username: root
-  password: mypassword
+  password: zengtao1314
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -18,4 +18,4 @@ test:
   <<: *default
   database: ai-esports-test
   username: root
-  password: mypassword
+  password: zengtao1314
