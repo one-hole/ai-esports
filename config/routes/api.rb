@@ -4,4 +4,5 @@ namespace :api do
   resources :live,       only: [:index, :show]
   resources :results,    only: [:index, :show]
   resources :teams,      only: [:show]
+  resources :teamvs,     only: [:show]
 end
