@@ -1,9 +1,9 @@
 module Api
   class TeamsController < BaseController
-    
+
     def show
       load_team
-      render json: 
+      render json:
         @team, serializer: TeamSerializer, root: 'data'
     end
 
@@ -13,4 +13,4 @@ module Api
         raise TeamNotFoundError unless @team
       end
   end
-end 
+end

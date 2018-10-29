@@ -9,7 +9,7 @@ module Api
     end
 
     private
-      def unsort_series        
+      def unsort_series
         series_klass(game_id).select(needed_column).for_result_index(game_id).includes(:league, :left_team, :right_team, :matches)
       end
 
@@ -26,7 +26,7 @@ module Api
           current_page: current_page,
           total_count: MatchSeries.for_result_index(game_id).count,
           per: per_page
-        }
+        }.merge(basic_meta)
       end
   end
 end

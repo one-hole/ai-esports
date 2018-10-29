@@ -3,7 +3,7 @@ module Api
 
     def index
       render json:
-        load_series, each_serializer: LiveListSerializer, root: 'data'
+        load_series, each_serializer: LiveListSerializer, root: 'data', meta: meta
     end
 
     # Live详情 & 传入参数是当前的需要查看的 SeriesID
@@ -27,6 +27,10 @@ module Api
 
       def needed_column
         [:id, :left_team_id, :right_team_id, :game_id, :round, :start_time, :league_id, :status, :left_score, :right_score]
+      end
+
+      def meta
+        basic_meta
       end
 
   end

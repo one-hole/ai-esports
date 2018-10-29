@@ -32,9 +32,15 @@ class Api::BaseController < ApplicationController
     def per_page
       params.fetch(:per_page, 10)
     end
-      
+
     def game_id
       params.fetch(:game_id, 1).to_i
+    end
+
+    def basic_meta
+      {
+        api_key_will_expired_at: current_tenant.expire_time.strftime("%F %T")
+      }
     end
 
 end
