@@ -1,0 +1,11 @@
+default: &default
+  SIDEKIQ_REDIS_HOST: 127.0.0.1
+  SIDEKIQ_REDIS_PORT: 6379
+  OHM_HOST: 127.0.0.1
+  OHM_PORT: 6379
+
+development:
+  <<: *default
+
+test:
+  <<: *default
