@@ -40,6 +40,8 @@ module AiEsports
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
+    # config.autoload_paths += Dir["#{Rails.root}/app/controllers/*"]
+
     config.autoload_paths += Dir["#{Rails.root}/app/models/series"]
     config.autoload_paths += Dir["#{Rails.root}/app/models/teams"]
     config.autoload_paths += Dir["#{Rails.root}/app/models/matches"]
