@@ -9,10 +9,20 @@ module Api
     # Live详情 & 传入参数是当前的需要查看的 SeriesID
     def show
       load_single_series
-      load_match
-      load_live
-      render json:
-        @dota_live, serializer: LiveSerializer, root: 'data', meta: meta
+      api_path = "http://api.ouresports.com/api/v2/live/dota/#{@series.id}?game_no=#{game_no}"
+
+      request = Typhoeus::Request.new(
+        api_path,
+        method: :get,
+        headers: { Accept: "text/html" }
+      )
+      resp = request.run
+      render json: { data: JSON.parse(resp.body)['match']}
+    end
+
+
+    def game_no
+      @series.left_score + @series.right_score + 1
     end
 
     private
