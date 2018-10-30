@@ -8,9 +8,18 @@ module Api
           @heroes, each_serializer: Dota2HeroSerializer, root: 'data', meta: meta
       end
 
+      def show
+        render json:
+          load_hero, serializer: Dota2HeroSerializer, root: 'data', meta: basic_meta
+      end
+
       private
         def load_heroes
           @heroes = Dota2Constant::Hero.page(current_page).per(10)
+        end
+
+        def load_hero
+          @hero = Dota2Constant::Hero.find_by(steam_id: params[:id])
         end
 
         def meta
