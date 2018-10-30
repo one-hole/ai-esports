@@ -16,6 +16,8 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 gem 'rsa-tools'
 gem 'typhoeus', '~> 1.3'
 
+gem 'active_type'
+
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'active_model_serializers', '~> 0.10.7'
 gem 'ohm', github: 'w-zengtao/ohm-connection-pool-edition', branch: :master

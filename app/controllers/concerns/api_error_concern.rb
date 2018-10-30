@@ -45,7 +45,13 @@ module ApiErrorConcern
 
   class CurrentMatchNotFoundError < ApiError
     def initialize
-      super code: 9002, text: '当前系列赛比赛间歇中、请稍后重试', status: 400
+      super code: 9002, text: '当前系列赛进行中的比赛未找到', status: 400
+    end
+  end
+
+  class CurrentMatchNotOnGoingError < ApiError
+    def initialize
+      super code: 9003, text: '当前系列赛比赛间歇中、请稍后重试', status: 400
     end
   end
 end

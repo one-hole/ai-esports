@@ -29,6 +29,7 @@ class MatchSeries < ApplicationRecord
   # 如果比赛还没有开始 & 那就不存在 current_match
   # 所以这里的隐藏条件是比赛正在进行中
   def current_match
-    self.matches.find_by(game_no: (self.left_score + self.right_score + 1))
+    # self.matches.find_by(game_no: (self.left_score + self.right_score + 1))
+    self.matches.find_by(game_no: (self.left_score + self.right_score))
   end
 end

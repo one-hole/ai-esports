@@ -8,10 +8,11 @@ module Api
 
     # Live详情 & 传入参数是当前的需要查看的 SeriesID
     def show
-      # render json:
-      #   load_single_series, serializer: LiveSerializer, root: 'data'
       load_single_series
       load_match
+      load_live
+      render json:
+        @dota_live, serializer: LiveSerializer, root: 'data', meta: meta
     end
 
     private
@@ -33,10 +34,24 @@ module Api
       def load_match
         @match ||= @series.current_match
         raise CurrentMatchNotFoundError unless @match
+        raise CurrentMatchNotOnGoingError if (@match.status != 1) # 若不是在进行中 就直接返回
       end
 
       def load_live
+        load_dota_live
+      end
 
+      def load_dota_live
+        @dota_live = ::Lives::Dota2.new(db_match: @match)
+        @dota_live.exec(left_team_id, right_team_id)
+      end
+
+      def left_team_id
+        @series.left_team.extern_id
+      end
+
+      def right_team_id
+        @series.right_team.extern_id
       end
 
       def needed_column
