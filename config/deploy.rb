@@ -12,7 +12,7 @@ end
 set :application_name, 'old-data-api'
 set :repository, 'git@gitee.com:oneholes/little-ai.git'
 set :forward_agent, true
-set :shared_files, fetch(:shared_files, []).push('config/master.key', 'config/puma.rb', 'config/database.yml', 'config/database_aw.yml')
+set :shared_files, fetch(:shared_files, []).push('config/master.key', 'config/puma.rb', 'config/database.yml', 'config/database_aw.yml', 'config/application.yml')
 
 task :remote_environment do
   invoke :'rbenv:load'
