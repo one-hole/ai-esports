@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/w-zengtao/dota2-constant-rb.git
+  revision: e5a8bc1fb6fa830db2ecd21d9d39150d2459a468
+  specs:
+    dota2-constant (0.1.0)
+
+GIT
   remote: https://github.com/w-zengtao/ohm-connection-pool-edition.git
   revision: 3aaae934a8a0018994d60ceb9d729781453a9068
   branch: master
@@ -264,6 +270,7 @@ DEPENDENCIES
   chromedriver-helper
   connection_pool (~> 2.2, >= 2.2.2)
   database_cleaner
+  dota2-constant!
   factory_bot_rails (~> 4.10)
   jbuilder (~> 2.5)
   kaminari (~> 1.1, >= 1.1.1)

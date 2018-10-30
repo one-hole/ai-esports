@@ -24,6 +24,7 @@ gem 'ohm', github: 'w-zengtao/ohm-connection-pool-edition', branch: :master
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'dota2-constant', github: 'w-zengtao/dota2-constant-rb' 
 
 group :development, :test do
   gem 'pry'
