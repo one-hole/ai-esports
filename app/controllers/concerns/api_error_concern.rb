@@ -25,10 +25,27 @@ module ApiErrorConcern
     end
   end
 
-  class TeamNotFoundError < ApiError
+  class SeriesNotLivingError < ApiError
     def initialize
-      super code: 5000, text: '查询的队伍没有找到', status: 404
+      super code: 5000, text: '当前系列赛并非在进行中', status: 400
     end
   end
 
+  class TeamNotFoundError < ApiError
+    def initialize
+      super code: 9000, text: '查询的队伍没有找到', status: 404
+    end
+  end
+
+  class SeriesNotFoundError < ApiError
+    def initialize
+      super code: 9001, text: '查询的系列赛没有找到', status: 404
+    end
+  end
+
+  class CurrentMatchNotFoundError < ApiError
+    def initialize
+      super code: 9002, text: '当前系列赛比赛间歇中、请稍后重试', status: 400
+    end
+  end
 end

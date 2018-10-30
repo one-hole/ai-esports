@@ -8,8 +8,10 @@ module Api
 
     # Live详情 & 传入参数是当前的需要查看的 SeriesID
     def show
-      render json:
-        load_single_series, serializer: LiveSerializer, root: 'data'
+      # render json:
+      #   load_single_series, serializer: LiveSerializer, root: 'data'
+      load_single_series
+      load_match
     end
 
     private
@@ -21,8 +23,20 @@ module Api
         unsort_series.order(start_time: :desc)
       end
 
+      # Live 的参数就是这样的
       def load_single_series
         @series = MatchSeries.find_by(id: params[:id])
+        raise SeriesNotFoundError unless @series
+        raise SeriesNotLivingError unless @series.ongoing?
+      end
+
+      def load_match
+        @match ||= @series.current_match
+        raise CurrentMatchNotFoundError unless @match
+      end
+
+      def load_live
+
       end
 
       def needed_column

@@ -21,4 +21,14 @@ class MatchSeries < ApplicationRecord
 
   scope :for_live_index,   ->(game_id = 1) { ongoing.today_or_yesterday.non_hidden.with_game(game_id) }
   scope :for_result_index, ->(game_id = 1) { finished.non_hidden.prev_3_days(Date.today).with_game(game_id) }
+
+  def ongoing?
+    return self.status == 1
+  end
+
+  # 如果比赛还没有开始 & 那就不存在 current_match
+  # 所以这里的隐藏条件是比赛正在进行中
+  def current_match
+    self.matches.find_by(game_no: (self.left_score + self.right_score + 1))
+  end
 end
