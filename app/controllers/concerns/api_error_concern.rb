@@ -54,4 +54,10 @@ module ApiErrorConcern
       super code: 9003, text: '当前系列赛比赛间歇中、请稍后重试', status: 400
     end
   end
+
+  class CurrentMatchNotFinishedError < ApiError
+    def initialize
+      super code: 9004, text: '当前系列的比赛并非已结束', status: 400
+    end
+  end
 end
