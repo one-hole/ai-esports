@@ -12,8 +12,12 @@ module Api
     def show
       load_single_series
       load_match
-
-      url = "http://api.ouresports.com/api/v2/live/dota/#{@single_series.id}?game_no=#{game_no}"
+      url = "" 
+      if @single_series.type == "Dota2Series"
+        url = "http://api.ouresports.com/api/v2/live/dota/#{@single_series.id}?game_no=#{game_no}"
+      elsif @single_series.type == "CsgoSeries"
+        url = "http://api.ouresports.com/web/live/csgo/#{@single_series.id}?game_no=#{game_no}"
+      end
       request = Typhoeus::Request.new(
         url,
         method: :get,
