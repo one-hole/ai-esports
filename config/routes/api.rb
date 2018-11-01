@@ -11,5 +11,6 @@ namespace :api do
     resources :dota2_heroes,    only: [:index, :show]
     resources :dota2_items,     only: [:index, :show]
     resources :dota2_abilities, only: [:index, :show]
+    resources :csgo_maps,       only: [:index]
   end
 end
