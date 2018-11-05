@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_130516) do
+ActiveRecord::Schema.define(version: 2018_11_05_104953) do
 
   create_table "dota2_abilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "steam_id", null: false
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2018_10_30_130516) do
     t.string "lg_avatar", default: ""
     t.string "md_avatar", default: ""
     t.string "sm_avatar", default: ""
+    t.string "cn_name"
+    t.text "desc"
     t.index ["steam_id"], name: "index_steam_on_abilities"
   end
 
@@ -28,6 +30,9 @@ ActiveRecord::Schema.define(version: 2018_10_30_130516) do
     t.string "lg_avatar", default: "", comment: "英雄lg图"
     t.string "sm_avatar", default: "", comment: "英雄eg图"
     t.string "vert_avatar", default: "", comment: "英雄vert图"
+    t.string "cn_name"
+    t.string "dac"
+    t.string "droles"
     t.index ["steam_id"], name: "index_steam_on_heroes"
   end
 
@@ -36,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_10_30_130516) do
     t.string "en_name", null: false
     t.string "lg_avatar", default: "", comment: "物品eg图"
     t.string "eg_avatar", default: "", comment: "物品lg图"
+    t.string "cn_name"
     t.index ["steam_id"], name: "index_steam_on_items"
   end
 

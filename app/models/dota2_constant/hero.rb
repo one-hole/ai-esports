@@ -15,6 +15,16 @@ module Dota2Constant
         self.create(steam_id: key.to_i, en_name: value.to_s)
       end
     end
+
+    def self.init_cn
+      yamls = YAML.load_file(Rails.root.to_s + "/lib/constants/heropedia.yml")['herodata']
+      Hero.find_each do |hero|
+        hero.cn_name = yamls[hero.en_name]['dname'] rescue nil
+        hero.dac = yamls[hero.en_name]['dac'] rescue nil
+        hero.droles = yamls[hero.en_name]['droles'] rescue nil
+        hero.save
+      end
+    end
   end
 end
 

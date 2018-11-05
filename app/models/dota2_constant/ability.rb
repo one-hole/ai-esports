@@ -14,5 +14,14 @@ module Dota2Constant
         self.create(steam_id: key.to_i, en_name: value.to_s)
       end
     end
+
+    def self.init_cn
+      yamls = YAML.load_file(Rails.root.to_s + "/lib/constants/abilitypedia.yml")['abilitydata']
+      Ability.find_each do |ability|
+        ability.cn_name = yamls[ability.en_name]['dname'] rescue nil
+        ability.desc = yamls[ability.en_name]['desc'] rescue nil
+        ability.save
+      end
+    end
   end
 end
