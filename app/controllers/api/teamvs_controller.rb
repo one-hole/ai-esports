@@ -2,16 +2,22 @@ module Api
   class TeamvsController < BaseController
 
     # before_action :check
-    def index
+    def show
       load_series
       url = ""
       if @series.type == "Dota2Series"
         url = "http://api.ouresports.com/api/v2/ai/dota2?left_team_id=#{@series.left_team_id}&right_team_id=#{@series.right_team_id}"
       elsif @series.type == "CsgoSeries"
-        url = ""
+        url = "http://api.ouresports.com/web/ai/csgo?left_team_id=#{@series.left_team_id}&right_team_id=#{@series.right_team_id}"
       end
 
-
+      request = Typhoeus::Request.new(
+        url,
+        method: :get,
+        headers: { Accept: "text/html" }
+      )
+      resp = request.run
+      render json: { data: JSON.parse(resp.body)['stats'] }, status: 200
 
     end
 
