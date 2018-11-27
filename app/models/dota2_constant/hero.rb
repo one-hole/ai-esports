@@ -12,7 +12,7 @@ module Dota2Constant
     def self.load_yaml
       heroes = YAML.load_file(Rails.root.to_s + "/lib/constants/heroes.yml")
       heroes.each_pair do |key, value|
-        self.create(steam_id: key.to_i, en_name: value.to_s)
+        self.find_or_create_by(steam_id: key.to_i, en_name: value.to_s)
       end
     end
 

@@ -11,7 +11,7 @@ module Dota2Constant
     def self.load_yml
       abilities = YAML.load_file(Rails.root.to_s + "/lib/constants/abilities.yml")
       abilities.each_pair do |key, value|
-        self.create(steam_id: key.to_i, en_name: value.to_s)
+        self.find_or_create_by(steam_id: key.to_i, en_name: value.to_s)
       end
     end
 
