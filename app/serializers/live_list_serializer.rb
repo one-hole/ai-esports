@@ -1,39 +1,30 @@
-module Web
-  class LiveScoresSerializer < ActiveModel::Serializer
-    attributes :id, :game_id, :league_name, :round, :left_score, :right_score, :match
+class LiveListSerializer < ScheduleSerializer
+  attributes :left_score, :right_score, :match
 
-    belongs_to :left_team
-    belongs_to :right_team
+  def game_no
+    object.left_score + object.right_score + 1
+  end
 
-    class TeamSerializer < ActiveModel::Serializer
-      attributes :id, :logo, :tag, :extern_id
+  def csgo?
+    object.is_a?(CsgoSeries)
+  end
+
+  def dota2?
+    object.is_a?(Dota2Series)
+  end
+
+  def cur_match
+    object.matches.find_by(game_no: game_no)
+  end
+
+  def match
+    return nil unless cur_match
+    if dota2?
+      Dota2MatchSerializer.new(cur_match)
+    elsif csgo?
+      CsgoMatchSerializer.new(cur_match)
     end
-
-    def game_no
-      object.left_score + object.right_score + 1
-    end
-
-    def csgo?
-      object.is_a?(CsgoSeries)
-    end
-
-    def dota2?
-      object.is_a?(Dota2Series)
-    end
-
-    def cur_match
-      object.matches.find_by(game_no: game_no)
-    end
-
-    def match
-      return nil unless cur_match
-      if dota2?
-        # return nil unless cur_match.ongoing? # => 只显示live的match
-        Dota2MatchSerializer.new(cur_match)
-      elsif csgo?
-        CsgoMatchSerializer.new(cur_match)
-      end
-    end
+  end
 
     class Dota2MatchSerializer < ActiveModel::Serializer
       attributes :left_team_kills, :right_team_kills, :left_team_towers, :right_team_towers
@@ -65,32 +56,31 @@ module Web
       end
     end
 
-    class CsgoMatchSerializer < ActiveModel::Serializer
-      attributes :id, :game_no, :map, :left_score, :right_score
-      attributes :first_half_left_role, :first_half_pistol_left_win, :second_half_pistol_left_win
+  class CsgoMatchSerializer < ActiveModel::Serializer
+    attributes :id, :game_no, :map, :left_score, :right_score
+    attributes :first_half_left_role, :first_half_pistol_left_win, :second_half_pistol_left_win
 
-      def score_log
-        return [] if object.score_log.blank?
-        @score_log ||= JSON.parse(object.score_log)
-      end
-
-      # ----------- score_info -------------------
-      def score_info
-        return @score_info unless @score_info.nil?
-        return nil if object.score_info.blank?
-        @score_info ||= JSON.parse(object.score_info)
-      end
-
-      def score_info_valid?
-        return false if score_info.nil?
-        true
-      end
-
-      def first_half_left_role
-        return nil unless score_info_valid?
-        score_info['firstLeft'] || score_info['first_left']
-      end
+    def score_log
+      return [] if object.score_log.blank?
+      @score_log ||= JSON.parse(object.score_log)
     end
 
+    # ----------- score_info -------------------
+    def score_info
+      return @score_info unless @score_info.nil?
+      return nil if object.score_info.blank?
+      @score_info ||= JSON.parse(object.score_info)
+    end
+
+    def score_info_valid?
+      return false if score_info.nil?
+      true
+    end
+
+    def first_half_left_role
+      return nil unless score_info_valid?
+      score_info['firstLeft'] || score_info['first_left']
+    end
   end
+
 end
