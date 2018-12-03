@@ -16,12 +16,23 @@ module Api
 
     private
       def unsort_series
-        MatchSeries.select(needed_column).non_hidden.non_pending.with_game(game_id).includes(:league, :left_team, :right_team)
-        # MatchSeries.non_hidden.non_pending.with_game(game_id).includes(:league, :left_team, :right_team)
+        if date
+          MatchSeries.select(needed_column).non_hidden.non_pending.with_game(game_id).with_date(date).includes(:league, :left_team, :right_team)
+        else
+          MatchSeries.select(needed_column).non_hidden.non_pending.with_game(game_id).includes(:league, :left_team, :right_team)
+        end
+      end
+
+      def date
+        Date.parse(params[:date]) rescue nil
       end
 
       def load_series
-        @load_series ||= unsort_series.order(start_time: :desc).page(current_page).per(per_page)
+        if date
+          @load_series ||= unsort_series.order(start_time: :desc)
+        else
+          @load_series ||= unsort_series.order(start_time: :desc).page(current_page).per(per_page)
+        end
       end
 
       def game_id

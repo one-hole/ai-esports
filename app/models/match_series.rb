@@ -11,6 +11,7 @@ class MatchSeries < ApplicationRecord
   scope :non_pending, -> { where.not(status: -3) }
   scope :non_hidden,  -> { joins(:league).where('leagues.hidden = ?', false) }
   scope :around_date, -> (date = Date.today) { where(start_time: (date - 1.day).to_time.to_i...(date + 7.days).to_time.to_i) }
+  scope :with_date,   -> (date)    { where(start_time: date.beginning_of_day.to_time.to_i...date.end_of_day.to_time.to_i) }
   scope :with_game,   -> (game_id) { where(game_id: game_id) }
 
   scope :ongoing,     -> { where(status: 1) }
