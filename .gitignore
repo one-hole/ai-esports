@@ -28,3 +28,5 @@
 /config/database.yml
 /config/database_aw.yml
 /config/application.yml
+
+.DS_Store
