@@ -17,6 +17,7 @@ module Api
     private
       def unsort_series
         MatchSeries.select(needed_column).non_hidden.non_pending.with_game(game_id).includes(:league, :left_team, :right_team)
+        # MatchSeries.non_hidden.non_pending.with_game(game_id).includes(:league, :left_team, :right_team)
       end
 
       def load_series
