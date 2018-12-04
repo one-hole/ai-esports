@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_05_104953) do
+ActiveRecord::Schema.define(version: 2018_12_02_094922) do
 
   create_table "dota2_abilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "steam_id", null: false
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 2018_11_05_104953) do
     t.string "eg_avatar", default: "", comment: "物品lg图"
     t.string "cn_name"
     t.index ["steam_id"], name: "index_steam_on_items"
+  end
+
+  create_table "lol_heroes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "cn_name"
+    t.string "en_name"
+    t.string "nick"
+    t.integer "offical_id"
+    t.integer "attack"
+    t.integer "defense"
+    t.integer "magic"
+    t.integer "difficulty"
   end
 
   create_table "tenants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
