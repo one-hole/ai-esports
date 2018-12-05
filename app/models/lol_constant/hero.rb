@@ -2,6 +2,8 @@ module LolConstant
   class Hero < ApplicationRecord
     self.table_name = "lol_heroes"
 
+    has_many :skills, foreign_key: :hero_id, class_name: 'Skill'
+
     def self.init_data
       hero_array.each do |hero|
         self.find_or_create_by(
