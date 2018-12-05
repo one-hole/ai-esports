@@ -16,7 +16,6 @@ module Api
 
     private
       def unsort_series
-        binding.pry
         if date
           MatchSeries.select(needed_column).non_hidden.non_pending.with_game(game_id).with_date(date).includes(:league, :left_team, :right_team)
         else
