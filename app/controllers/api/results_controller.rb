@@ -1,3 +1,5 @@
+# 赛果 APi
+
 module Api
   class ResultsController < BaseController
 
@@ -12,7 +14,7 @@ module Api
     def show
       load_single_series
       load_match
-      url = "" 
+      url = ""
       if @single_series.type == "Dota2Series"
         url = "http://api.ouresports.com/api/v2/live/dota/#{@single_series.id}?game_no=#{game_no}"
       elsif @single_series.type == "CsgoSeries"
@@ -29,11 +31,23 @@ module Api
 
     private
       def unsort_series
-        series_klass(game_id).select(needed_column).for_result_index(game_id).includes(:league, :left_team, :right_team, :matches)
+        if date
+          series_klass(game_id).select(needed_column).finished.non_hidden.with_date(date).includes(:league, :left_team, :right_team, :matches)
+        else
+          series_klass(game_id).select(needed_column).for_result_index(game_id).includes(:league, :left_team, :right_team, :matches)
+        end
       end
 
       def load_series
-        @load_series ||= unsort_series.page(current_page).per(per_page)
+        if date
+          @load_series ||= unsort_series
+        else
+          @load_series ||= unsort_series.page(current_page).per(per_page)
+        end
+      end
+
+      def date
+        Date.parse(params[:date]) rescue nil
       end
 
       def load_single_series
