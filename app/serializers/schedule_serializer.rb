@@ -4,8 +4,8 @@ class ScheduleSerializer < ActiveModel::Serializer
   attributes :hltv_id
 
   def hltv_id
-    return "" unless ("CsgoSeries" != object.type)
-    object.extern_id.gsub('hltv_', '')
+    return "" if ("CsgoSeries" != object.type)
+    return object.extern_id.gsub('hltv_', '')
   end
 
   def start_time
