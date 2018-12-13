@@ -8,6 +8,8 @@ class MatchSeries < ApplicationRecord
 
   # delegate :name, to: :league, prefix: :league, allow_nil: true
 
+  default_scope { where(deleted_at: nil) }
+
   scope :non_pending, -> { where.not(status: -3) }
   scope :non_hidden,  -> { joins(:league).where('leagues.hidden = ?', false) }
   scope :around_date, -> (date = Date.today) { where(start_time: (date - 1.day).to_time.to_i...(date + 7.days).to_time.to_i) }
