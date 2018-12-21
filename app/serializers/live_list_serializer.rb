@@ -61,6 +61,11 @@ class LiveListSerializer < ScheduleSerializer
     attributes :first_half_left_role, :first_half_pistol_left_win, :second_half_pistol_left_win
 
     attributes :first_half, :second_half
+    attributes :left_win_five
+
+    def left_win_five
+      object.first_win_five
+    end
 
     def score_log
       return [] if object.score_log.blank?
