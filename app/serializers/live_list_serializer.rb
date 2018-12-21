@@ -81,7 +81,7 @@ class LiveListSerializer < ScheduleSerializer
 
     def second_half
       return nil unless score_info_valid?
-      return score_info["right_half"]
+      return score_info["second_half"]
     end
 
     def score_info_valid?
