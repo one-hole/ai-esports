@@ -49,7 +49,7 @@ class LiveListSerializer < ScheduleSerializer
         end
         count
       end
-      
+
       def picks_bans
         return [] if object.picks_bans.nil?
         JSON.parse(object.picks_bans)
@@ -59,6 +59,8 @@ class LiveListSerializer < ScheduleSerializer
   class CsgoMatchSerializer < ActiveModel::Serializer
     attributes :id, :game_no, :map, :left_score, :right_score
     attributes :first_half_left_role, :first_half_pistol_left_win, :second_half_pistol_left_win
+
+    attributes :first_half, :second_half
 
     def score_log
       return [] if object.score_log.blank?
@@ -70,6 +72,16 @@ class LiveListSerializer < ScheduleSerializer
       return @score_info unless @score_info.nil?
       return nil if object.score_info.blank?
       @score_info ||= JSON.parse(object.score_info)
+    end
+
+    def first_half
+      return nil unless score_info_valid?
+      return score_info["first_half"]
+    end
+
+    def second_half
+      return nil unless score_info_valid?
+      return score_info["right_half"]
     end
 
     def score_info_valid?
