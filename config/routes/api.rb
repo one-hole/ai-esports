@@ -3,7 +3,7 @@ namespace :api do
   resources :verify_key, only: [:index]
   resources :live,       only: [:index, :show]
   resources :results,    only: [:index, :show]
-  resources :teams,      only: [:show]
+  resources :teams,      only: [:show, :index]
   resources :teamvs,     only: [:show]
   resources :leagues,    only: [:show, :index]
 
