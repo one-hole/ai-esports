@@ -1,5 +1,6 @@
 namespace :api do
   resources :schedule,   only: [:index, :show]
+  resources :nonsig_schedule , only: [:index]
   resources :verify_key, only: [:index]
   resources :live,       only: [:index, :show]
   resources :results,    only: [:index, :show]

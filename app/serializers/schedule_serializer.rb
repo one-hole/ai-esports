@@ -4,6 +4,7 @@ class ScheduleSerializer < ActiveModel::Serializer
   attributes :hltv_id
 
   def hltv_id
+    # binding.pry
     return "" if ("CsgoSeries" != object.type)
     return object.extern_id.gsub('hltv_', '')
   end
