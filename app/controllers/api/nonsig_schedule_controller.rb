@@ -41,7 +41,7 @@ module Api
         {
           current_page: current_page,
           per: per_page,
-          total_count: MatchSeries.non_hidden.non_pending.with_game(game_id).count
+          total_count: MatchSeries.non_pending.with_game(game_id).count
         }.merge(basic_meta)
       end
   end
