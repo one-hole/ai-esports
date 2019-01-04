@@ -5,7 +5,8 @@ class LeagueSerializer < LeagueListSerializer
     attributes :left_score, :right_score, :round
 
     def start_time
-      Time.at(object.start_time)
+      return Time.at(object.start_time) if object.start_time
+      return ''
     end
   end
 
