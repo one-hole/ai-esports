@@ -6,7 +6,11 @@ class ScheduleSerializer < ActiveModel::Serializer
   def hltv_id
     # binding.pry
     return "" if ("CsgoSeries" != object.type)
-    return object.extern_id.gsub('hltv_', '')
+    if object.extern_id
+      return object.extern_id.gsub('hltv_', '')
+    else
+      return " "
+    end
   end
 
   def start_time
