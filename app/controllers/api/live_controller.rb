@@ -17,11 +17,11 @@ module Api
         headers: { Accept: "text/html" }
       )
       resp = request.run
-      render json: { data: JSON.parse(resp.body)['match'].try(:merge(
+      render json: { data: JSON.parse(resp.body)['match'].merge(
           {
             game_no: game_no
           }
-        ))}
+        )}
     end
 
 
