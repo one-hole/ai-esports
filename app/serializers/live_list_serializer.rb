@@ -1,6 +1,13 @@
 class LiveListSerializer < ScheduleSerializer
   attributes :left_score, :right_score, :match
 
+  attributes :csgo_bps
+
+  def csgo_bps
+    return {} unless object.class.name == "CsgoSeries"
+    return JSON.parse(CsgoBpSerializer.new(object.get_banpick).to_json)
+  end
+
   def game_no
     object.left_score + object.right_score + 1
   end

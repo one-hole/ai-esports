@@ -23,11 +23,11 @@ module Api
         }
       )}
 
-      if @series.class.name == "CsgoSeries"
-        render_data.merge(
-          JSON.parse CsgoBpSerializer.new(@series.get_banpick).to_json
-        )
-      end
+      # if @series.class.name == "CsgoSeries"
+      #   render_data.merge(
+      #     JSON.parse CsgoBpSerializer.new(@series.get_banpick).to_json
+      #   )
+      # end
       render json: render_data
     end
 
