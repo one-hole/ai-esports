@@ -17,11 +17,18 @@ module Api
         headers: { Accept: "text/html" }
       )
       resp = request.run
-      render json: { data: JSON.parse(resp.body)['match'].merge(
-          {
-            game_no: game_no
-          }
-        )}
+      render_data = { data: JSON.parse(resp.body)['match'].merge(
+        {
+          game_no: game_no
+        }
+      )}
+
+      if @series.class.name == "CsgoSeries"
+        render_data.merge(
+          JSON.parse CsgoBpSerializer.new(@series.get_banpick).to_json
+        )
+      end
+      render json: render_data
     end
 
 

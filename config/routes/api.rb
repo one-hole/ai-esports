@@ -7,6 +7,7 @@ namespace :api do
   resources :teams,      only: [:show, :index]
   resources :teamvs,     only: [:show]
   resources :leagues,    only: [:show, :index]
+  resources :csgo_bp,    only: [:show]
 
   namespace :constants do
     resources :dota2_heroes,    only: [:index, :show]
