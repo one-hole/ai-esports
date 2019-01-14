@@ -29,6 +29,10 @@ class MatchSeries < ApplicationRecord
     return self.status == 1
   end
 
+  def finished?
+    return self.status == 2
+  end
+
   # 如果比赛还没有开始 & 那就不存在 current_match
   # 所以这里的隐藏条件是比赛正在进行中
   def current_match
