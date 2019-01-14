@@ -38,7 +38,7 @@ module Api
 
 
     def game_no
-      return @series.round if self.finished?
+      return @series.round if @series.finished?
       @series.left_score + @series.right_score + 1
     end
 
