@@ -55,7 +55,7 @@ module Api
       def load_single_series
         @series = MatchSeries.find_by(id: params[:id])
         raise SeriesNotFoundError unless @series
-        raise SeriesNotLivingError unless @series.ongoing?
+        # raise SeriesNotLivingError unless @series.ongoing?
       end
 
       def load_match
