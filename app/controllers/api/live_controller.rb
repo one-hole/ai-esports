@@ -27,18 +27,12 @@ module Api
           game_no: game_no
         }
       )}
-
-      # if @series.class.name == "CsgoSeries"
-      #   render_data.merge(
-      #     JSON.parse CsgoBpSerializer.new(@series.get_banpick).to_json
-      #   )
-      # end
       render json: render_data
     end
 
 
     def game_no
-      return @series.round if @series.finished?
+      return (@series.left_score + @series.right_score) if @series.finished?
       @series.left_score + @series.right_score + 1
     end
 
