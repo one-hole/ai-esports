@@ -44,6 +44,7 @@ task :deploy do
         command %{mkdir -p tmp/}
         command %{touch tmp/restart.txt}
         invoke :'puma:phased_restart'
+        invoke :'sidekiq:restart'
       end
     end
   end
