@@ -3,6 +3,8 @@ require 'mina/git'
 require 'mina/puma'
 require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 
+require_relative 'deploy/sidekiq'
+
 if ENV['on'].nil?
   require File.expand_path('../deploy/development.rb', __FILE__)
 else
