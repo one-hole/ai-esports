@@ -5,7 +5,7 @@ namespace :sidekiq do
   set :sidekiq_log, -> { "#{fetch(:current_path)}/log/sidekiq.log" }
   set :sidekiq_config, -> { "#{fetch(:current_path)}/config/sidekiq.yml" }
   set :sidekiq_timeout, 10
-  set :sidekiq_processes, 3
+  set :sidekiq_processes, 1
   set :sidekiq_concurrency, nil
 
   def for_each_process(&block)
