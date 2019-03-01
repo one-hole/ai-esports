@@ -20,7 +20,8 @@ gem 'active_type'
 
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'active_model_serializers', '~> 0.10.7'
-gem 'ohm', github: 'w-zengtao/ohm-connection-pool-edition', branch: :master
+gem 'ohm',     github: 'w-zengtao/ohm-connection-pool-edition', branch: :master
+gem 'sidekiq'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
