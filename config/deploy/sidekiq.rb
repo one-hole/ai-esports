@@ -1,4 +1,5 @@
 namespace :sidekiq do
+
   set :sidekiq, -> { "#{fetch(:bundle_prefix)} sidekiq" }
   set :sidekiqctl, -> { "#{fetch(:bundle_prefix)} sidekiqctl" }
   set :sidekiq_pid, -> { "#{fetch(:shared_path)}/tmp/pids/sidekiq.pid" }
@@ -6,7 +7,7 @@ namespace :sidekiq do
   set :sidekiq_config, -> { "#{fetch(:current_path)}/config/sidekiq.yml" }
   set :sidekiq_timeout, 10
   set :sidekiq_processes, 1
-  set :sidekiq_concurrency, nil
+  set :sidekiq_concurrency, 10
 
   def for_each_process(&block)
     fetch(:sidekiq_processes).times do |idx|

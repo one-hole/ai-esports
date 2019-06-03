@@ -38,6 +38,7 @@ task :deploy do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
+    # invoke :'rails:db_create'
     invoke :'rails:db_migrate'
     invoke :'deploy:cleanup'
 
