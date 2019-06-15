@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_113552) do
+ActiveRecord::Schema.define(version: 2019_06_12_055433) do
 
   create_table "dota2_abilities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "steam_id", null: false
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 2018_12_04_113552) do
     t.text "desc", comment: "技能描述"
     t.string "short", limit: 4, comment: "快捷键"
     t.index ["hero_id", "short"], name: "short_on_skills", unique: true
+  end
+
+  create_table "servers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "tenant_id"
+    t.string "host"
+    t.string "tag"
+    t.index ["host", "tenant_id"], name: "idx_host_server"
+    t.index ["tenant_id"], name: "index_servers_on_tenant_id"
   end
 
   create_table "tenants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -1,5 +1,7 @@
 class Tenant < ApplicationRecord
 
+  has_many :servers
+
   before_create do
     self.api_key = generate_api_key
     self.private_key, self.public_key = generate_rsa_keys
