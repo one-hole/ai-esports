@@ -7,7 +7,7 @@ class CheckLiveWorker
     @redis = Redis.new(db: 12)
     load_ids.each do |pair|
       resp = ::DotaLiveService.new(pair[0], pair[1], pair[2], pair[3]).run
-      @redis.publish("tenant-websocket", resp)
+      @redis.publish("aiesports-dota2-websocket", resp)
     end
 
     CheckLiveWorker.perform_in(15.seconds)

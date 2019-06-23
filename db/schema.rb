@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_055433) do
     t.index ["hero_id", "short"], name: "short_on_skills", unique: true
   end
 
-  create_table "servers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "servers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.bigint "tenant_id"
     t.string "host"
     t.string "tag"
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 2019_06_12_055433) do
     t.datetime "expire_time", default: "1970-01-01 00:00:00", comment: "APi 过期时间"
     t.text "public_key", comment: "我们签发的公钥"
     t.text "private_key", comment: "我们签发的私钥"
-    t.string "api_key", default: ""
-    t.string "api_path", comment: "推送的 APi 路径"
+    t.string "api_key", limit: 255, default: ""
+    t.string "api_path", limit: 255, comment: "推送的 APi 路径"
     t.index ["api_key"], name: "key_on_tenants"
   end
 
