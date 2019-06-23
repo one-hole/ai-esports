@@ -12,7 +12,7 @@ else
 end
 
 set :application_name, 'old-data-api'
-set :repository, 'git@gitee.com:oneholes/little-ai.git'
+set :repository, 'git@gitee.com:oneholes/ai-esports.git'
 set :forward_agent, true
 set :shared_files, fetch(:shared_files, []).push('config/master.key', 'config/puma.rb', 'config/database.yml', 'config/database_aw.yml', 'config/application.yml')
 
