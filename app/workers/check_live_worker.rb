@@ -10,7 +10,7 @@ class CheckLiveWorker
       @redis.publish("aiesports-dota2-websocket", resp)
     end
 
-    CheckLiveWorker.perform_in(15.seconds)
+    CheckLiveWorker.perform_in(3.seconds)
   end
 
   def load_ids
