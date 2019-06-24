@@ -48,6 +48,13 @@ module AiEsports
     config.autoload_paths += Dir["#{Rails.root}/app/models/dota2_live"]
     config.api_only = true
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :patch, :put, :delete, :options]
+      end
+    end
+
     ActiveModelSerializers.config.adapter = :json
   end
 end
