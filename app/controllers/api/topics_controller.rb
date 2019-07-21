@@ -7,18 +7,18 @@ module Api
 
   def index
     check_params
-    render json: {
-      "data": true
-    }
+    load_series
+    render json: 
+      @match_series, each_serializer: TopicSerializer, root: 'data'
   end
 
   private
     def load_series
-      @match_series ||= MatchSeries.with_date(params["date"]).with_game(params["game_id"])
+      @match_series ||= MatchSeries.with_date(@date).with_game(params["game_id"]).includes(:all_topics, :bet_topics)
     end
 
     def check_params
-      Date.parse(params["date"]) rescue raise DateParamsError
+      (@date = Date.parse(params["date"])) rescue raise DateParamsError
       raise GameIDError if params["game_id"] == nil
     end
   end

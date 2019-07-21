@@ -6,6 +6,6 @@ class BetTopic < ApplicationRecord
   belongs_to :topic, foreign_key: :topic_id, class_name: "Topic"
 
   delegate :match_series, to: :topic
-  delegate :name, to: :topic
+  delegate :name, :value, :type, :handicap, to: :topic
   
 end
