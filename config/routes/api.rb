@@ -9,6 +9,8 @@ namespace :api do
   resources :leagues,    only: [:show, :index]
   resources :csgo_bp,    only: [:show]
 
+  resources :topics,     only: [:index]
+
   namespace :constants do
     resources :dota2_heroes,    only: [:index, :show]
     resources :dota2_items,     only: [:index, :show]

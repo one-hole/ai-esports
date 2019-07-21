@@ -6,6 +6,9 @@ class MatchSeries < ApplicationRecord
   belongs_to :left_team,  foreign_key: :left_team_id,  class_name: 'Team'
   belongs_to :right_team, foreign_key: :right_team_id, class_name: 'Team'
 
+  has_many :all_topics, foreign_key: :series_id, class_name: "Topic"
+  has_many :bet_topics, through: :all_topics
+
   # delegate :name, to: :league, prefix: :league, allow_nil: true
 
   default_scope { where(deleted_at: nil) }

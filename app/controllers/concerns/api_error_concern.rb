@@ -25,6 +25,18 @@ module ApiErrorConcern
     end
   end
 
+  class GameIDError < ApiError
+    def initialize
+      super code: 2002, text: '没有GameID参数', status: 403
+    end
+  end
+  
+  class DateParamsError < ApiError
+    def initialize
+      super code: 2003, text: '没有Date参数', status: 403
+    end
+  end
+
   class SeriesNotLivingError < ApiError
     def initialize
       super code: 5000, text: '当前系列赛并非在进行中', status: 400
