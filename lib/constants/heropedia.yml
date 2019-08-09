@@ -12,13 +12,13 @@ herodata:
         b: 12
         g: '1.80'
       agi:
-        b: 22
-        g: '2.80'
+        b: 24
+        g: '3.20'
       ms: 310
       dmg:
         min: 29
         max: 33
-      armor: 2.08
+      armor: 2.36
     dac: 近战
     droles: 核心 - 逃生 - 爆发
   axe:
@@ -28,18 +28,18 @@ herodata:
     attribs:
       str:
         b: 25
-        g: '2.80'
+        g: '3.40'
       int:
         b: 18
         g: '1.60'
       agi:
         b: 20
         g: '2.20'
-      ms: 290
+      ms: 305
       dmg:
-        min: 24
-        max: 28
-      armor: 0.8
+        min: 27
+        max: 31
+      armor: 1.8
     dac: 近战
     droles: 先手 - 耐久 - 控制 - 打野
   bane:
@@ -49,14 +49,14 @@ herodata:
     attribs:
       str:
         b: 23
-        g: '2.40'
+        g: '2.60'
       int:
         b: 23
-        g: '2.40'
+        g: '2.60'
       agi:
         b: 23
-        g: '2.40'
-      ms: 310
+        g: '2.60'
+      ms: 305
       dmg:
         min: 35
         max: 41
@@ -76,12 +76,12 @@ herodata:
         g: '1.70'
       agi:
         b: 24
-        g: '3.00'
-      ms: 285
+        g: '3.10'
+      ms: 300
       dmg:
         min: 33
         max: 39
-      armor: 3.36
+      armor: 5.36
     dac: 近战
     droles: 核心 - 控制 - 打野 - 爆发 - 先手
   crystal_maiden:
@@ -94,15 +94,15 @@ herodata:
         g: '2.20'
       int:
         b: 14
-        g: '2.90'
+        g: '3.30'
       agi:
         b: 16
         g: '1.60'
       ms: 275
       dmg:
-        min: 28
-        max: 34
-      armor: 2.24
+        min: 30
+        max: 36
+      armor: 1.24
     dac: 远程
     droles: 辅助 - 控制 - 爆发 - 打野
   drow_ranger:
@@ -111,19 +111,19 @@ herodata:
     pa: agi
     attribs:
       str:
-        b: 17
+        b: 18
         g: '1.90'
       int:
         b: 15
         g: '1.40'
       agi:
-        b: 23
-        g: '2.20'
+        b: 30
+        g: '2.80'
       ms: 285
       dmg:
-        min: 25
-        max: 36
-      armor: 0.22
+        min: 19
+        max: 30
+      armor: 1.2
     dac: 远程
     droles: 核心 - 控制 - 推进
   earthshaker:
@@ -133,7 +133,7 @@ herodata:
     attribs:
       str:
         b: 22
-        g: '3.20'
+        g: '3.70'
       int:
         b: 16
         g: '1.80'
@@ -144,7 +144,7 @@ herodata:
       dmg:
         min: 27
         max: 37
-      armor: 1.68
+      armor: 3.68
     dac: 近战
     droles: 辅助 - 先手 - 控制 - 爆发
   juggernaut:
@@ -153,19 +153,19 @@ herodata:
     pa: agi
     attribs:
       str:
-        b: 21
+        b: 20
         g: '2.20'
       int:
         b: 14
         g: '1.40'
       agi:
-        b: 36
-        g: '2.40'
-      ms: 295
+        b: 34
+        g: '2.80'
+      ms: 300
       dmg:
         min: 12
         max: 16
-      armor: 6.04
+      armor: 4.76
     dac: 近战
     droles: 核心 - 推进 - 逃生
   mirana:
@@ -177,12 +177,12 @@ herodata:
         b: 18
         g: '2.20'
       int:
-        b: 17
-        g: '1.70'
+        b: 22
+        g: '1.90'
       agi:
         b: 18
-        g: '3.20'
-      ms: 295
+        g: '3.70'
+      ms: 290
       dmg:
         min: 25
         max: 30
@@ -195,19 +195,19 @@ herodata:
     pa: agi
     attribs:
       str:
-        b: 16
-        g: '2.30'
+        b: 19
+        g: '2.50'
       int:
         b: 18
-        g: '2.00'
+        g: '2.20'
       agi:
         b: 20
-        g: '2.90'
-      ms: 310
+        g: '3.50'
+      ms: 305
       dmg:
         min: 15
         max: 21
-      armor: 1.8
+      armor: 2.8
     dac: 远程
     droles: 核心 - 爆发
   morphling:
@@ -217,18 +217,18 @@ herodata:
     attribs:
       str:
         b: 20
-        g: '2.30'
+        g: '3.00'
       int:
         b: 13
         g: '1.10'
       agi:
         b: 24
-        g: '3.70'
+        g: '4.30'
       ms: 280
       dmg:
         min: 9
         max: 18
-      armor: 1.36
+      armor: 0.36
     dac: 远程
     droles: 核心 - 逃生 - 耐久 - 爆发 - 控制
   phantom_lancer:
@@ -238,14 +238,14 @@ herodata:
     attribs:
       str:
         b: 19
-        g: '2.00'
+        g: '2.20'
       int:
         b: 19
         g: '2.00'
       agi:
         b: 29
-        g: '2.60'
-      ms: 285
+        g: '3.20'
+      ms: 290
       dmg:
         min: 22
         max: 44
@@ -259,18 +259,18 @@ herodata:
     attribs:
       str:
         b: 17
-        g: '2.20'
+        g: '2.40'
       int:
         b: 23
-        g: '2.40'
+        g: '3.50'
       agi:
         b: 22
         g: '1.70'
-      ms: 295
+      ms: 290
       dmg:
         min: 30
         max: 41
-      armor: 1.08
+      armor: 2.08
     dac: 远程
     droles: 先手 - 控制 - 逃生 - 爆发
   pudge:
@@ -280,17 +280,17 @@ herodata:
     attribs:
       str:
         b: 25
-        g: '3.50'
+        g: '4.00'
       int:
-        b: 14
+        b: 16
         g: '1.50'
       agi:
         b: 14
         g: '1.50'
-      ms: 275
+      ms: 280
       dmg:
-        min: 34
-        max: 40
+        min: 40
+        max: 46
       armor: -0.04
     dac: 近战
     droles: 控制 - 先手 - 耐久 - 爆发
@@ -307,7 +307,7 @@ herodata:
         g: '1.80'
       agi:
         b: 22
-        g: '1.80'
+        g: '2.10'
       ms: 285
       dmg:
         min: 23
@@ -322,17 +322,17 @@ herodata:
     attribs:
       str:
         b: 22
-        g: '2.90'
+        g: '3.00'
       int:
-        b: 16
+        b: 19
         g: '1.80'
       agi:
         b: 19
-        g: '2.10'
-      ms: 285
+        g: '1.80'
+      ms: 290
       dmg:
-        min: 25
-        max: 35
+        min: 23
+        max: 33
       armor: 1.66
     dac: 近战
     droles: 先手 - 控制 - 辅助 - 爆发 - 逃生 - 打野
@@ -345,15 +345,15 @@ herodata:
         b: 21
         g: '2.00'
       int:
-        b: 22
-        g: '3.00'
+        b: 23
+        g: '3.90'
       agi:
         b: 22
         g: '1.50'
       ms: 285
       dmg:
-        min: 24
-        max: 34
+        min: 26
+        max: 36
       armor: 5.08
     dac: 远程
     droles: 核心 - 逃生 - 爆发 - 先手 - 控制
@@ -363,18 +363,18 @@ herodata:
     pa: str
     attribs:
       str:
-        b: 23
-        g: '3.00'
+        b: 22
+        g: '3.20'
       int:
         b: 16
         g: '1.30'
       agi:
         b: 21
         g: '2.00'
-      ms: 285
+      ms: 310
       dmg:
-        min: 43
-        max: 45
+        min: 41
+        max: 43
       armor: 3.94
     dac: 近战
     droles: 核心 - 控制 - 先手 - 耐久 - 爆发
@@ -385,14 +385,14 @@ herodata:
     attribs:
       str:
         b: 30
-        g: '3.60'
+        g: '4.10'
       int:
         b: 17
-        g: '1.60'
+        g: '2.20'
       agi:
         b: 0
         g: '0.00'
-      ms: 285
+      ms: 290
       dmg:
         min: 44
         max: 50
@@ -408,15 +408,15 @@ herodata:
         b: 19
         g: '2.90'
       int:
-        b: 13
+        b: 17
         g: '1.50'
       agi:
         b: 27
-        g: '3.30'
+        g: '3.80'
       ms: 290
       dmg:
-        min: 12
-        max: 20
+        min: 14
+        max: 22
       armor: 3.78
     dac: 远程
     droles: 辅助 - 先手 - 控制 - 爆发 - 逃生
@@ -426,15 +426,15 @@ herodata:
     pa: int
     attribs:
       str:
-        b: 17
+        b: 18
         g: '3.00'
       int:
         b: 18
-        g: '2.60'
+        g: '3.00'
       agi:
         b: 17
         g: '1.40'
-      ms: 295
+      ms: 290
       dmg:
         min: 24
         max: 36
@@ -450,16 +450,16 @@ herodata:
         b: 21
         g: '2.10'
       int:
-        b: 20
-        g: '2.70'
+        b: 22
+        g: '3.30'
       agi:
         b: 11
         g: '1.20'
-      ms: 300
+      ms: 295
       dmg:
         min: 33
         max: 41
-      armor: 1.54
+      armor: 2.54
     dac: 远程
     droles: 爆发
   kunkka:
@@ -469,14 +469,14 @@ herodata:
     attribs:
       str:
         b: 24
-        g: '3.30'
+        g: '3.80'
       int:
         b: 18
         g: '1.50'
       agi:
         b: 14
         g: '1.30'
-      ms: 295
+      ms: 300
       dmg:
         min: 26
         max: 36
@@ -490,18 +490,18 @@ herodata:
     attribs:
       str:
         b: 20
-        g: '2.00'
+        g: '2.20'
       int:
-        b: 28
-        g: '3.20'
+        b: 30
+        g: '3.70'
       agi:
-        b: 16
-        g: '1.50'
-      ms: 295
+        b: 23
+        g: '1.80'
+      ms: 290
       dmg:
-        min: 18
-        max: 30
-      armor: 1.24
+        min: 21
+        max: 33
+      armor: 4.22
     dac: 远程
     droles: 辅助 - 核心 - 爆发 - 控制
   lich:
@@ -513,12 +513,12 @@ herodata:
         b: 20
         g: '2.10'
       int:
-        b: 20
-        g: '3.60'
+        b: 24
+        g: '4.10'
       agi:
         b: 15
         g: '2.00'
-      ms: 315
+      ms: 295
       dmg:
         min: 26
         max: 35
@@ -535,7 +535,7 @@ herodata:
         g: '2.20'
       int:
         b: 18
-        g: '3.00'
+        g: '3.50'
       agi:
         b: 15
         g: '1.50'
@@ -555,8 +555,8 @@ herodata:
         b: 23
         g: '2.30'
       int:
-        b: 21
-        g: '3.00'
+        b: 19
+        g: '3.50'
       agi:
         b: 16
         g: '1.60'
@@ -574,18 +574,18 @@ herodata:
     attribs:
       str:
         b: 21
-        g: '3.10'
+        g: '3.60'
       int:
         b: 15
         g: '1.50'
       agi:
         b: 17
         g: '2.40'
-      ms: 285
+      ms: 290
       dmg:
         min: 30
         max: 38
-      armor: 4.38
+      armor: 5.38
     dac: 近战
     droles: 核心 - 耐久 - 先手 - 控制 - 逃生
   tidehunter:
@@ -595,7 +595,7 @@ herodata:
     attribs:
       str:
         b: 22
-        g: '3.30'
+        g: '3.50'
       int:
         b: 16
         g: '1.70'
@@ -619,11 +619,11 @@ herodata:
         g: '2.30'
       int:
         b: 22
-        g: '2.90'
+        g: '3.30'
       agi:
         b: 13
         g: '1.40'
-      ms: 305
+      ms: 300
       dmg:
         min: 29
         max: 39
@@ -643,11 +643,11 @@ herodata:
         g: '1.30'
       agi:
         b: 30
-        g: '2.20'
-      ms: 275
+        g: '2.50'
+      ms: 290
       dmg:
-        min: 11
-        max: 15
+        min: 21
+        max: 25
       armor: 5.2
     dac: 近战
     droles: 核心 - 逃生 - 控制
@@ -660,8 +660,8 @@ herodata:
         b: 21
         g: '2.50'
       int:
-        b: 18
-        g: '3.40'
+        b: 16
+        g: '3.60'
       agi:
         b: 14
         g: '1.00'
@@ -681,8 +681,8 @@ herodata:
         b: 17
         g: '2.50'
       int:
-        b: 28
-        g: '2.20'
+        b: 30
+        g: '3.30'
       agi:
         b: 13
         g: '1.20'
@@ -699,14 +699,14 @@ herodata:
     pa: agi
     attribs:
       str:
-        b: 17
+        b: 19
         g: '1.70'
       int:
         b: 15
         g: '2.60'
       agi:
         b: 21
-        g: '2.70'
+        g: '3.10'
       ms: 285
       dmg:
         min: 15
@@ -723,8 +723,8 @@ herodata:
         b: 18
         g: '2.80'
       int:
-        b: 20
-        g: '2.50'
+        b: 21
+        g: '2.90'
       agi:
         b: 12
         g: '1.30'
@@ -741,15 +741,15 @@ herodata:
     pa: int
     attribs:
       str:
-        b: 24
+        b: 26
         g: '3.00'
       int:
-        b: 22
-        g: '2.70'
+        b: 25
+        g: '3.10'
       agi:
         b: 10
         g: '1.00'
-      ms: "295\t"
+      ms: 290
       dmg:
         min: 24
         max: 34
@@ -763,7 +763,7 @@ herodata:
     attribs:
       str:
         b: 23
-        g: '2.50'
+        g: '2.90'
       int:
         b: 16
         g: '1.90'
@@ -786,16 +786,16 @@ herodata:
         b: 18
         g: '2.30'
       int:
-        b: 22
-        g: '2.50'
+        b: 25
+        g: '2.90'
       agi:
-        b: 18
-        g: '2.00'
-      ms: 295
+        b: 22
+        g: '2.20'
+      ms: 290
       dmg:
-        min: 23
-        max: 31
-      armor: 1.52
+        min: 20
+        max: 28
+      armor: 3.08
     dac: 远程
     droles: 核心 - 爆发 - 逃生
   venomancer:
@@ -805,18 +805,18 @@ herodata:
     attribs:
       str:
         b: 19
-        g: '1.90'
+        g: '2.10'
       int:
-        b: 17
+        b: 19
         g: '1.80'
       agi:
-        b: 22
-        g: '2.80'
+        b: 26
+        g: '3.20'
       ms: 275
       dmg:
         min: 16
         max: 18
-      armor: 3.08
+      armor: 3.64
     dac: 远程
     droles: 辅助 - 爆发 - 先手 - 推进 - 控制
   faceless_void:
@@ -826,14 +826,14 @@ herodata:
     attribs:
       str:
         b: 24
-        g: '2.10'
+        g: '2.40'
       int:
         b: 15
         g: '1.50'
       agi:
         b: 23
-        g: '2.80'
-      ms: 295
+        g: '3.20'
+      ms: 300
       dmg:
         min: 33
         max: 39
@@ -847,14 +847,14 @@ herodata:
     attribs:
       str:
         b: 22
-        g: '2.80'
+        g: '3.20'
       int:
         b: 18
         g: '1.60'
       agi:
         b: 18
         g: '1.70'
-      ms: 295
+      ms: 315
       dmg:
         min: 39
         max: 41
@@ -871,14 +871,14 @@ herodata:
         g: '3.10'
       int:
         b: 21
-        g: '3.00'
+        g: '3.50'
       agi:
         b: 14
         g: '1.40'
       ms: 310
       dmg:
-        min: 26
-        max: 38
+        min: 29
+        max: 41
       armor: 1.96
     dac: 远程
     droles: 核心 - 推进 - 爆发 - 控制
@@ -895,11 +895,11 @@ herodata:
         g: '1.40'
       agi:
         b: 23
-        g: '3.20'
+        g: '3.40'
       ms: 305
       dmg:
-        min: 23
-        max: 25
+        min: 24
+        max: 26
       armor: 4.22
     dac: 近战
     droles: 核心 - 逃生
@@ -913,11 +913,11 @@ herodata:
         g: '2.00'
       int:
         b: 24
-        g: '4.50'
+        g: '5.20'
       agi:
         b: 16
-        g: '1.00'
-      ms: 335
+        g: '1.30'
+      ms: 330
       dmg:
         min: 19
         max: 27
@@ -937,8 +937,8 @@ herodata:
         g: '2.00'
       agi:
         b: 23
-        g: '2.30'
-      ms: 310
+        g: '3.20'
+      ms: 305
       dmg:
         min: 30
         max: 36
@@ -958,11 +958,11 @@ herodata:
         g: '1.80'
       agi:
         b: 21
-        g: '2.90'
+        g: '2.50'
       ms: 275
       dmg:
-        min: 23
-        max: 25
+        min: 25
+        max: 27
       armor: 0.94
     dac: 远程
     droles: 核心 - 耐久 - 先手 - 控制
@@ -979,11 +979,11 @@ herodata:
         g: '1.90'
       agi:
         b: 18
-        g: '3.30'
-      ms: 330
+        g: '3.60'
+      ms: 325
       dmg:
-        min: 20
-        max: 26
+        min: 26
+        max: 32
       armor: 2.52
     dac: 远程
     droles: 核心 - 爆发 - 推进
@@ -994,14 +994,14 @@ herodata:
     attribs:
       str:
         b: 19
-        g: '3.10'
+        g: '3.60'
       int:
-        b: 15
+        b: 18
         g: '1.70'
       agi:
         b: 19
         g: '2.00'
-      ms: 280
+      ms: 295
       dmg:
         min: 31
         max: 37
@@ -1018,11 +1018,11 @@ herodata:
         g: '2.50'
       int:
         b: 25
-        g: '3.40'
+        g: '3.70'
       agi:
         b: 21
         g: '1.70'
-      ms: 310
+      ms: 305
       dmg:
         min: 22
         max: 28
@@ -1036,7 +1036,7 @@ herodata:
     attribs:
       str:
         b: 26
-        g: '3.20'
+        g: '3.70'
       int:
         b: 17
         g: '1.30'
@@ -1047,7 +1047,7 @@ herodata:
       dmg:
         min: 24
         max: 26
-      armor: 0.82
+      armor: 1.82
     dac: 近战
     droles: 先手 - 控制 - 耐久 - 爆发
   leshrac:
@@ -1060,11 +1060,11 @@ herodata:
         g: '2.30'
       int:
         b: 22
-        g: '3.00'
+        g: '3.50'
       agi:
         b: 23
-        g: '1.70'
-      ms: 330
+        g: '2.30'
+      ms: 325
       dmg:
         min: 19
         max: 23
@@ -1081,15 +1081,15 @@ herodata:
         g: '2.60'
       int:
         b: 23
-        g: '2.90'
+        g: '3.50'
       agi:
         b: 18
-        g: '2.40'
+        g: '3.30'
       ms: 290
       dmg:
-        min: 29
-        max: 43
-      armor: 3.52
+        min: 27
+        max: 41
+      armor: 4.52
     dac: 远程
     droles: 核心 - 打野 - 推进 - 逃生 - 爆发
   life_stealer:
@@ -1099,18 +1099,18 @@ herodata:
     attribs:
       str:
         b: 25
-        g: '3.10'
+        g: '2.90'
       int:
         b: 15
         g: '1.80'
       agi:
         b: 18
-        g: '1.90'
-      ms: 310
+        g: '2.40'
+      ms: 325
       dmg:
         min: 27
         max: 37
-      armor: 0.52
+      armor: 2.52
     dac: 近战
     droles: 核心 - 耐久 - 打野 - 逃生 - 控制
   dark_seer:
@@ -1119,19 +1119,19 @@ herodata:
     pa: int
     attribs:
       str:
-        b: 24
+        b: 20
         g: '3.10'
       int:
         b: 21
-        g: '2.70'
+        g: '3.10'
       agi:
         b: 12
-        g: '1.20'
+        g: '1.80'
       ms: 295
       dmg:
         min: 33
         max: 39
-      armor: 6.68
+      armor: 4.68
     dac: 近战
     droles: 先手 - 打野 - 逃生 - 控制
   clinkz:
@@ -1140,15 +1140,15 @@ herodata:
     pa: agi
     attribs:
       str:
-        b: 12
-        g: '1.90'
+        b: 14
+        g: '2.20'
       int:
         b: 18
         g: '1.70'
       agi:
         b: 22
-        g: '2.60'
-      ms: 295
+        g: '2.70'
+      ms: 290
       dmg:
         min: 15
         max: 21
@@ -1162,7 +1162,7 @@ herodata:
     attribs:
       str:
         b: 22
-        g: '3.10'
+        g: '3.60'
       int:
         b: 15
         g: '1.80'
@@ -1173,7 +1173,7 @@ herodata:
       dmg:
         min: 31
         max: 41
-      armor: 3.1
+      armor: 4.1
     dac: 近战
     droles: 辅助 - 耐久 - 爆发
   enchantress:
@@ -1182,19 +1182,19 @@ herodata:
     pa: int
     attribs:
       str:
-        b: 16
+        b: 17
         g: '1.70'
       int:
-        b: 17
-        g: '3.10'
+        b: 19
+        g: '3.60'
       agi:
         b: 19
         g: '1.80'
-      ms: 320
+      ms: 315
       dmg:
         min: 30
         max: 40
-      armor: 0.66
+      armor: 3.66
     dac: 远程
     droles: 辅助 - 打野 - 推进 - 耐久 - 控制
   huskar:
@@ -1204,7 +1204,7 @@ herodata:
     attribs:
       str:
         b: 21
-        g: '2.70'
+        g: '3.10'
       int:
         b: 18
         g: '1.50'
@@ -1215,7 +1215,7 @@ herodata:
       dmg:
         min: 19
         max: 24
-      armor: 0.1
+      armor: 1.1
     dac: 远程
     droles: 核心 - 耐久 - 先手
   night_stalker:
@@ -1225,14 +1225,14 @@ herodata:
     attribs:
       str:
         b: 23
-        g: '3.10'
+        g: '3.20'
       int:
         b: 13
         g: '1.60'
       agi:
         b: 18
         g: '2.30'
-      ms: 285
+      ms: 295
       dmg:
         min: 38
         max: 42
@@ -1252,11 +1252,11 @@ herodata:
         g: '2.00'
       agi:
         b: 15
-        g: '2.20'
-      ms: 270
+        g: '2.80'
+      ms: 275
       dmg:
-        min: 26
-        max: 32
+        min: 29
+        max: 35
       armor: 2.1
     dac: 近战
     droles: 核心 - 推进 - 逃生 - 爆发
@@ -1273,11 +1273,11 @@ herodata:
         g: '2.00'
       agi:
         b: 21
-        g: '3.00'
+        g: '2.60'
       ms: 315
       dmg:
-        min: 24
-        max: 38
+        min: 27
+        max: 41
       armor: 5.94
     dac: 近战
     droles: 逃生 - 爆发
@@ -1288,18 +1288,18 @@ herodata:
     attribs:
       str:
         b: 16
-        g: '1.80'
+        g: '2.00'
       int:
         b: 13
         g: '1.80'
       agi:
         b: 14
-        g: '3.10'
+        g: '3.60'
       ms: 275
       dmg:
         min: 36
         max: 46
-      armor: 0.96
+      armor: 1.96
     dac: 远程
     droles: 核心 - 逃生
   jakiro:
@@ -1312,7 +1312,7 @@ herodata:
         g: '2.80'
       int:
         b: 26
-        g: '2.80'
+        g: '3.20'
       agi:
         b: 10
         g: '1.20'
@@ -1333,7 +1333,7 @@ herodata:
         g: '2.90'
       int:
         b: 22
-        g: '2.50'
+        g: '2.90'
       agi:
         b: 15
         g: '1.50'
@@ -1354,14 +1354,14 @@ herodata:
         g: '2.00'
       int:
         b: 19
-        g: '2.80'
+        g: '3.20'
       agi:
         b: 15
         g: '2.10'
-      ms: 310
+      ms: 300
       dmg:
-        min: 29
-        max: 39
+        min: 25
+        max: 35
       armor: 1.1
     dac: 远程
     droles: 辅助 - 打野 - 推进
@@ -1371,15 +1371,15 @@ herodata:
     pa: agi
     attribs:
       str:
-        b: 21
-        g: '2.30'
+        b: 23
+        g: '2.50'
       int:
         b: 16
         g: '1.90'
       agi:
         b: 23
-        g: '1.80'
-      ms: 285
+        g: '2.10'
+      ms: 290
       dmg:
         min: 23
         max: 27
@@ -1393,14 +1393,14 @@ herodata:
     attribs:
       str:
         b: 26
-        g: '3.50'
+        g: '4.00'
       int:
         b: 15
         g: '2.10'
       agi:
         b: 11
         g: '0.90'
-      ms: 280
+      ms: 285
       dmg:
         min: 27
         max: 43
@@ -1417,11 +1417,11 @@ herodata:
         g: '1.90'
       int:
         b: 23
-        g: '2.60'
+        g: '3.40'
       agi:
         b: 20
         g: '2.20'
-      ms: 295
+      ms: 285
       dmg:
         min: 21
         max: 31
@@ -1441,12 +1441,12 @@ herodata:
         g: '1.50'
       agi:
         b: 18
-        g: '2.10'
-      ms: 305
+        g: '2.40'
+      ms: 325
       dmg:
         min: 24
         max: 28
-      armor: 7.52
+      armor: 4.52
     dac: 近战
     droles: 核心 - 打野 - 耐久 - 控制
   spirit_breaker:
@@ -1456,14 +1456,14 @@ herodata:
     attribs:
       str:
         b: 29
-        g: '2.70'
+        g: '3.10'
       int:
         b: 14
         g: '1.80'
       agi:
         b: 17
         g: '1.70'
-      ms: 280
+      ms: 285
       dmg:
         min: 31
         max: 41
@@ -1476,18 +1476,18 @@ herodata:
     pa: agi
     attribs:
       str:
-        b: 19
-        g: '2.10'
+        b: 22
+        g: '2.30'
       int:
         b: 19
         g: '2.10'
       agi:
         b: 19
-        g: '2.80'
-      ms: 320
+        g: '3.60'
+      ms: 315
       dmg:
-        min: 18
-        max: 28
+        min: 21
+        max: 31
       armor: 4.66
     dac: 远程
     droles: 核心 - 爆发 - 控制
@@ -1498,18 +1498,18 @@ herodata:
     attribs:
       str:
         b: 25
-        g: '2.10'
+        g: '2.40'
       int:
         b: 25
         g: '1.80'
       agi:
-        b: 16
+        b: 22
         g: '1.20'
-      ms: 290
+      ms: 305
       dmg:
         min: 24
         max: 33
-      armor: 1.24
+      armor: 2.08
     dac: 近战
     droles: 核心 - 辅助 - 耐久 - 控制 - 先手 - 爆发
   invoker:
@@ -1521,16 +1521,16 @@ herodata:
         b: 18
         g: '2.40'
       int:
-        b: 14
-        g: '4.00'
+        b: 15
+        g: '4.60'
       agi:
         b: 14
         g: '1.90'
       ms: 280
       dmg:
-        min: 21
-        max: 27
-      armor: 0.96
+        min: 27
+        max: 33
+      armor: 1.96
     dac: 远程
     droles: 核心 - 爆发 - 控制 - 逃生 - 推进
   silencer:
@@ -1543,11 +1543,11 @@ herodata:
         g: '2.70'
       int:
         b: 25
-        g: '2.50'
+        g: '2.90'
       agi:
         b: 22
         g: '3.00'
-      ms: 295
+      ms: 290
       dmg:
         min: 18
         max: 32
@@ -1564,15 +1564,15 @@ herodata:
         g: '2.60'
       int:
         b: 28
-        g: '2.70'
+        g: '3.50'
       agi:
         b: 24
         g: '2.00'
-      ms: 315
+      ms: 310
       dmg:
         min: 16
         max: 31
-      armor: 3.86
+      armor: 4.86
     dac: 远程
     droles: 核心 - 爆发 - 控制
   lycan:
@@ -1581,19 +1581,19 @@ herodata:
     pa: str
     attribs:
       str:
-        b: 25
-        g: '3.30'
+        b: 26
+        g: '3.40'
       int:
-        b: 17
+        b: 19
         g: '1.40'
       agi:
         b: 16
         g: '1.00'
-      ms: 300
+      ms: 315
       dmg:
         min: 30
         max: 35
-      armor: 0.24
+      armor: 1.24
     dac: 近战
     droles: 核心 - 推进 - 打野 - 耐久 - 逃生
   brewmaster:
@@ -1603,9 +1603,9 @@ herodata:
     attribs:
       str:
         b: 23
-        g: '3.20'
+        g: '3.70'
       int:
-        b: 14
+        b: 15
         g: '1.60'
       agi:
         b: 22
@@ -1627,11 +1627,11 @@ herodata:
         g: '2.60'
       int:
         b: 21
-        g: '2.70'
+        g: '3.30'
       agi:
         b: 18
         g: '2.20'
-      ms: 295
+      ms: 290
       dmg:
         min: 29
         max: 33
@@ -1645,18 +1645,18 @@ herodata:
     attribs:
       str:
         b: 18
-        g: '2.40'
+        g: '2.70'
       int:
         b: 13
         g: '1.40'
       agi:
-        b: 24
-        g: '2.70'
-      ms: 340
+        b: 20
+        g: '2.80'
+      ms: 325
       dmg:
         min: 18
         max: 22
-      armor: 3.36
+      armor: 0.8
     dac: 远程
     droles: 核心 - 推进 - 打野 - 耐久
   chaos_knight:
@@ -1666,7 +1666,7 @@ herodata:
     attribs:
       str:
         b: 22
-        g: '3.20'
+        g: '3.40'
       int:
         b: 18
         g: '1.20'
@@ -1687,18 +1687,18 @@ herodata:
     attribs:
       str:
         b: 24
-        g: '1.60'
+        g: '1.80'
       int:
         b: 20
         g: '1.60'
       agi:
-        b: 23
-        g: '1.40'
-      ms: 320
+        b: 24
+        g: '1.80'
+      ms: 330
       dmg:
-        min: 20
-        max: 26
-      armor: 6.22
+        min: 22
+        max: 28
+      armor: 6.36
     dac: 近战
     droles: 核心 - 逃生 - 爆发 - 控制 - 先手 - 推进
   treant:
@@ -1708,18 +1708,18 @@ herodata:
     attribs:
       str:
         b: 25
-        g: '3.60'
+        g: '4.10'
       int:
         b: 20
         g: '1.80'
       agi:
         b: 15
         g: '2.00'
-      ms: 265
+      ms: 270
       dmg:
         min: 62
         max: 70
-      armor: 0.1
+      armor: 1.1
     dac: 近战
     droles: 辅助 - 先手 - 耐久 - 控制 - 逃生
   ogre_magi:
@@ -1732,11 +1732,11 @@ herodata:
         g: '3.50'
       int:
         b: 15
-        g: '2.00'
+        g: '2.50'
       agi:
         b: 14
-        g: '1.60'
-      ms: 285
+        g: '1.90'
+      ms: 290
       dmg:
         min: 43
         max: 49
@@ -1750,14 +1750,14 @@ herodata:
     attribs:
       str:
         b: 22
-        g: '2.40'
+        g: '2.80'
       int:
         b: 27
         g: '2.80'
       agi:
         b: 10
         g: '0.80'
-      ms: 295
+      ms: 300
       dmg:
         min: 35
         max: 43
@@ -1774,15 +1774,15 @@ herodata:
         g: '2.00'
       int:
         b: 25
-        g: '2.70'
+        g: '3.10'
       agi:
-        b: 19
-        g: '2.10'
+        b: 23
+        g: '2.50'
       ms: 290
       dmg:
         min: 22
         max: 32
-      armor: 1.66
+      armor: 2.22
     dac: 远程
     droles: 辅助 - 控制 - 爆发
   disruptor:
@@ -1795,15 +1795,15 @@ herodata:
         g: '2.40'
       int:
         b: 20
-        g: '2.50'
+        g: '2.90'
       agi:
         b: 15
         g: '1.40'
-      ms: 300
+      ms: 295
       dmg:
         min: 29
         max: 33
-      armor: 1.1
+      armor: 2.1
     dac: 远程
     droles: 辅助 - 控制 - 爆发 - 先手
   nyx_assassin:
@@ -1812,15 +1812,15 @@ herodata:
     pa: agi
     attribs:
       str:
-        b: 19
-        g: '2.30'
+        b: 18
+        g: '2.50'
       int:
         b: 18
         g: '2.10'
       agi:
         b: 19
-        g: '2.20'
-      ms: 295
+        g: '2.50'
+      ms: 305
       dmg:
         min: 27
         max: 31
@@ -1840,8 +1840,8 @@ herodata:
         g: '2.00'
       agi:
         b: 21
-        g: '3.20'
-      ms: 315
+        g: '3.70'
+      ms: 320
       dmg:
         min: 23
         max: 25
@@ -1858,11 +1858,11 @@ herodata:
         g: '2.30'
       int:
         b: 23
-        g: '2.80'
+        g: '3.20'
       agi:
         b: 15
         g: '1.60'
-      ms: 335
+      ms: 330
       dmg:
         min: 20
         max: 27
@@ -1876,7 +1876,7 @@ herodata:
     attribs:
       str:
         b: 17
-        g: '2.20'
+        g: '3.00'
       int:
         b: 23
         g: '1.70'
@@ -1887,7 +1887,7 @@ herodata:
       dmg:
         min: 22
         max: 31
-      armor: -0.04
+      armor: 0.96
     dac: 远程
     droles: 辅助 - 逃生 - 爆发
   visage:
@@ -1896,11 +1896,11 @@ herodata:
     pa: int
     attribs:
       str:
-        b: 24
-        g: '3.20'
+        b: 22
+        g: '2.80'
       int:
         b: 22
-        g: '2.50'
+        g: '2.90'
       agi:
         b: 11
         g: '1.30'
@@ -1924,12 +1924,12 @@ herodata:
         g: '1.70'
       agi:
         b: 21
-        g: '1.50'
-      ms: 295
+        g: '1.70'
+      ms: 300
       dmg:
-        min: 33
-        max: 41
-      armor: 1.94
+        min: 32
+        max: 40
+      armor: 2.94
     dac: 近战
     droles: 核心 - 逃生 - 控制 - 爆发
   medusa:
@@ -1939,13 +1939,13 @@ herodata:
     attribs:
       str:
         b: 15
-        g: '1.30'
+        g: '1.50'
       int:
         b: 19
-        g: '2.10'
+        g: '2.60'
       agi:
         b: 22
-        g: '3.40'
+        g: '3.60'
       ms: 275
       dmg:
         min: 24
@@ -1966,8 +1966,8 @@ herodata:
         g: '1.00'
       agi:
         b: 21
-        g: '2.50'
-      ms: 295
+        g: '2.90'
+      ms: 290
       dmg:
         min: 23
         max: 35
@@ -1981,18 +1981,18 @@ herodata:
     attribs:
       str:
         b: 27
-        g: '4.00'
+        g: '4.60'
       int:
         b: 15
         g: '1.60'
       agi:
         b: 15
         g: '1.00'
-      ms: 295
+      ms: 300
       dmg:
         min: 36
         max: 38
-      armor: 1.1
+      armor: 2.1
     dac: 近战
     droles: 耐久 - 先手 - 控制 - 爆发 - 逃生
   magnataur:
@@ -2001,8 +2001,8 @@ herodata:
     pa: str
     attribs:
       str:
-        b: 23
-        g: '3.20'
+        b: 25
+        g: '3.50'
       int:
         b: 19
         g: '1.70'
@@ -2022,19 +2022,19 @@ herodata:
     pa: str
     attribs:
       str:
-        b: 21
-        g: '2.10'
+        b: 23
+        g: '3.20'
       int:
-        b: 21
-        g: '2.40'
+        b: 23
+        g: '2.70'
       agi:
         b: 16
         g: '1.30'
-      ms: 285
+      ms: 290
       dmg:
         min: 26
         max: 30
-      armor: 0.24
+      armor: 1.24
     dac: 近战
     droles: 爆发 - 耐久 - 逃生
   bristleback:
@@ -2044,18 +2044,18 @@ herodata:
     attribs:
       str:
         b: 22
-        g: '2.20'
+        g: '2.90'
       int:
         b: 14
         g: '2.80'
       agi:
         b: 17
         g: '1.80'
-      ms: 285
+      ms: 290
       dmg:
-        min: 22
-        max: 32
-      armor: 2.38
+        min: 25
+        max: 35
+      armor: 3.38
     dac: 近战
     droles: 核心 - 耐久 - 先手 - 爆发
   tusk:
@@ -2065,18 +2065,18 @@ herodata:
     attribs:
       str:
         b: 23
-        g: '3.00'
+        g: '3.90'
       int:
         b: 18
         g: '1.70'
       agi:
         b: 23
         g: '2.10'
-      ms: 295
+      ms: 305
       dmg:
         min: 27
         max: 31
-      armor: 2.22
+      armor: 3.22
     dac: 近战
     droles: 先手 - 控制 - 爆发
   skywrath_mage:
@@ -2089,11 +2089,11 @@ herodata:
         g: '2.00'
       int:
         b: 25
-        g: '3.60'
+        g: '4.10'
       agi:
         b: 13
         g: '0.80'
-      ms: 330
+      ms: 325
       dmg:
         min: 14
         max: 24
@@ -2107,7 +2107,7 @@ herodata:
     attribs:
       str:
         b: 23
-        g: '2.60'
+        g: '3.00'
       int:
         b: 21
         g: '2.00'
@@ -2118,7 +2118,7 @@ herodata:
       dmg:
         min: 32
         max: 42
-      armor: 1.22
+      armor: 2.22
     dac: 近战
     droles: 辅助 - 核心 - 耐久
   elder_titan:
@@ -2128,7 +2128,7 @@ herodata:
     attribs:
       str:
         b: 24
-        g: '2.60'
+        g: '3.00'
       int:
         b: 23
         g: '1.60'
@@ -2149,18 +2149,18 @@ herodata:
     attribs:
       str:
         b: 26
-        g: '2.90'
+        g: '3.30'
       int:
         b: 20
         g: '2.20'
       agi:
         b: 18
         g: '1.70'
-      ms: 315
+      ms: 330
       dmg:
         min: 35
         max: 39
-      armor: 1.52
+      armor: 2.52
     dac: 近战
     droles: 核心 - 控制 - 先手 - 耐久 - 爆发
   ember_spirit:
@@ -2169,18 +2169,18 @@ herodata:
     pa: agi
     attribs:
       str:
-        b: 20
-        g: '2.40'
+        b: 21
+        g: '2.60'
       int:
         b: 20
         g: '1.80'
       agi:
         b: 22
-        g: '1.80'
+        g: '2.10'
       ms: 305
       dmg:
-        min: 30
-        max: 34
+        min: 33
+        max: 37
       armor: 2.08
     dac: 近战
     droles: 核心 - 逃生 - 爆发 - 控制 - 先手
@@ -2191,14 +2191,14 @@ herodata:
     attribs:
       str:
         b: 21
-        g: '3.80'
+        g: '4.40'
       int:
         b: 18
         g: '2.10'
       agi:
         b: 17
         g: '1.50'
-      ms: 285
+      ms: 290
       dmg:
         min: 25
         max: 35
@@ -2211,14 +2211,14 @@ herodata:
     pa: agi
     attribs:
       str:
-        b: 16
+        b: 15
         g: '1.70'
       int:
         b: 19
         g: '1.60'
       agi:
         b: 22
-        g: '4.20'
+        g: '4.80'
       ms: 310
       dmg:
         min: 26
@@ -2232,8 +2232,8 @@ herodata:
     pa: str
     attribs:
       str:
-        b: 19
-        g: '3.20'
+        b: 21
+        g: '3.70'
       int:
         b: 18
         g: '1.80'
@@ -2257,11 +2257,11 @@ herodata:
         g: '2.40'
       int:
         b: 21
-        g: '3.50'
+        g: '4.00'
       agi:
         b: 15
         g: '1.70'
-      ms: 305
+      ms: 295
       dmg:
         min: 18
         max: 24
@@ -2277,12 +2277,12 @@ herodata:
         b: 19
         g: '2.50'
       int:
-        b: 22
-        g: '2.90'
+        b: 25
+        g: '3.30'
       agi:
         b: 14
         g: '1.30'
-      ms: 315
+      ms: 310
       dmg:
         min: 9
         max: 11
@@ -2299,7 +2299,7 @@ herodata:
         g: '2.60'
       int:
         b: 26
-        g: '3.10'
+        g: '3.60'
       agi:
         b: 16
         g: '1.90'
@@ -2323,7 +2323,7 @@ herodata:
         g: '2.60'
       agi:
         b: 15
-        g: '1.80'
+        g: '2.40'
       ms: 280
       dmg:
         min: 31
@@ -2338,18 +2338,18 @@ herodata:
     attribs:
       str:
         b: 25
-        g: '2.90'
+        g: '3.30'
       int:
         b: 17
         g: '2.30'
       agi:
         b: 12
         g: '1.30'
-      ms: 285
+      ms: 295
       dmg:
         min: 37
         max: 43
-      armor: 2.68
+      armor: 3.68
     dac: 近战
     droles: 辅助 - 爆发 - 控制 - 耐久 - 逃生
   monkey_king:
@@ -2365,8 +2365,8 @@ herodata:
         g: '1.80'
       agi:
         b: 22
-        g: '3.20'
-      ms: 300
+        g: '3.70'
+      ms: 305
       dmg:
         min: 29
         max: 35
@@ -2386,11 +2386,11 @@ herodata:
         g: '1.90'
       agi:
         b: 18
-        g: '2.80'
+        g: '3.20'
       ms: 305
       dmg:
-        min: 29
-        max: 35
+        min: 33
+        max: 39
       armor: 3.52
     dac: 近战
     droles: 核心 - 爆发 - 控制 - 耐久 - 逃生 - 先手
@@ -2404,11 +2404,11 @@ herodata:
         g: '2.00'
       int:
         b: 18
-        g: '3.00'
+        g: '3.50'
       agi:
         b: 18
         g: '1.60'
-      ms: 295
+      ms: 290
       dmg:
         min: 27
         max: 35
@@ -2425,14 +2425,35 @@ herodata:
         g: '2.40'
       int:
         b: 23
-        g: '3.30'
+        g: '3.80'
       agi:
         b: 18
         g: '1.90'
-      ms: 295
+      ms: 290
       dmg:
-        min: 27
-        max: 31
+        min: 21
+        max: 25
       armor: 2.52
     dac: 远程
     droles: 辅助 - 爆发 - 控制 - 逃生
+  mars:
+    dname: 玛尔斯
+    u: mars
+    pa: str
+    attribs:
+      str:
+        b: 23
+        g: '3.20'
+      int:
+        b: 17
+        g: '1.40'
+      agi:
+        b: 20
+        g: '1.90'
+      ms: 310
+      dmg:
+        min: 29
+        max: 37
+      armor: 1.8
+    dac: 近战
+    droles: 核心 - 先手 - 控制 - 耐久
