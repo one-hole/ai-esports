@@ -32,7 +32,7 @@ module Fetch
         )
       end
 
-      @redis.srem("new-player-ids", account_ids)
+      @redis.srem("new-player-ids", account_ids) if (account_ids.size > 0)
 
     end
   end
