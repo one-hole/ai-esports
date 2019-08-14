@@ -6,6 +6,6 @@ class CreateServers < ActiveRecord::Migration[5.2]
       t.string     :tag
     end
 
-    add_index(:servers, [:host, :tenant_id], name: "idx_host_server")
+    # add_index(:servers, [:host, :tenant_id], name: "idx_host_server")
   end
 end
