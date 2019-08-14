@@ -8,6 +8,7 @@ namespace :api do
   resources :teamvs,     only: [:show]
   resources :leagues,    only: [:show, :index]
   resources :csgo_bp,    only: [:show]
+  resources :players,    only: [:index]
 
   resources :topics,     only: [:index]
 
