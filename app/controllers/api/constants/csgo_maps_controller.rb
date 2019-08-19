@@ -9,7 +9,8 @@ module Api
         'Train': 'http://risewinter-assets.oss-ap-southeast-1.aliyuncs.com/map/web/web_train.jpg',
         'Cobblestone': 'http://risewinter-assets.oss-ap-southeast-1.aliyuncs.com/map/web/web_cobblestone.jpg',
         'Nuke': 'http://risewinter-assets.oss-ap-southeast-1.aliyuncs.com/map/web/web_nuke.jpg',
-        'Dust2': 'http://risewinter-assets.oss-ap-southeast-1.aliyuncs.com/map/web/web_dust2.jpg'
+        'Dust2': 'http://risewinter-assets.oss-ap-southeast-1.aliyuncs.com/map/web/web_dust2.jpg',
+        'Vertigo': 'https://onehole-assets.oss-cn-hangzhou.aliyuncs.com/csgo/vertigo.jpg'
       }
 
       WEB_BG_MAP_IMAGE = {
@@ -20,9 +21,10 @@ module Api
         'Train': 'http://risewinter-assets.oss-ap-southeast-1.aliyuncs.com/map/web/bg_train.jpg',
         'Cobblestone': 'http://risewinter-assets.oss-ap-southeast-1.aliyuncs.com/map/web/bg_cobblestone.jpg',
         'Nuke': 'http://risewinter-assets.oss-ap-southeast-1.aliyuncs.com/map/web/bg_nuke.jpg',
-        'Dust2': 'http://risewinter-assets.oss-ap-southeast-1.aliyuncs.com/map/web/bg_dust2.jpg'
+        'Dust2': 'http://risewinter-assets.oss-ap-southeast-1.aliyuncs.com/map/web/bg_dust2.jpg',
+        'Vertigo': 'https://onehole-assets.oss-cn-hangzhou.aliyuncs.com/csgo/de_vertigo.jpg'
       }
-      
+
       def index
           render json: {
             data: {
