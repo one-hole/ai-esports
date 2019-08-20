@@ -14,7 +14,7 @@ module Api
 
     private
       def load_leagues
-        @leagues ||= League.significant.no_hidden.with_game(game_id).order(start_time: :desc).page(current_page).per(30)
+        @leagues ||= League.no_hidden.with_game(game_id).order(start_time: :desc).page(current_page).per(30)
       end
 
       def load_league
