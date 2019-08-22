@@ -57,7 +57,7 @@ module Api
 
       def load_match
         @match ||= @single_series.matches.find_by(game_no: game_no)
-        raise CurrentMatchNotFinishedError if (@match.status != 2)
+        # raise CurrentMatchNotFinishedError if (@match.status != 2)
       end
 
       def game_no
