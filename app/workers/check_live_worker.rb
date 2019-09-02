@@ -8,7 +8,7 @@ class CheckLiveWorker
     load_ids.each do |pair|
       resp = ::DotaLiveService.new(pair[0], pair[1], pair[2], pair[3]).run
       @redis.publish("aiesports-dota2-websocket", resp)
-      @redis.sadd("new-player-ids", load_players(resp))
+      # @redis.sadd("new-player-ids", load_players(resp))
     end
 
     CheckLiveWorker.perform_in(3.seconds)
