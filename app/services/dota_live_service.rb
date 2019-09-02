@@ -6,9 +6,9 @@ class DotaLiveService
 
   def run
     resp = build_lives(@series_id, @round)
-    (0..(@left_score + @right_score - 1)).each do |i|
-      resp[:matches][i][:data]["status"] = "finished"
-    end
+    # (0..(@left_score + @right_score - 1)).each do |i|
+    #   resp[:matches][i][:data]["status"] = "finished"
+    # end
     resp.to_json
   end
 
