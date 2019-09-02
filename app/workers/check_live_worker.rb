@@ -18,17 +18,17 @@ class CheckLiveWorker
     MatchSeries.select([:id, :round]).for_live_index(1).pluck(:id, :round, :left_score, :right_score)
   end
 
-  def load_players(resp)
-    player_ids = []
-    new_data = JSON.parse(resp)["matches"][0]["data"]
-    new_data["left_players"].each do |player|
-      player_ids << player["account_id"]
-    end
-    new_data["right_players"].each do |player|
-      player_ids << player["account_id"]
-    end
-    return player_ids
-  end
+  # def load_players(resp)
+  #   player_ids = []
+  #   new_data = JSON.parse(resp)["matches"][0]["data"]
+  #   new_data["left_players"].each do |player|
+  #     player_ids << player["account_id"]
+  #   end
+  #   new_data["right_players"].each do |player|
+  #     player_ids << player["account_id"]
+  #   end
+  #   return player_ids
+  # end
 
 
 end
