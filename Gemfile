@@ -20,7 +20,7 @@ gem 'active_type'
 
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'active_model_serializers', '~> 0.10.7'
-gem 'ohm',     github: 'w-zengtao/ohm-connection-pool-edition', branch: :master
+gem 'ohm'
 gem 'sidekiq'
 
 gem 'rack-cors', require: 'rack/cors'
