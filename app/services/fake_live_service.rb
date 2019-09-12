@@ -6,7 +6,6 @@ class FakeLiveService
   def run
     resp = build_lives(@series_id, @round)
     resp[:matches][1][:data]["status"] = "ongoing"
-    resp[:matches][2][:data]["status"] = "ongoing"
     resp.to_json
   end
 

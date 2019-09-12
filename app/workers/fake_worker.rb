@@ -3,7 +3,7 @@ class FakeWorker
 
   def perform
     @redis = Redis.new(db: 12)
-    resp = ::FakeLiveService.new(259189, 3).run
+    resp = ::FakeLiveService.new(259189, 2).run
     @redis.publish("aiesports-dota2-websocket", resp)
 
     FakeWorker.perform_in(10.seconds)
