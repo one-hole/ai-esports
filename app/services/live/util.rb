@@ -1,6 +1,6 @@
 module Live
   module Util 
-    def valid_game?(game)
+    def valid_battle?(game)
       return false if (game['radiant_team'].nil? || game['dire_team'].nil?) # => 天辉夜魇队伍名称及ID
       return false if game['scoreboard'].nil?                               # => 计分板信息
       return false if game['scoreboard']['radiant'].nil?                    # => 天辉数据
