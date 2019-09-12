@@ -1,10 +1,12 @@
 module Live
   class Match < Ohm::Model
+
     attribute :game_no
     attribute :status
     attribute :battle_id
 
     index :battle_id
+    index :game_no
 
     reference(:battle, 'Live::Battle')
     # 这里持久化到数据库里面
