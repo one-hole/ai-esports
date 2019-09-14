@@ -3,14 +3,20 @@ module Live
 
     attribute :stream_delay_s
     attribute :steam_id
-    attribute :left_score
-    attribute :right_score
+    attribute :radiant_score
+    attribute :dire_score
     attribute :lobby_id
-    attribute :left_team_id
-    attribute :right_team_id
+    attribute :radiant_team_id
+    attribute :dire_team_id
+
+    unique :steam_id #唯一性索引、可以使用 with 方法查询
 
     collection(:matches, 'Live::Match')
-    reference(:left_team, 'Live::Team')
-    reference(:right_taem, 'Live::Team')
+    collection(:players, 'Live::Player')
+
+    reference(:radiant_team, 'Live::Team')
+    reference(:dire_taem, 'Live::Team')
   end
 end
+
+# Slot 0 是 radiant

@@ -5,6 +5,7 @@ module Live
     attribute :steam_id
     attribute :battle_id
 
+    unique :steam_id #唯一性索引、可以使用 with 方法查询
     index :name
 
     collection(:players, 'Live::Player')

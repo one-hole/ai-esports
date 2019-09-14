@@ -1,6 +1,8 @@
 module Live
   class Dota
-    extend Util
+
+    extend Util::Validator
+    extend Util::Process
 
     def self.start
       resp = Request.run
@@ -9,7 +11,12 @@ module Live
     end
 
     def self.process(battles)
-      binding.pry
+      
+      puts "@----------------------------------------"
+      puts "Current ids is #{battles.map { |battle| battle["match_id"] }}"
+      puts "@----------------------------------------"
+
+      battles.each { |battle| process_currents(battle) }
     end
   end
 end

@@ -1,6 +1,7 @@
 module Live
   class Player < Ohm::Model
 
+    attribute :name
     attribute :account_id
     attribute :hero_id
     attribute :player_slot
@@ -26,9 +27,13 @@ module Live
     attribute :position_y
     attribute :net_worth
     attribute :team_id
+    attribute :battle_id
 
     index :team_id
+    index :battle_id
+    unique :account_id
 
     reference(:team, 'Live::Team')
+    reference(:battle, 'Live::Battle')
   end
 end
