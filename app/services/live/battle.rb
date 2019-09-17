@@ -15,7 +15,7 @@ module Live
     collection(:players, 'Live::Player')
 
     reference(:radiant_team, 'Live::Team')
-    reference(:dire_taem, 'Live::Team')
+    reference(:dire_team, 'Live::Team')
   end
 end
 

@@ -11,6 +11,17 @@ module Live
     attribute :reverse
     attribute :duration
     attribute :roshan_respawn_timer
+    attribute :radiant_score
+    attribute :radiant_tower_state
+    attribute :radiant_barracks_state
+    attribute :radiant_picks
+    attribute :radiant_bans
+
+    attribute :dire_score
+    attribute :dire_tower_state
+    attribute :dire_barracks_state
+    attribute :dire_picks
+    attribute :dire_bans
 
     index :battle_id
     index :game_no
