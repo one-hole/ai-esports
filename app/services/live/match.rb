@@ -27,10 +27,84 @@ module Live
     index :game_no
 
     reference(:battle, 'Live::Battle')
-    collection(:players, 'Live::Player')
+    # collection(:players, 'Live::Player')
+
+    # 因为队伍会交换
+    def radiant_team
+      if game_no.to_i.even?
+        @radiant_team ||= battle.dire_team
+      else
+        @radiant_team ||= battle.radiant_team
+      end
+    end
+
+    def dire_team
+      if game_no.to_i.even?
+        @dire_team ||= battle.radiant_team
+      else
+        @dire_team ||= battle.dire_team
+      end
+    end
+
+    def radiant_players
+      @radiant_players = radiant_team.players
+    end
+
+    def radiant_player_infos
+      infos = []
+      radiant_players.each { |p| infos << p.info }
+      return infos
+    end
+
+    def dire_player_infos
+      infos = []
+      dire_players.each { |p| infos << p.info }
+      return infos
+    end
+
+    def dire_players
+      @dire_players = dire_team.players
+    end
+
+    def radiant_gold
+      @radiant_gold = 0
+      radiant_players.each { |p| @radiant_gold += p.net_worth.to_i }
+      return @radiant_gold
+    end
+
+    def dire_gold
+      @dire_gold = 0
+      dire_players.each { |p| @dire_gold += p.net_worth.to_i }
+      return @dire_gold
+    end
+
+    def radiant_xp
+      @radiant_xp = 0
+      radiant_players.each { |p| @radiant_xp += p.xp_per_min.to_i }
+      return (@radiant_xp * duration.to_i / 60).to_i
+    end
+
+    def dire_xp
+      @dire_xp = 0
+      dire_players.each { |p| @dire_xp += p.xp_per_min.to_i }
+      return (@dire_xp * duration.to_i / 60).to_i
+    end
 
     # 这里持久化到数据库里面
     def persist
+    end
+
+    def info
+      self.attributes.reject { |k, v| [:battle_id].include?(k) }.merge({
+        radiant_gold: radiant_gold,
+        radiant_xp:   radiant_xp,
+        dire_gold:    dire_gold,
+        dire_xp:      dire_xp,
+        radiant_team: radiant_team.info,
+        dire_team:    dire_team.info,
+        radiant_players: radiant_player_infos,
+        dire_players:    dire_player_infos
+      })
     end
   end
 end

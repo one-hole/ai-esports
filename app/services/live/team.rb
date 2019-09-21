@@ -10,5 +10,9 @@ module Live
 
     collection(:players, 'Live::Player')
     reference(:battle, 'Live::Battle')
+
+    def info
+      self.attributes.reject { |k, v| [:steam_id, :battle_id].include?(k) }
+    end
   end
 end

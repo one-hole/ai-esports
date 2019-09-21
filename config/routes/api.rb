@@ -19,4 +19,8 @@ namespace :api do
     resources :csgo_maps,       only: [:index]
     resources :lol_heroes,      only: [:index, :show]
   end
+
+  namespace :v2 do
+    resources :lives, only: [:index, :show]
+  end
 end

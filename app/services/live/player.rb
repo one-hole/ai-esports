@@ -1,3 +1,5 @@
+# 这里需要更新的是 Player 的技能
+
 module Live
   class Player < Ohm::Model
 
@@ -5,7 +7,7 @@ module Live
     attribute :account_id
     attribute :hero_id
     attribute :player_slot
-    attribute :kills 
+    attribute :kills
     attribute :death
     attribute :assists
     attribute :last_hits
@@ -35,5 +37,9 @@ module Live
 
     reference(:team, 'Live::Team')
     reference(:battle, 'Live::Battle')
+
+    def info
+      self.attributes.reject { |k, v| [:player_slot, :team_id, :battle_id].include?(k) }
+    end
   end
 end
