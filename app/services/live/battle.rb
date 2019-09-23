@@ -27,9 +27,17 @@ module Live
     end
 
     def info
-      self.attributes.merge({
-        abc: "abc"
+      self.attributes.reject { |k, v| [:lobby_id, :radiant_team_id, :dire_team_id].include?(k) }.merge({
+        matches: match_infos
       })
+    end
+
+    def match_infos
+      infos = []
+      matches.each do |match|
+        infos << match.info
+      end
+      return infos
     end
   end
 end
