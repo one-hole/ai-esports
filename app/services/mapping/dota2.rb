@@ -26,7 +26,7 @@ module Mapping
     # 这里 要设置 Redis 里面的值
     def mapping_ids
       @redis_ids.each do |redis_key, redis_value|
-        @db_ids do |db_key, db_value|
+        @db_ids.each do |db_key, db_value|
           if be_included?(redis_value, db_value)
             battle = Live::Battle[redis_key]
             battle.db_id = db_key
