@@ -1,17 +1,4 @@
 GIT
-  remote: https://github.com/humante/redis-browser.git
-  revision: 81336d6a392206b20e805aa3c79c377617fb0584
-  specs:
-    redis-browser (0.5.1)
-      coffee-script
-      multi_json
-      redis
-      sass
-      sinatra
-      sinatra-contrib
-      slim
-
-GIT
   remote: https://github.com/w-zengtao/dota2-constant-rb.git
   revision: d88b52d0d29f23f25257edfd00ae17856b48529c
   specs:
@@ -74,7 +61,6 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     awesome_print (1.8.0)
-    backports (3.15.0)
     bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.5)
@@ -96,10 +82,6 @@ GEM
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     coderay (1.1.2)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.4)
@@ -108,7 +90,6 @@ GEM
     erubi (1.8.0)
     ethon (0.12.0)
       ffi (>= 1.3.0)
-    execjs (2.7.0)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
     factory_bot_rails (4.11.1)
@@ -159,8 +140,6 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.3.1)
-    multi_json (1.13.1)
-    mustermann (1.0.3)
     mysql2 (0.5.2)
     nest (3.1.2)
       redic
@@ -239,11 +218,6 @@ GEM
     rspec-support (3.8.2)
     ruby_dep (1.5.0)
     rubyzip (1.2.4)
-    sass (3.7.4)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
     selenium-webdriver (3.142.4)
       childprocess (>= 0.5, < 3.0)
       rubyzip (~> 1.2, >= 1.2.2)
@@ -252,21 +226,6 @@ GEM
       rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
-    sinatra (2.0.7)
-      mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.7)
-      tilt (~> 2.0)
-    sinatra-contrib (2.0.7)
-      backports (>= 2.8.2)
-      multi_json
-      mustermann (~> 1.0)
-      rack-protection (= 2.0.7)
-      sinatra (= 2.0.7)
-      tilt (~> 2.0)
-    slim (4.0.1)
-      temple (>= 0.7.6, < 0.9)
-      tilt (>= 2.0.6, < 2.1)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -280,10 +239,8 @@ GEM
       sprockets (>= 3.0.0)
     stal (0.3.0)
       redic (~> 1.5)
-    temple (0.8.2)
     thor (0.20.3)
     thread_safe (0.3.6)
-    tilt (2.0.10)
     typhoeus (1.3.1)
       ethon (>= 0.9.0)
     tzinfo (1.2.5)
@@ -327,7 +284,6 @@ DEPENDENCIES
   rack-cors
   rails (~> 5.2.3)
   redis (~> 4.0)
-  redis-browser!
   redis-objects (~> 1.4, >= 1.4.3)
   rsa-tools
   rspec-rails (~> 3.7)
