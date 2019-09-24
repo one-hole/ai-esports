@@ -2,7 +2,7 @@ module Live
   module Util
     module Process
 
-      def process_currents(battle, redis)
+      def process_currents(battle)
         build_battle(battle)
         build_teams(battle)
         update_battle(battle)   # 这里更新是因为持久化队伍之后才能把队伍的数据更新到 Battle 里面
@@ -10,7 +10,7 @@ module Live
         build_match(battle)     # 这里会更新或者创建 Live::Match (TODO 这里需要 DIFF 消息)
         update_players(battle["scoreboard"])
 
-        @redis.publish("aiesports-dota2-websocket-v2", @battle.info.to_json)
+        # @redis.publish("aiesports-dota2-websocket-v2", @battle.info.to_json)
       end
 
       # 这里应该是查找或者创建（通过 steam_id）

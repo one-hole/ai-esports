@@ -8,6 +8,7 @@ module Live
     attribute :lobby_id
     attribute :radiant_team_id
     attribute :dire_team_id
+    attribute :db_id
 
     unique :steam_id #唯一性索引、可以使用 with 方法查询
 

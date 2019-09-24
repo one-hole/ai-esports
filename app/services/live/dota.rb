@@ -20,8 +20,8 @@ module Live
       puts "@----------------------------------------"
       puts "Current ids is #{battles.map { |battle| battle["match_id"] }}"
       puts "@----------------------------------------"
-      @redis = Redis.new(db: 12)
-      battles.each { |battle| process_currents(battle, @redis) }
+      # @redis = Redis.new(db: 12)
+      battles.each { |battle| process_currents(battle) }
     end
   end
 end
