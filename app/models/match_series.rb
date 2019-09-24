@@ -41,7 +41,7 @@ class MatchSeries < ApplicationRecord
   end
 
   def ids
-    [left_team.rw_id, right_team.rw_id]
+    [left_team.extern_id, right_team.extern_id]
   end
 
   # 如果比赛还没有开始 & 那就不存在 current_match
