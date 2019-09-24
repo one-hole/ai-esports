@@ -25,6 +25,10 @@ module Mapping
     # 如果 ID 已经匹配上, 那么从 @match_series 和 @live_battles 里面剔出 对应的
     # 这里 要设置 Redis 里面的值
     def mapping_ids
+
+      puts @redis_ids
+      puts "----------------------------------------------"
+      puts @db_ids
       @redis_ids.each do |redis_key, redis_value|
         @db_ids.each do |db_key, db_value|
           if be_included?(redis_value, db_value)
