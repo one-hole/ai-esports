@@ -27,9 +27,10 @@ module Live
     end
 
     def info
-      self.attributes.reject { |k, v| [:lobby_id, :radiant_team_id, :dire_team_id].include?(k) }.merge({
-        matches: match_infos
-      })
+      {
+        data: self.attributes.reject { |k, v| [:stream_delay_s, :lobby_id, :radiant_team_id, :dire_team_id].include?(k) }.merge({ matches: match_infos})
+      }
+
     end
 
     def match_infos

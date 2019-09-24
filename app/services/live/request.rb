@@ -18,9 +18,13 @@ module Live
     
     def self.params
       {
-        key: "040FA36AB25776E7072B0B42CAB25A20",
+        key: "A72DE7D7BE9870C8DA671D67941CCAA7",
         format: "json"
       }
+    end
+
+    def get_key
+      ["040FA36AB25776E7072B0B42CAB25A20", "A72DE7D7BE9870C8DA671D67941CCAA7"]
     end
   end
 end

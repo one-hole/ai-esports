@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'redis', '~> 4.0'
 gem 'redis-objects', '~> 1.4', '>= 1.4.3'
+gem 'redis-browser', github: 'humante/redis-browser'
 gem 'connection_pool', '~> 2.2', '>= 2.2.2'
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
