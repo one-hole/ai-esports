@@ -88,8 +88,15 @@ module Live
       def build_match(battle)
         @cur_match = Live::Match.find(battle_id: @battle.id, game_no: (@battle.radiant_score + @battle.dire_score + 1)).first
 
+        team_reversed = false # 默认是没有的
+
+        if @dire_team.steam_id == battle["radiant_team"]["team_id"]
+          team_reversed = true
+        end
+
         @cur_match = Match.create(
           game_no:                (@battle.radiant_score + @battle.dire_score + 1),
+          team_reversed:          team_reversed,
           status:                 "ongoing",
           battle_id:              @battle.id,
           duration:               battle["scoreboard"]["duration"],

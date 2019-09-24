@@ -23,15 +23,17 @@ module Live
     attribute :dire_picks
     attribute :dire_bans
 
+    attribute :team_reversed
+
     index :battle_id
     index :game_no
 
     reference(:battle, 'Live::Battle')
     # collection(:players, 'Live::Player')
 
-    # 因为队伍会交换
+    # 因为队伍会交换 TODO 这里的逻辑不对
     def radiant_team
-      if game_no.to_i.even?
+      if team_reversed
         @radiant_team ||= battle.dire_team
       else
         @radiant_team ||= battle.radiant_team
@@ -39,7 +41,7 @@ module Live
     end
 
     def dire_team
-      if game_no.to_i.even?
+      if team_reversed
         @dire_team ||= battle.radiant_team
       else
         @dire_team ||= battle.dire_team
