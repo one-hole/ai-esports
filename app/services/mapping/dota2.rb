@@ -32,8 +32,10 @@ module Mapping
       @redis_ids.each do |redis_key, redis_value|
         @db_ids.each do |db_key, db_value|
           if be_included?(redis_value, db_value)
+            db_battle = @match_series.find(db_key)
             battle = Live::Battle[redis_key]
             battle.db_id = db_key
+            battle.format = db_battle.round
             battle.save
 
             @redis.publish("aiesports-dota2-websocket-v2", battle.info.to_json)
@@ -54,7 +56,7 @@ module Mapping
     end
 
     # private
-    
+
     def load_from_db
       @match_series = Dota2Series.includes(:left_team, :right_team).where(status: 1)
       @match_series.each do |s|
