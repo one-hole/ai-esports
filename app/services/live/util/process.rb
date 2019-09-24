@@ -32,7 +32,7 @@ module Live
 
         battle["players"].each do |player|
           @player = nil
-    
+        
           if player["team"] == 0
             @team = @radiant_team
           elsif player["team"] == 1
@@ -43,8 +43,10 @@ module Live
 
           @player = Player.with(:account_id, player["account_id"])
 
+          player_name = player["name"].force_encoding("UTF-8").ascii_only? ? player["name"].force_encoding("UTF-8") : '-'
+
           Player.create(
-            name:       player["name"],
+            name:       player_name,
             account_id: player["account_id"],
             team_id:    @team.id,
             battle_id:  @battle.id

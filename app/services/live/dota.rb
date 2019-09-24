@@ -6,14 +6,13 @@ module Live
 
     def self.start
       resp = Request.run
-      # begin
+      begin
         battles = JSON.parse(resp.body)["result"]["games"]
-        puts "JSON Parsed"
         process(battles.select { |battle| valid_battle?(battle) })
-      # rescue => exception
-      #   binding.pry
-      #   puts exception
-      # end
+      rescue => exception
+        puts exception
+      end
+      return nil
     end
 
     def self.process(battles)
