@@ -25,6 +25,8 @@ module Live
           stream_delay_s: battle["stream_delay_s"],
           radiant_score:  battle["radiant_series_wins"],
           dire_score:     battle["dire_series_wins"],
+          created_at:     Time.now,
+          updated_at:     Time.now
         ) unless @battle
       end
 
@@ -60,6 +62,7 @@ module Live
           dire_team_id:    @dire_team.id,
           radiant_score:  battle["radiant_series_wins"],
           dire_score:     battle["dire_series_wins"],
+          updated_at:     Time.now,
         })
       end
 
