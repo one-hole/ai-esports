@@ -41,5 +41,9 @@ module Live
     def info
       self.attributes.reject { |k, v| [:player_slot, :team_id, :battle_id].include?(k) }
     end
+
+    def destroy
+      self.delete
+    end
   end
 end

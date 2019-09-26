@@ -22,7 +22,17 @@ module Live
     reference(:dire_team, 'Live::Team')
 
     def destroy
+      players.each do |p|
+        p.destroy
+      end
 
+      matches.each do |m|
+        m.delete
+      end
+
+      self.radiant_team.delete if self.radiant_team
+      self.dire_team.delete if self.dire_team
+      self.delete
     end
 
     # 返回两队伍的名字 & 缩写
