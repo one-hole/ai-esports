@@ -12,7 +12,7 @@ module Live
       rescue => exception
         puts exception
       end
-      return nil
+      return resp
     end
 
     def self.process(battles)
