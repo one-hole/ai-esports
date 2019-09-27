@@ -1,5 +1,6 @@
 class LiveMappingWorker
   include Sidekiq::Worker
+  sidekiq_options queue: 'mapping'
   
   def perform
     begin

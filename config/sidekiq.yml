@@ -6,3 +6,4 @@ production:
   - default
   - polling
   - live
+  - mapping
