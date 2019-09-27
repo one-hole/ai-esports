@@ -1,7 +1,8 @@
 class LiveMappingWorker
   include Sidekiq::Worker
   sidekiq_options queue: 'mapping'
-  
+  sidekiq_options retry: false
+
   def perform
     begin
       Mapping::Dota2.new.run      
