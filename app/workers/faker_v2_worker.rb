@@ -2,6 +2,7 @@ class FakerV2Worker
   include Sidekiq::Worker
 
   sidekiq_options queue: 'live'
+  sidekiq_options retry: false
 
   def perform
     begin
