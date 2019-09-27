@@ -56,5 +56,6 @@ module AiEsports
     end
 
     ActiveModelSerializers.config.adapter = :json
+    SidekiqUniqueJobs.config.enabled = true
   end
 end

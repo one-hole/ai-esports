@@ -18,8 +18,16 @@ module Live
     collection(:matches, 'Live::Match')
     collection(:players, 'Live::Player')
 
-    reference(:radiant_team, 'Live::Team')
-    reference(:dire_team, 'Live::Team')
+    # reference(:radiant_team, 'Live::Team')
+    # reference(:dire_team, 'Live::Team')
+
+    def radiant_team
+      Live::Team[self.radiant_team_id]
+    end
+
+    def dire_team
+      Live::Team[self.dire_team_id]
+    end
 
     def destroy
       players.each do |p|
