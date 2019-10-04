@@ -23,7 +23,9 @@ class FakeLiveService
     return nil if code != 200
 
     return {
-      data: JSON.parse(resp.body)['match']
+      data: JSON.parse(resp.body)['match'].merge({
+        now: Time.now
+      })
     } if code == 200
   end
 
