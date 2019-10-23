@@ -11,12 +11,13 @@ module Live
       request.run
     end
 
-    private
+    # private
     
     def self.params
       {
         key: get_key,
-        format: "json"
+        format: "json",
+        language: "zh_CN"
       }
     end
 

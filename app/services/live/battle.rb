@@ -1,3 +1,5 @@
+# Battle 只关心当前正在打的
+
 module Live
   class Battle < Ohm::Model
 
@@ -7,19 +9,19 @@ module Live
     attribute :radiant_score
     attribute :dire_score
     attribute :lobby_id
-    attribute :radiant_team_id
-    attribute :dire_team_id
+    attribute :left_team_id     # 初始化的时候为 radiant
+    attribute :right_team_id    # 初始化的时候为 dire
     attribute :format
-    attribute :created_at # 创建的时间
-    attribute :updated_at # 最后更新的时间
+    attribute :created_at      # 创建的时间
+    attribute :updated_at      # 最后更新的时间
+    attribute :server_steam_id # Steam 服务器的 ID
+    attribute :building_state  # 建筑物的状态
+    attribute :radiant_lead    # radiant 经济领先的值
 
     unique :steam_id #唯一性索引、可以使用 with 方法查询
 
-    collection(:matches, 'Live::Match')
+    reference(:match, 'Live::Match')
     collection(:players, 'Live::Player')
-
-    # reference(:radiant_team, 'Live::Team')
-    # reference(:dire_team, 'Live::Team')
 
     def radiant_team
       Live::Team[self.radiant_team_id]

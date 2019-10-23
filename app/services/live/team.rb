@@ -1,5 +1,6 @@
 module Live
   class Team < Ohm::Model
+    
     attribute :name
     attribute :logo
     attribute :steam_id

@@ -29,7 +29,6 @@ module Live
     index :game_no
 
     reference(:battle, 'Live::Battle')
-    # collection(:players, 'Live::Player')
 
     # 因为队伍会交换 TODO 这里的逻辑不对
     def radiant_team

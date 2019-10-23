@@ -1,7 +1,7 @@
 source 'https://gems.ruby-china.com'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.4'
+ruby '2.6.5'
 
 gem 'rails', '~> 5.2.3'
 gem 'mysql2', '~> 0.5'
