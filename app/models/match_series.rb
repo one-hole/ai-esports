@@ -27,6 +27,12 @@ class MatchSeries < ApplicationRecord
 
   scope :for_live_index,   ->(game_id = 1) { ongoing.today_or_yesterday.non_hidden.with_game(game_id) }
   scope :for_result_index, ->(game_id = 1) { finished.non_hidden.prev_3_days(Date.today).with_game(game_id) }
+  scope :with_team,        -> (team_id) { where(left_team_id: team_id).or(where(right_team_id: team_id)) }
+  scope :valid_unfinished, -> { where('start_time >= ?', (Time.now - 30.minutes).to_i).where(status: %w(not_start_yet ongoing)) }
+
+  def self.find_with_teams_later(left_team_id, right_team_id)
+    self.with_team(left_team_id).or(self.with_team(right_team_id)).where('start_time < ?', (Time.now + 0.5.hour).to_i).valid_unfinished.today_or_yesterday.order(:start_time).last
+  end
 
   def ongoing?
     return self.status == 1
