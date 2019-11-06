@@ -1,22 +1,24 @@
-# Battle 只关心当前正在打的
+# Battle 只有系列赛的信息
+# Match  只有当前正在打的信息
 
 module Live
   class Battle < Ohm::Model
 
     attribute :db_id
     attribute :stream_delay_s
-    attribute :steam_id
-    attribute :radiant_score
-    attribute :dire_score
-    attribute :lobby_id
+    attribute :steam_id         # 对应的就是 Steam APi 里面的 MatchID
+    attribute :left_score       # 大比分
+    attribute :right_score      # 大比分
+    attribute :lobby_id         # 暂时不知道有什么作用
+    attribute :server_steam_id  # Steam 服务器的 ID
     attribute :left_team_id     # 初始化的时候为 radiant
     attribute :right_team_id    # 初始化的时候为 dire
-    attribute :format
-    attribute :created_at      # 创建的时间
-    attribute :updated_at      # 最后更新的时间
-    attribute :server_steam_id # Steam 服务器的 ID
-    attribute :building_state  # 建筑物的状态
-    attribute :radiant_lead    # radiant 经济领先的值
+    attribute :format           # 赛制
+    attribute :created_at       # 创建的时间
+    attribute :updated_at       # 最后更新的时间
+
+    # attribute :building_state   # 建筑物的状态
+    # attribute :radiant_lead     # radiant 经济领先的值
 
     unique :steam_id #唯一性索引、可以使用 with 方法查询
 

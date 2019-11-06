@@ -34,7 +34,7 @@ module Live
 
         battle["players"].each do |player|
           @player = nil
-        
+
           if player["team"] == 0
             @team = @radiant_team
           elsif player["team"] == 1
@@ -55,7 +55,7 @@ module Live
           ) unless @player
         end
       end
-      
+
       def update_battle(battle)
         @battle.update({
           radiant_team_id: @radiant_team.id,
@@ -86,7 +86,7 @@ module Live
           steam_id:   battle["dire_team"]["team_id"],
           battle_id:  @battle.id
         ) unless @dire_team
-      end 
+      end
 
       def build_match(battle)
         @cur_match = Live::Match.find(battle_id: @battle.id, game_no: (@battle.radiant_score + @battle.dire_score + 1)).first
@@ -150,7 +150,7 @@ module Live
             level:       info["level"],
             gold_per_min: info["gold_per_min"],
             xp_per_min:   info["xp_per_min"],
-            ultimate_state:    info["ultimate_state"],  
+            ultimate_state:    info["ultimate_state"],
             ultimate_cooldown: info["ultimate_cooldown"],
             item0:             info["item0"],
             item1:             info["item1"],
