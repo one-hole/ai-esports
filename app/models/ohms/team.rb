@@ -7,5 +7,11 @@ module Ohms
 
     unique :steam_id
     reference(:battle, "Ohms::Battle")
+
+    def as_info
+      {
+        name: self.name
+      }
+    end
   end
 end

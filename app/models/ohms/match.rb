@@ -19,6 +19,19 @@ module Ohms
 
     unique :battle_id
     reference(:battle, "Ohms::Battle")
+
+    def as_info
+      {
+        dire_score:             self.dire_score,
+        radiant_score:          self.radiant_score,
+        dire_tower_state:       self.dire_tower_state,
+        radiant_tower_state:    self.radiant_tower_state,
+        dire_barracks_state:    self.dire_barracks_state,
+        radiant_barracks_state: self.radiant_barracks_state,
+        duration:               self.duration,
+        radiant_lead:           self.radiant_lead
+      }
+    end
   end
 end
 

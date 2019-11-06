@@ -9,5 +9,7 @@ module Ohms
 
     unique :account_id
     index :battle_id
+
+    reference(:battle, "Ohms::Battle")
   end
 end

@@ -1,5 +1,6 @@
 require_relative "team_actions"
 require_relative "match_actions"
+require_relative "player_actions"
 
 module Live
   module Tops
@@ -7,6 +8,7 @@ module Live
 
       include TeamActions
       include MatchActions
+      include PlayerActions
 
       def create_battle(battle_info)
         battle = Ohms::Battle.create(
@@ -27,6 +29,7 @@ module Live
         })
 
         match = process_match(battle.id, battle_info)
+        process_players(battle.id, battle_info["players"])
 
         battle.update(
           left_team_id:  left_team.id,

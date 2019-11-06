@@ -12,6 +12,8 @@ module Live
         end
       end
 
+      private
+
       def create_team(battle_id, opts)
         Ohms::Team.create(
           battle_id: battle_id,

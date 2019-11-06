@@ -11,6 +11,7 @@ module Live
       end
 
       def process_single(battle_info)
+
         battle = find_battle(battle_info["match_id"])
 
         if battle
@@ -23,7 +24,7 @@ module Live
 
 
       def valid?(battle)
-        return false if (battle["team_id_radiant"].nil? || battle["team_id_dire"].nil?)
+        # return false if (battle["team_id_radiant"].nil? || battle["team_id_dire"].nil?)
         return true
       end
     end

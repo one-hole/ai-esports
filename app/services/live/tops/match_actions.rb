@@ -12,6 +12,8 @@ module Live
         match
       end
 
+      private
+
       def find_match(battle_id)
         Ohms::Match.with(:battle_id, battle_id)
       end
@@ -25,11 +27,18 @@ module Live
           radiant_lead:  battle_info["radiant_lead"],
           created_at:    Time.now,
           updated_at:    Time.at(battle_info["last_update_time"]),
-          building_state: battle_info["building_state"]
+          building_state: battle_info["building_state"],
+          left_dire:      false
         )
       end
 
       def update_match(match, battle_info)
+      end
+
+      # 1. 需要找到 原来的 Battle
+      # 2. 需要最新抓取的  Battle 信息
+      def left_dire?(battle, battle_info)
+
       end
     end
   end

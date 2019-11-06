@@ -20,5 +20,17 @@ module Ohms
     reference(:match, "Ohms::Match")
     reference(:left_team, "Ohms::Team")
     reference(:right_team, "Ohms::Team")
+    collection(:players, "Ohms::Player")
+
+    def as_info
+      {
+        steam_id:     steam_id,
+        left_score:   left_score,
+        right_score:  right_score,
+        left_team:    left_team.as_info,
+        right_team:   right_team.as_info,
+        match:        match.as_info
+      }
+    end
   end
 end
