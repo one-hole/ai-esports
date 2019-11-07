@@ -4,13 +4,16 @@ module Ohms
     attribute :battle_id
     attribute :steam_id
     attribute :name
+    attribute :logo         # RealTime 里面可以拿到 Team的Logo
+
 
     unique :steam_id
     reference(:battle, "Ohms::Battle")
 
     def as_info
       {
-        name: self.name
+        name: self.name,
+        logo: self.logo
       }
     end
   end

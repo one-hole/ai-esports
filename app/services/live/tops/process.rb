@@ -15,7 +15,7 @@ module Live
         battle = find_battle(battle_info["match_id"])
 
         if battle
-          battle = update_battle(battle_info)
+          battle = update_battle(battle, battle_info)
         else
           battle = create_battle(battle_info)
         end
@@ -24,7 +24,7 @@ module Live
 
 
       def valid?(battle)
-        # return false if (battle["team_id_radiant"].nil? || battle["team_id_dire"].nil?)
+        return false if (battle["team_id_radiant"].nil? || battle["team_id_dire"].nil?)
         return true
       end
     end

@@ -5,7 +5,7 @@ module Live
         match = find_match(battle_id)
 
         if match
-          match = update_match(match, battle_info)         
+          match = update_match(match, battle_info)
         else
           match = create_match(battle_id, battle_info)
         end        
@@ -33,12 +33,23 @@ module Live
       end
 
       def update_match(match, battle_info)
+
+        match.update(
+          updated_at:       Time.at(battle_info["last_update_time"]),
+          building_state:   battle_info["building_state"],
+          duration:      battle_info["game_time"],
+          dire_score:    battle_info["dire_score"],
+          radiant_score: battle_info["radiant_score"],
+          radiant_lead:  battle_info["radiant_lead"],
+          left_dire:     left_dire?(match.battle, battle_info)
+        )
+
       end
 
       # 1. 需要找到 原来的 Battle
       # 2. 需要最新抓取的  Battle 信息
       def left_dire?(battle, battle_info)
-
+        battle_info["team_id_dire"] == battle.left_team.steam_id.to_i
       end
     end
   end

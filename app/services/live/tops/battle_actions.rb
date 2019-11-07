@@ -40,8 +40,14 @@ module Live
         battle
       end
 
-      def update_battle(battle)
+      # UpdateBattle 这里主要只能是
+      # Update Match
+      # Update Player
 
+      def update_battle(battle, battle_info)
+        battle.update(updated_at: Time.now)
+        process_match(battle.id, battle_info)
+        process_players(battle.id, battle_info["players"])
       end
 
       def find_battle(steam_id)

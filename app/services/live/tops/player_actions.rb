@@ -7,8 +7,8 @@ module Live
       end
 
       def process_player(battle_id, player_info)
-        if find_player(player_info["account_id"])
-          update_player(player_info)
+        if player = find_player(player_info["account_id"])
+          update_player(player, player_info)
         else
           create_player(battle_id, player_info)
         end
@@ -28,8 +28,10 @@ module Live
         )
       end
 
-      def update_player(player_info)
-
+      def update_player(player, player_info)
+        player.update(
+          hero_id:  player_info["hero_id"]
+        )
       end
     end
   end
