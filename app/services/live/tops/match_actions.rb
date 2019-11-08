@@ -28,7 +28,6 @@ module Live
           created_at:    Time.now,
           updated_at:    Time.at(battle_info["last_update_time"]),
           building_state: battle_info["building_state"],
-          left_dire:      false
         )
       end
 
@@ -37,20 +36,14 @@ module Live
         match.update(
           updated_at:       Time.at(battle_info["last_update_time"]),
           building_state:   battle_info["building_state"],
-          duration:      battle_info["game_time"],
-          dire_score:    battle_info["dire_score"],
-          radiant_score: battle_info["radiant_score"],
-          radiant_lead:  battle_info["radiant_lead"],
-          left_dire:     left_dire?(match.battle, battle_info)
+          duration:         battle_info["game_time"],
+          dire_score:       battle_info["dire_score"],
+          radiant_score:    battle_info["radiant_score"],
+          radiant_lead:     battle_info["radiant_lead"],
         )
 
       end
 
-      # 1. 需要找到 原来的 Battle
-      # 2. 需要最新抓取的  Battle 信息
-      def left_dire?(battle, battle_info)
-        battle_info["team_id_dire"] == battle.left_team.steam_id.to_i
-      end
     end
   end
 end

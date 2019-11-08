@@ -3,7 +3,6 @@ module Ohms
   class Match < Ohm::Model
 
     attribute :battle_id                  # 对应的 Battle
-    attribute :left_dire                  # 左边队伍是否是 Dire
     attribute :dire_score                 # Dire 小比分
     attribute :radiant_score              # Radiant 小比分
     attribute :dire_tower_state           # Dire 的塔状态

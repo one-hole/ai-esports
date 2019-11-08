@@ -17,6 +17,7 @@ module Live
       def create_team(battle_id, opts)
         Ohms::Team.create(
           battle_id: battle_id,
+          id:        opts[:steam_id],
           steam_id:  opts[:steam_id],
           name:      opts[:name]
         )

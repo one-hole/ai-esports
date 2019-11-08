@@ -1,5 +1,6 @@
 module Live
   class Tops::Request < Request
+
     PATH = "https://api.steampowered.com/IDOTA2Match_570/GetTopLiveGame/v1"
 
     def self.run

@@ -12,18 +12,18 @@ module Live
 
       def create_battle(battle_info)
         battle = Ohms::Battle.create(
-          steam_id: battle_info["match_id"],
+          steam_id:        battle_info["match_id"],
           server_steam_id: battle_info["server_steam_id"],
-          created_at: Time.now,
-          updated_at: Time.now
+          created_at:      Time.now,
+          updated_at:      Time.now
         )
 
-        left_team = process_team(battle.id, {
+        radiant_team = process_team(battle.id, {
           steam_id: battle_info["team_id_radiant"],
           name:     battle_info["team_name_radiant"]
         })
 
-        right_team = process_team(battle.id, {
+        dire_team = process_team(battle.id, {
           steam_id: battle_info["team_id_dire"],
           name:     battle_info["team_name_dire"]
         })
@@ -32,15 +32,16 @@ module Live
         process_players(battle.id, battle_info["players"])
 
         battle.update(
-          left_team_id:  left_team.id,
-          right_team_id: right_team.id,
-          match_id:      match.id
+          radiant_team_id:  radiant_team.id,
+          dire_team_id:     dire_team.id,
+          match_id:         match.id
         )
 
         battle
       end
 
       # UpdateBattle 这里主要只能是
+      # 如果 Battle 是 Leagues 先创建的, 这里 Update 就需要重新写了 TODO
       # Update Match
       # Update Player
 
