@@ -12,8 +12,9 @@ module Ohms
 
     def as_info
       {
-        name: self.name,
-        logo: self.logo
+        steam_id:   self.id,
+        name:       self.name,
+        logo:       self.logo
       }
     end
   end

@@ -33,5 +33,10 @@ module Ohms
         match:        match.as_info
       }
     end
+
+    # TODO 暂时留一个接口
+    def destroy
+      puts "Deleting #{self.id}"
+    end
   end
 end

@@ -18,3 +18,8 @@ GetTopLiveGame（循环拉取即可）
 }
 
 GetLiveLeagueGames（15s 拉一次即可）
+
+暂时知道：
+
+* Team 3 Dire
+* Team 2 Radiant

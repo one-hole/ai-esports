@@ -5,5 +5,7 @@ production:
 :queues:
   - default
   - polling
-  - live
+  - live-top
+  - live-league
+  - live-clean
   - mapping

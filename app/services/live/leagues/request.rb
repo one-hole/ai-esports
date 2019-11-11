@@ -1,19 +1,22 @@
 module Live
-  module Realtime
+  module Leagues
     class Request
 
-      PATH = "https://api.steampowered.com/IDOTA2MatchStats_570/GetRealtimeStats/v1"
+      PATH = "https://api.steampowered.com/IDOTA2Match_570/GetLiveLeagueGames/v1"
 
-      def self.run(server_steam_id)
-        options = { timeout: 10, connecttimeout: 10 }.merge({params: params.merge({server_steam_id: server_steam_id})})
+      def self.run
+        options = {timeout: 10, connecttimeout: 10 }.merge({
+          params: params
+        })
         request = Typhoeus::Request.new(PATH, options)
         resp = request.run
       end
 
       def self.params
         {
-          key: get_key,
-          include_persona_names: true
+          key:      get_key,
+          format:   "json",
+          language: "zh_CN"
         }
       end
 
