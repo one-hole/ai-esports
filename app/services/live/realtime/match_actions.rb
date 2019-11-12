@@ -1,14 +1,15 @@
+require_relative "./team_actions.rb"
+
 module Live
   module Realtime
     module MatchActions
 
-      def process_match(match)
+      include TeamActions
 
+      def process_match(match)
 
         @radiant_team_infos = @battle_info["teams"].select { |team| team["team_number"] == 2 }[0]
         @dire_team_infos    = @battle_info["teams"].select { |team| team["team_number"] == 3 }[0]
-
-        puts match.id
 
         match.update(
           radiant_score: get_radiant_score(match),
@@ -17,10 +18,22 @@ module Live
           dire_score:    get_dire_score(match),
           dire_picks:    get_dire_picks,
           dire_bans:     get_dire_bans,
-          duration:      get_duration(match)
+          duration:      get_duration(match),
+          radiant_net_worth: get_radiant_net_worth,
+          dire_net_worth:    get_dire_net_worth
         )
 
-        binding.pry
+        process_team(@radiant_team_infos)
+        process_team(@dire_team_infos)
+
+      end
+
+      def get_radiant_net_worth
+        @radiant_team_infos["net_worth"]
+      end
+
+      def get_dire_net_worth
+        @dire_team_infos["net_worth"]
       end
 
       def get_radiant_score(match)

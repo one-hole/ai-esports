@@ -10,7 +10,6 @@ module Live
           battles = JSON.parse(resp.body)["result"]["games"]
           process(battles.select { |battle| valid?(battle) })
         rescue => e
-          binding.pry
           puts e
         end
       end

@@ -6,9 +6,6 @@ module Live
         if battle = find_battle(battle_info["match_id"])
           update_battle(battle, battle_info)
         else
-
-          binding.pry
-
           battle = create_battle(battle_info)
         end
       end

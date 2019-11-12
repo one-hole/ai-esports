@@ -46,13 +46,21 @@ module Live
       # Update Player
 
       def update_battle(battle, battle_info)
-        battle.update(updated_at: Time.now)
+        battle.update(
+          server_steam_id: battle_info["server_steam_id"],
+          updated_at: Time.now
+        )
         process_match(battle.id, battle_info)
         process_players(battle.id, battle_info["players"])
+        do_real_time(battle_info["server_steam_id"])
       end
 
       def find_battle(steam_id)
         Ohms::Battle.with(:steam_id, steam_id)
+      end
+
+      def do_real_time(server_steam_id)
+        Live::Realtime::Exec.start(server_steam_id)
       end
     end
   end

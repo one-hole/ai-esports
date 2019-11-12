@@ -9,13 +9,23 @@ module Ohms
 
     unique :steam_id
     reference(:battle, "Ohms::Battle")
+    collection(:players, "Ohms::Player")
 
     def as_info
       {
         steam_id:   self.id,
         name:       self.name,
-        logo:       self.logo
+        logo:       self.logo,
+        players:    self.players_info
       }
+    end
+
+    def players_info
+      infos = []
+      self.players.each do |player|
+        infos << player.as_info
+      end
+      infos
     end
   end
 end
