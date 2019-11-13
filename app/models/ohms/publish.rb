@@ -5,9 +5,7 @@ module Ohms
     end
 
     def pub(redis)
-      redis.publish(
-
-      )
+      redis.publish("aiesports-dota2-websocket-v2", @battle.as_info.to_json)
     end
   end
 end
