@@ -8,6 +8,8 @@ module Live
       extend BattleActions
 
       def self.start
+
+        @redis = Redis.new
         resp = Request.run
         battles = JSON.parse(resp.body)["game_list"]
         process(battles)
@@ -26,6 +28,8 @@ module Live
         else
           battle = create_battle(battle_info)
         end
+
+        Ohms::Publish.new(battle).pub(@redis)
       end
 
       def self.valid?(battle)

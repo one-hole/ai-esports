@@ -53,6 +53,7 @@ module Live
         process_match(battle.id, battle_info)
         process_players(battle.id, battle_info["players"])
         do_real_time(battle_info["server_steam_id"])
+        return battle
       end
 
       def find_battle(steam_id)

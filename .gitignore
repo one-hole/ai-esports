@@ -29,5 +29,7 @@
 /config/database.yml
 /config/database_aw.yml
 /config/application.yml
-
+/db/schema.rb
+.generators
 .DS_Store
+.rakeTasks

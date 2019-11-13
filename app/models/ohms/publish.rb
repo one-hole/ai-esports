@@ -1,11 +1,15 @@
 module Ohms
   class Publish
-    def initialize(ohm_battle_id)
-      @battle = Ohms::Battle[ohm_battle_id]
+    def initialize(battle)
+      @battle = battle
     end
 
     def pub(redis)
-      redis.publish("aiesports-dota2-websocket-v2", @battle.as_info.to_json)
+
+      if @battle
+        redis.publish("aiesports-dota2-websocket-v2", @battle.as_info.to_json)
+      end
+
     end
   end
 end
