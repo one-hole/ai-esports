@@ -1,7 +1,6 @@
 module Live
   class Dota
 
-    extend Util::Validator
     extend Util::Process
 
     def self.start
