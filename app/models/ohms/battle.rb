@@ -30,7 +30,7 @@ module Ohms
         dire_score:      self.dire_score,
         radiant_team:    self.radiant_team.as_info,
         dire_team:       self.dire_team.as_info,
-        match:        match.as_info
+        match:           match.as_info
       }
     end
 
