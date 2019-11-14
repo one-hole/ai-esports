@@ -1,7 +1,7 @@
 module Api
   class VerifyKeyController < BaseController
 
-    skip_before_action :validate_request
+    # skip_before_action :validate_request
 
     def index
       if verify?

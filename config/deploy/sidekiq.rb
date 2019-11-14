@@ -30,6 +30,15 @@ namespace :sidekiq do
         command %[#{fetch(:sidekiq)} -d #{concurrency_arg} -C #{fetch(:sidekiq_config)} -i #{idx} -P #{pid_file} -L #{fetch(:sidekiq_log)}]
       end
     end
+    
+    run(:local) do
+      comment %{ "#{fetch(:current_path)}" }
+      comment %{ "#{fetch(:sidekiq)}" }
+      sidekiq_concurrency = fetch(:sidekiq_concurrency)
+      concurrency_arg = sidekiq_concurrency.nil? ? "" : "-c #{sidekiq_concurrency}"
+      comment %{ "#{concurrency_arg}" }
+    end
+    
   end
 
   desc "Stop sidekiq"
