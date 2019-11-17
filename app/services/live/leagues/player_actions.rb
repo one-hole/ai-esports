@@ -8,9 +8,7 @@ module Live
                 
         player = load_player(player_info["account_id"])
 
-        if player
-          player = update_player(team, player_info)
-        else
+        unless player
           player = build_player(team, player_info)
         end
       end
@@ -23,10 +21,6 @@ module Live
           team_id:    team.id,
           battle_id:  team.battle_id
         )
-      end
-
-      def update_player(team, player_info)
-        binding.pry
       end
 
       def load_player(account_id)
