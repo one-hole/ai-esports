@@ -14,6 +14,8 @@ module Ohms
     attribute :radiant_lead               # Radiant 领先的经济
     attribute :building_state             # 所有的建筑物的状态
 
+    attribute :roshan_respawn_timer
+
     attribute :radiant_picks
     attribute :radiant_bans
     attribute :dire_picks

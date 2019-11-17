@@ -7,9 +7,42 @@ module Live
         match = load_match(battle.id)
 
         if match
+          match = update_match(battle, battle_info)
         else
           match = build_match(battle, battle_info)
         end
+      end
+
+      def update_match(battle, battle_info)
+
+      end
+
+      def build_match(battle, battle_info)
+
+        scoreboard_info = battle_info["scoreboard"]
+
+        match = Ohms::Match.create(
+           steam_id:     battle_info["match_id"],
+          battle_id:     battle.id,
+           duration:     scoreboard_info["duration"],
+roshan_respawn_timer:    scoreboard_info["roshan_respawn_timer"],
+          dire_score:    scoreboard_info["dire"]["score"],
+       radiant_score:    scoreboard_info["radiant"]["score"],
+    dire_tower_state:    scoreboard_info["dire"]["tower_state"],
+ radiant_tower_state:    scoreboard_info["radiant"]["tower_state"],
+ dire_barracks_state:    scoreboard_info["dire"]["barracks_state"],
+radiant_barracks_state:  scoreboard_info["radiant"]["barracks_state"],
+          dire_picks:    scoreboard_info["dire"]["picks"].map { |item| item["hero_id"] },
+       radiant_picks:    scoreboard_info["radiant"]["picks"].map { |item| item["hero_id"] },
+           dire_bans:    scoreboard_info["dire"]["bans"].map { |item| item["hero_id"] },
+        radiant_bans:    scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] },
+          created_at:    Time.now,
+          updated_at:    Time.now
+        )
+
+        battle.match_id = match.id
+        battle.save
+        return match
       end
 
       def load_match(battle_id)
