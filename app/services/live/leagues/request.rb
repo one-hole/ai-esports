@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Live
   module Leagues
     class Request

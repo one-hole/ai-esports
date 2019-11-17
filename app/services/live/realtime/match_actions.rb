@@ -49,19 +49,35 @@ module Live
       end
 
       def get_radiant_picks
-        @battle_info["match"]["picks"].select { |item| item["team"] == 2 }.map { |item| item["hero"] }
+        begin
+          @battle_info["match"]["picks"].select { |item| item["team"] == 2 }.map { |item| item["hero"] }
+        rescue => e
+          puts e
+        end
       end
 
       def get_radiant_bans
-        @battle_info["match"]["bans"].select { |item| item["team"] == 3 }.map { |item| item["hero"] }
+        begin
+          @battle_info["match"]["bans"].select { |item| item["team"] == 3 }.map { |item| item["hero"] }
+        rescue => e
+          puts e
+        end
       end
 
       def get_dire_picks
-        @battle_info["match"]["picks"].select { |item| item["team"] == 3 }.map { |item| item["hero"] }
+        begin
+          @battle_info["match"]["picks"].select { |item| item["team"] == 3 }.map { |item| item["hero"] }
+        rescue => e
+          puts e
+        end
       end
 
       def get_dire_bans
-        @battle_info["match"]["bans"].select { |item| item["team"] == 3 }.map { |item| item["hero"] }
+        begin
+          @battle_info["match"]["bans"].select { |item| item["team"] == 3 }.map { |item| item["hero"] }
+        rescue => e
+          puts e
+        end
       end
 
     end

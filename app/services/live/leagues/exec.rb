@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Live
   module Leagues
     class Exec
@@ -32,3 +34,5 @@ module Live
     end
   end
 end
+
+# Live::Leagues::Exec.start

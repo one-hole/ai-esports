@@ -2,6 +2,7 @@
 module Ohms
   class Match < Ohm::Model
 
+    attribute :steam_id
     attribute :battle_id                  # 对应的 Battle
     attribute :dire_score                 # Dire 小比分
     attribute :radiant_score              # Radiant 小比分
@@ -60,8 +61,4 @@ module Ohms
   end
 end
 
-
-=begin
-  game_time => duration
-  last_update_time
-=end
+# 之前的理解是存在偏差的：真实的情况是 Match 有 SteamID Battle 没有 SteamID

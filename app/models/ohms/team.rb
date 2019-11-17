@@ -27,5 +27,14 @@ module Ohms
       end
       infos
     end
+
+    def destory
+      self.delete
+    end
+
+    def self.clean(team_id)
+      team = self[team_id]
+      team.destory if team
+    end
   end
 end

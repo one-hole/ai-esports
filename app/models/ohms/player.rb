@@ -2,6 +2,7 @@ module Ohms
   class Player < Ohm::Model
     
     attribute :name
+    attribute :slot
     attribute :account_id
     attribute :hero_id
     attribute :battle_id        # Ohm 里面保存的 BattleID
