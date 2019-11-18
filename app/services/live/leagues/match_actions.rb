@@ -1,20 +1,35 @@
 # encoding: utf-8
 
+require_relative 'player_actions'
+
 module Live
   module Leagues
     module MatchActions
+
+      include PlayerActions
+
       def process_match(battle, battle_info)
         match = load_match(battle.id)
 
         if match
-          match = update_match(battle, battle_info)
+          match = update_match(match, battle_info)
         else
           match = build_match(battle, battle_info)
         end
       end
 
       def update_match(battle, battle_info)
+        # 这里需要确定哪些是 LiveLeague 特有的
+        scoreboard_info = battle_info["scoreboard"]
 
+        match.update(
+             updated_at:    Time.now,
+          radiant_score:    scoreboard_info["radiant"]["score"],
+       dire_tower_state:    scoreboard_info["dire"]["tower_state"],
+    radiant_tower_state:    scoreboard_info["radiant"]["tower_state"],
+    dire_barracks_state:    scoreboard_info["dire"]["barracks_state"],
+   roshan_respawn_timer:    scoreboard_info["roshan_respawn_timer"]
+        )
       end
 
       def build_match(battle, battle_info)
@@ -52,3 +67,5 @@ radiant_barracks_state:  scoreboard_info["radiant"]["barracks_state"],
     end
   end
 end
+
+# 应该还需要补全 Player 的数据

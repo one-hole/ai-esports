@@ -18,6 +18,14 @@ module Ohms
     attribute :abilities
     attribute :items
 
+    #-------------- 下面是 LiveLeague 特有的
+    attribute :gpm
+    attribute :xpm
+    attribute :ultimate_state    # 大招的状态
+    attribute :ultimate_cooldown # 大招的冷却时间
+    attribute :respawn_timer     # 重生的时间
+
+
     attribute :x
     attribute :y
 

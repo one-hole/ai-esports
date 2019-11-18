@@ -60,14 +60,34 @@ module Live
 
         match = process_match(battle, battle_info)
 
-        binding.pry
+        battle_info["scoreboard"]["radiant"]["players"].each do |player_info|
+          process_complex_player(radiant_team, player_info)
+        end
+
+        battle_info["scoreboard"]["dire"]["players"].each do |player_info|
+          process_complex_player(dire_team, player_info)
+        end
+
       end
 
       def update_battle(battle, battle_info)
+
         battle.update(
           radiant_score:    battle_info["radiant_series_wins"],
           dire_score:       battle_info["dire_series_wins"],
+          updated_at:       Time.now
         )
+
+        process_match(battle, battle_info)
+
+        battle_info["scoreboard"]["radiant"]["players"].each do |player_info|
+          process_complex_player(battle.radiant_team, player_info)
+        end
+
+        battle_info["scoreboard"]["dire"]["players"].each do |player_info|
+          process_complex_player(battle.dire_team, player_info)
+        end
+
       end
 
     end

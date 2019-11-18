@@ -24,6 +24,7 @@ module Live
         return Ohms::Player.create(account_id: account_id) unless player
       end
 
+      # 这里还真的不一定需要判定大小
       # TODO 这里的 Update 还是需要判定大小
       def process_player(team, player, player_info)
         player.update(

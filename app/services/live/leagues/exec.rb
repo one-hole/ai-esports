@@ -36,3 +36,7 @@ module Live
 end
 
 # Live::Leagues::Exec.start
+#
+#
+# 1. 如果是这边创建的
+# 2. 如果不是这边创建的
