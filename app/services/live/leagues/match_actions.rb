@@ -28,6 +28,7 @@ module Live
        dire_tower_state:    scoreboard_info["dire"]["tower_state"],
     radiant_tower_state:    scoreboard_info["radiant"]["tower_state"],
     dire_barracks_state:    scoreboard_info["dire"]["barracks_state"],
+ radiant_barracks_state:    scoreboard_info["radiant"]["barracks_state"],
    roshan_respawn_timer:    scoreboard_info["roshan_respawn_timer"]
         )
       end

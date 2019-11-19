@@ -37,7 +37,9 @@ module Live
             slot:               player_info["player_slot"],
             ultimate_state:     player_info["ultimate_state"],
             ultimate_cooldown:  player_info["ultimate_cooldown"],
-            respawn_timer:      player_info["respawn_timer"]
+            respawn_timer:      player_info["respawn_timer"],
+            x:                  player_info["position_x"],
+            y:                  player_info["position_y"]
           )
         end
       end

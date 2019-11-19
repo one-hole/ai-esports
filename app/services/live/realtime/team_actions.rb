@@ -42,8 +42,8 @@ module Live
           net_worth:      player_info["net_worth"],
           abilities:      player_info["abilities"],
           items:          player_info["items"],
-          x:              player_info["x"],
-          y:              player_info["y"]
+          x:              player_info["x"] * 20000,
+          y:              player_info["y"] * 20000
         )
       end
     end
