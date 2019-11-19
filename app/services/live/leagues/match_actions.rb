@@ -18,7 +18,7 @@ module Live
         end
       end
 
-      def update_match(battle, battle_info)
+      def update_match(match, battle_info)
         # 这里需要确定哪些是 LiveLeague 特有的
         scoreboard_info = battle_info["scoreboard"]
 

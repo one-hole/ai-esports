@@ -7,6 +7,7 @@ module Live
       extend BattleActions
 
       def self.start
+        @redis = Redis.new
         resp = Request.run
         begin
           battles = JSON.parse(resp.body)["result"]["games"]

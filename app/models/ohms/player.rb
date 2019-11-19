@@ -38,6 +38,7 @@ module Ohms
 
     def as_info
       {
+        slot:     slot,
         name:     name,
         hero:     hero_id,
         level:    level,
@@ -46,6 +47,11 @@ module Ohms
         assists:  assists_count,
         denies:   denies_count,
         last_hit: last_hit_count,
+        gpm:      gpm,
+        xpm:      xpm,
+ultimate_state:   ultimate_state,
+ultimate_cooldown: ultimate_cooldown,
+    respawn_timer: respawn_timer,
         gold:     gold,
         net_worth: net_worth,
         x:        x,

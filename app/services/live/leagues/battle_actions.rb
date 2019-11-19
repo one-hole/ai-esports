@@ -11,11 +11,14 @@ module Live
       include PlayerActions
 
       def process_battle(battle_info)
+
         if battle = find_battle(battle_info["match_id"])
           update_battle(battle, battle_info)
         else
           battle = create_battle(battle_info)
         end
+
+        Ohms::Publish.new(battle).pub(@redis)
       end
 
       def find_battle(steam_id)
