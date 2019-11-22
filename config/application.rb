@@ -45,6 +45,7 @@ module AiEsports
     config.autoload_paths += Dir["#{Rails.root}/app/models/series"]
     config.autoload_paths += Dir["#{Rails.root}/app/models/teams"]
     config.autoload_paths += Dir["#{Rails.root}/app/models/matches"]
+    config.autoload_paths += Dir["#{Rails.root}/app/models/battles"]
     config.autoload_paths += Dir["#{Rails.root}/app/models/dota2_live"]
     config.api_only = true
 
