@@ -1,2 +1,2 @@
-class Dota2Team < Team
+class Dota2Team < Hole::Team
 end

@@ -1,2 +1,2 @@
-class CsgoTeam < Team
+class CsgoTeam < Hole::Team
 end

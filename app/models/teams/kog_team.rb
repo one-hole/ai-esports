@@ -1,2 +1,2 @@
-class KogTeam < Team
+class KogTeam < Hole::Team
 end

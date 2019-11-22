@@ -11,6 +11,7 @@ module Live
         resp = Request.run
         begin
           battles = JSON.parse(resp.body)["result"]["games"]
+          binding.pry
           process(battles.select { |battle| valid?(battle) })
         rescue => e
           puts e
@@ -26,10 +27,10 @@ module Live
         return false if game['scoreboard'].nil?                               # => 计分板信息
         return false if game['scoreboard']['radiant'].nil?                    # => 天辉数据
         return false if game['scoreboard']['dire'].nil?                       # => 夜魇数据
-        return false if game['scoreboard']['radiant']['picks'].nil?           # => 天辉pick
-        return false if game['scoreboard']['dire']['picks'].nil?              # => 夜魇pick
-        return false if game['scoreboard']['radiant']['bans'].nil?            # => 天辉ban
-        return false if game['scoreboard']['dire']['bans'].nil?               # => 夜魇ban
+        # return false if game['scoreboard']['radiant']['picks'].nil?           # => 天辉pick
+        # return false if game['scoreboard']['dire']['picks'].nil?              # => 夜魇pick
+        # return false if game['scoreboard']['radiant']['bans'].nil?            # => 天辉ban
+        # return false if game['scoreboard']['dire']['bans'].nil?               # => 夜魇ban
         return true
       end
     end

@@ -1,2 +1,2 @@
-class LolTeam < Team
+class LolTeam < Hole::Team
 end
