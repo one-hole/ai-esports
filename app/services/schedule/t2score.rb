@@ -4,8 +4,12 @@ module Schedule
     URL = "https://www.t2score.com/api/front/schedule/schedule_three_days"
 
     def initialize
-      @resp = Request.get(URL, {})
-      filter
+      begin
+        @resp = Request.get(URL, {})
+        filter
+      rescue => exception
+        puts exception
+      end
     end
 
     def filter
