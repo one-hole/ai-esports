@@ -8,4 +8,5 @@ production:
   - live-top
   - live-league
   - live-clean
+  - fetch-info
   - mapping

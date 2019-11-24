@@ -2,13 +2,17 @@ module Api
   module V2
     class LivesController < BaseController
       def index
-        render json: {
-          abbr: "json"
-        }
+        load_battles
+        render json: @battles
       end
 
       def show
-      
+      end
+
+      private 
+
+      def load_battles
+        @battles = Hole::Battle.ongoing
       end
     end
   end

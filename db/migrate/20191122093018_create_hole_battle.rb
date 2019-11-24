@@ -7,7 +7,8 @@ class CreateHoleBattle < ActiveRecord::Migration[5.2]
       t.integer :format
       t.string  :type
       t.integer :status, default: 1
-      t.timestamp
+
+      t.timestamps
     end
   end
 end

@@ -27,10 +27,7 @@ module Schedule
       end
     end
 
-    def process_update(battle, battle_info)
-      
-      binding.pry
-      
+    def process_update(battle, battle_info)      
       battle.update(
         left_score:   battle_info["left_score"],
         right_score:  battle_info["right_score"],
@@ -66,12 +63,15 @@ module Schedule
       teams = Dota2Team.where(name: team_info["tag"]).or(Dota2Team.where(abbr: team_info["tag"]))
       return teams[0] unless teams.blank?
       
-      # 然后需要触发一个异步更新
       team = Dota2Team.create(
         'abbr':   team_info["tag"],
         'trdid':  "t2_#{team_info["_id"]}",
         'logo':   "https://cdn.wanjujianghu.xyz#{team_info["logo"]}"
       )
+
+      team.fetch_t2_async # 这里去异步更新
+
+      return team
     end
 
     def get_status

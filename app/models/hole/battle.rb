@@ -7,4 +7,5 @@ class Hole::Battle < ApplicationRecord
     ongoing:  2,
     finished: 3
   }
+
 end

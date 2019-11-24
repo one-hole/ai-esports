@@ -4,7 +4,8 @@ module Api
 
       # 赛程列表
       def index
-
+        load_battles
+        render json: @battles
       end
 
       # 查看赛程
@@ -14,6 +15,7 @@ module Api
       private
 
       def load_battles
+        @battles = Hole::Battle.all
       end
     end
   end
