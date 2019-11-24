@@ -9,4 +9,5 @@ production:
   - live-league
   - live-clean
   - fetch-info
+  - fetch-battle
   - mapping
