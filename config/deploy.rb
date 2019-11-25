@@ -6,7 +6,7 @@ require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 require_relative 'deploy/sidekiq'
 
 if ENV['on'].nil?
-  require File.expand_path('../deploy/development.rb', __FILE__)
+  require File.expand_path('../deploy/tencent.rb', __FILE__)
 else
   require File.expand_path("../deploy/#{ENV['on']}.rb", __FILE__)
 end
