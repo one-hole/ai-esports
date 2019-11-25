@@ -12,6 +12,8 @@ module Live
 
       def process_battle(battle_info)
 
+        binding.pry
+
         if battle = find_battle(battle_info["match_id"])
           update_battle(battle, battle_info)
         else

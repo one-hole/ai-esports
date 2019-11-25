@@ -1,6 +1,11 @@
+# encoding: utf-8
+
 class Hole::Battle < ApplicationRecord
+
   belongs_to :left_team,  foreign_key: "left_team_id",  class_name: "Hole::Team"
   belongs_to :right_team, foreign_key: "right_team_id", class_name: "Hole::Team"
+
+  has_many :matches
 
   enum status: {
     upcoming: 1,

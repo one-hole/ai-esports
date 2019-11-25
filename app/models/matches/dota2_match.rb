@@ -1,32 +1,20 @@
-class Dota2Match < ApplicationRecord
-  include ArcWardenDbConcern
-  self.table_name = "dota2_matches"
+# encoding: utf-8
 
-  belongs_to :match_series
-  belongs_to :left_team, foreign_key: 'left_team_id', class_name: 'Team'
-  belongs_to :right_team, foreign_key: 'right_team_id', class_name: 'Team'
+class Dota2Match < Hole::Match
 
-  def left_radiant
-    radiant_team_id == left_team.extern_id
+  def self.async_build(battle, battle_info)
+
   end
 
-  def left_mega_creaps
-    return 0 if barracks_status_radiant.nil? || barracks_status_dire.nil?
-    b_barracks_status = left_radiant ? barracks_status_radiant.to_s(2) : barracks_status_dire.to_s(2)
-    creaps = 0
-    0.upto(2).each do |i|
-      creaps += 1 if b_barracks_status[i * 2, 2] == '00' 
+  # TODO 后面需要在 Redis 里面加入标识位用来减少 IO
+  def self.build(battle, battle_info)
+    if (battle_info["match_id"] && battle_info["dire_series_wins"] && battle_info["radiant_series_wins"])
+      battle.matches.find_or_create_by(type: 'Dota2Match', official_id: battle_info["match_id"], game_no: battle_info["dire_series_wins"] + battle_info["radiant_series_wins"] + 1)
     end
-    creaps
   end
 
-  def right_mega_creaps
-    return 0 if barracks_status_radiant.nil? || barracks_status_dire.nil?
-    b_barracks_status = left_radiant ? barracks_status_dire.to_s(2) : barracks_status_radiant.to_s(2)
-    creaps = 0
-    0.upto(2).each do |i|
-      creaps += 1 if b_barracks_status[i * 2, 2] == '00'
-    end
-    creaps
+  def fetch_detail
+
   end
+
 end
