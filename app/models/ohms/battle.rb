@@ -27,6 +27,7 @@ module Ohms
     def as_info
       {
         steam_id:        steam_id,
+        db_id:           self.db_id,
         radiant_score:   self.radiant_score,
         dire_score:      self.dire_score,
         radiant_team:    self.radiant_team.as_info,
