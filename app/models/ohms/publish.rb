@@ -1,15 +1,52 @@
 module Ohms
   class Publish
     def initialize(battle)
-      @battle = battle
+      @battle, @tag = battle, false
+      @battle_ids   = [battle.radiant_team_id.to_i, battle.dire_team_id.to_i]
+      @dire_name, @radiant_name = @battle.dire_team.name, @battle.radiant_team.name
     end
 
     def pub(redis)
+      
+      if @battle.db_id
+        @flag = true
+      end
 
-      if @battle
+      live_battles unless @flag
+      upcoming_battles unless @flag
+      
+      if @flag
         redis.publish("aiesports-dota2-websocket-v2", @battle.as_info.to_json)
       end
 
+    end
+
+    # 1. 先匹配队伍的 ID
+    def live_battles
+      Dota2Battle.ongoing.each do |live_battle|
+        @ids, @names = live_battle.team_official_infos
+        
+        if @ids.to_set.intersect?(@battle_ids.to_set)
+          @flag = true
+          @battle.db_id = live_battle.id
+          @battle.save
+          return
+        end
+
+        if @names.to_set.intersect?([@dire_name.downcase, @radiant_name.downcase].to_set)
+          @flag = true
+          @battle.db_id = live_battle.id
+          @battle.save
+          return
+        end
+
+      end
+    end
+
+    def upcoming_battles
+      Dota2Battle.recents.each do |upcoming_battle|
+        
+      end
     end
   end
 end

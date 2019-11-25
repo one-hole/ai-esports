@@ -8,4 +8,13 @@ class Hole::Battle < ApplicationRecord
     finished: 3
   }
 
+  def team_official_infos
+    [
+      [left_team.official_id.to_i, right_team.official_id.to_i],
+      [left_team.name.downcase, left_team.abbr.downcase, right_team.name.downcase, right_team.abbr.downcase]
+    ]
+  end
+  
+  # 最近的比赛（1. 未开始但是开始时间在一个小时内的）
+  scope :recents, -> { self.upcoming.merge(self.where("start_at < ?", Time.now + 45.minutes)) }
 end
