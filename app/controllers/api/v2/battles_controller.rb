@@ -5,7 +5,8 @@ module Api
       # 赛程列表
       def index
         load_battles
-        render json: @battles
+        render json: 
+          @battles, each_serializer: ::V2::BattlesIndexSerializer, root: 'data', meta: meta
       end
 
       # 查看赛程
@@ -15,7 +16,15 @@ module Api
       private
 
       def load_battles
-        @battles = Hole::Battle.all
+        @battles = Hole::Battle.includes(:left_team, :right_team).order(start_at: :desc).page(current_page).per(20)
+      end
+
+      def meta
+        {
+          current_page: current_page.to_i,
+          per_page:     20,
+          total_count:  Hole::Battle.count
+        }
       end
     end
   end

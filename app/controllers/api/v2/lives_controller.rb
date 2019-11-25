@@ -3,10 +3,8 @@ module Api
     class LivesController < BaseController
       def index
         load_battles
-        render json: @battles
-      end
-
-      def show
+        render json: 
+          @battles, each_serializer: ::V2::BattlesIndexSerializer, root: 'data'
       end
 
       private 

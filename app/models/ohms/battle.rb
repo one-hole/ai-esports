@@ -15,6 +15,7 @@ module Ohms
     attribute :created_at
     attribute :updated_at
     attribute :match_id
+    attribute :db_id
 
     unique :steam_id
 
