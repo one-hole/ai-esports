@@ -17,7 +17,7 @@ module Live
         else
           battle = create_battle(battle_info)
         end
-
+        
         Ohms::Publish.new(battle).pub(@redis)
       end
 
@@ -71,6 +71,7 @@ module Live
           process_complex_player(dire_team, player_info)
         end
 
+        return battle
       end
 
       def update_battle(battle, battle_info)
