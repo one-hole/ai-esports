@@ -19,9 +19,21 @@ module Ohms
         redis.publish("aiesports-dota2-websocket-v2", @battle.as_info.to_json)
       end
 
+      if @flag
+        do_match_check
+      end
+
+    end
+
+
+    # 1. 需要检查数据库里面的比赛是否存在
+    # 2. 需要请求 MatchDetail 判定比赛是否接触（但是比赛结束这个事情不应该是又这个事情判定的 - UNIQ）
+    def do_match_check
+      Dota2Match.build(@battle)
     end
 
     # 1. 先匹配队伍的 ID
+    # 2. 然后匹配队伍的 名字
     def live_battles
       Dota2Battle.ongoing.each do |live_battle|
         @ids, @names = live_battle.team_official_infos

@@ -8,8 +8,8 @@ module Ohms
     attribute :steam_id           # 对应的就是 Steam APi 里面的 MatchID
     attribute :radiant_team_id    # 初始化的时候为 radiant (存储的是 Ohm 里面的 TeamID)
     attribute :dire_team_id       # 初始化的时候为 dire
-    attribute :radiant_score         # 大比分
-    attribute :dire_score        # 大比分
+    attribute :radiant_score      # 大比分
+    attribute :dire_score         # 大比分
     attribute :server_steam_id    # Steam 服务器的 ID
     attribute :format
     attribute :created_at
