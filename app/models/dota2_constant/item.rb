@@ -3,8 +3,8 @@ module Dota2Constant
     self.table_name = "dota2_items"
 
     before_create do
-      self.lg_avatar = "https://rw-assets.oss-cn-hangzhou.aliyuncs.com/dota2/items/#{self.en_name}_lg.png"
-      self.eg_avatar = "https://rw-assets.oss-cn-hangzhou.aliyuncs.com/dota2/items/#{self.en_name}_eg.png"
+      self.lg_avatar = "http://onehole-assets.oss-cn-hangzhou.aliyuncs.com/dota2/items/#{self.en_name}_lg.png"
+      self.eg_avatar = "http://onehole-assets.oss-cn-hangzhou.aliyuncs.com/dota2/items/#{self.en_name}_eg.png"
     end
 
     def self.load_yml
