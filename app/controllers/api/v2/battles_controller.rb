@@ -16,13 +16,13 @@ module Api
       private
 
       def load_battles
-        @battles = Hole::Battle.includes(:left_team, :right_team).order(start_at: :desc).page(current_page).per(20)
+        @battles = Hole::Battle.includes(:left_team, :right_team).order(start_at: :desc).page(current_page).per(60)
       end
 
       def meta
         {
           current_page: current_page.to_i,
-          per_page:     20,
+          per_page:     60,
           total_count:  Hole::Battle.count
         }
       end
