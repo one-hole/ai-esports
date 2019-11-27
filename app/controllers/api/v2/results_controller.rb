@@ -5,13 +5,13 @@ module Api
       def show
         load_match
         render json:
-          @match
+          @match, serializer: ::V2::ResultsIndexSerializer, root: 'data'
       end
 
 
       private
       def load_match
-        @match = Dota2Match.eager_load(:detail).find_by(battle_id: params[:battle_id], game_no: params[:game_no])
+        @match = Dota2Match.eager_load(:detail, [battle: [:left_team, :right_team]]).find_by(battle_id: params[:battle_id], game_no: params[:game_no])
       end
     end
   end
