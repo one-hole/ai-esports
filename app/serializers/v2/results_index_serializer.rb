@@ -3,19 +3,25 @@ module V2
 
     attributes :id, :game_no, :battle, :detail
 
+
+
+    class TeamSerializer < ActiveModel::Serializer
+      attributes :id, :name, :country, :logo
+    end
+
     def battle
       {
         id:           object.battle.id,
         status:       object.battle.status,
         left_score:   object.battle.left_score,
         right_score:  object.battle.right_score,
-        left_team:    object.battle.left_team,
-        right_team:   object.battle.right_team
+        left_team:    ActiveModelSerializers::SerializableResource.new(object.battle.left_team, {serializer: TeamSerializer}),
+        right_team:   ActiveModelSerializers::SerializableResource.new(object.battle.right_team, {serializer: TeamSerializer})
       }
     end
 
     def detail
-      JSON.parse(object.detail.detail) rescue {}
+      object.detail.info
     end
   end
 end

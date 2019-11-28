@@ -22,7 +22,7 @@ namespace :api do
 
   namespace :v2 do
     resources :lives,   only: [:index, :show]
-    resources :battles, only: [:index]
+    resources :battles, only: [:index, :show]
     resources :teams,   only: [:index, :show]
     resource  :result,  only: [:show]
   end

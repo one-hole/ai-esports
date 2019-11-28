@@ -11,10 +11,10 @@ class Dota2Match < Hole::Match
 
     if battle.steam_id
       self.find_or_create_by(
-          type:       'Dota2Match',
-        battle_id:    battle.db_id.to_i,
-        official_id:  battle.steam_id.to_i,
-        game_no:      (battle.radiant_score.to_i + battle.dire_score.to_i + 1)
+       type:    'Dota2Match',
+  battle_id:    battle.db_id.to_i,
+official_id:    battle.steam_id.to_i,
+    game_no:    (battle.radiant_score.to_i + battle.dire_score.to_i + 1)
       )
     end
   end
@@ -22,6 +22,10 @@ class Dota2Match < Hole::Match
   def fetch_detail
     resp = Live::MatchDetail::Request.run(self.official_id)
     body = JSON.parse(resp.body)
+
+    unless detail
+      self.ensure_detail
+    end
 
     unless body["result"].has_key?("error") # 如果有错误就什么都不管
       detail.detail = resp.body

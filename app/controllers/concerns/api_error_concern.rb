@@ -72,4 +72,10 @@ module ApiErrorConcern
       super code: 9004, text: '当前系列的比赛并非已结束', status: 400
     end
   end
+
+  class CurrentMatchNotStart < ApiError
+    def initialize
+      super code: 9005, text: '当前比赛未开始、或者未结束', status: 400
+    end
+  end
 end

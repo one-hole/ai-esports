@@ -12,6 +12,7 @@ module Api
       private
       def load_match
         @match = Dota2Match.eager_load(:detail, [battle: [:left_team, :right_team]]).find_by(battle_id: params[:battle_id], game_no: params[:game_no])
+        raise CurrentMatchNotStart unless @match
       end
     end
   end
