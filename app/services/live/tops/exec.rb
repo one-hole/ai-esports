@@ -17,7 +17,7 @@ module Live
       end
 
       def self.process(battles)
-        battles.each { |battle| process_single(battle) if valid?(battle) }
+        battles.each { |battle| process_single(battle) if valid?(battle) } if battles
       end
 
       def self.process_single(battle_info)
