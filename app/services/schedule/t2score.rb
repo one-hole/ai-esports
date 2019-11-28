@@ -13,7 +13,7 @@ module Schedule
     end
 
     def filter
-      dota2_battles = JSON.parse(@resp.body)["list"].each do |battle| 
+      dota2_battles = JSON.parse(@resp.body)["list"].each do |battle|
         process(battle) if ("dota2" == battle["game_category"])
       end
     end
@@ -31,19 +31,19 @@ module Schedule
       end
     end
 
-    def process_update(battle, battle_info)      
+    def process_update(battle, battle_info)
       battle.update(
         left_score:   battle_info["left_score"],
-        right_score:  battle_info["right_score"],
-        start_at:     battle_info["start_time"],
-        status:       get_status[battle_info["state"]]
-      )
+       right_score:   battle_info["right_score"],
+          start_at:   battle_info["start_time"],
+            status:   get_status[battle_info["state"]]
+      ) unless battle.manual
     end
 
-    def process_create(battle_info)      
+    def process_create(battle_info)
       left_team  = find_or_create_team(battle_info["left_team"])
       right_team = find_or_create_team(battle_info["right_team"])
-            
+
       Dota2Battle.create(
         manual:     false,
         left_team:  left_team,
@@ -66,7 +66,7 @@ module Schedule
 
       teams = Dota2Team.where(name: team_info["tag"]).or(Dota2Team.where(abbr: team_info["tag"]))
       return teams[0] unless teams.blank?
-      
+
       team = Dota2Team.create(
         'abbr':   team_info["tag"],
         'trdid':  "t2_#{team_info["_id"]}",

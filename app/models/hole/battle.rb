@@ -8,8 +8,9 @@ class Hole::Battle < ApplicationRecord
   has_many :matches
 
   enum status: {
+    canceled: 0,
     upcoming: 1,
-    ongoing:  2,
+     ongoing: 2,
     finished: 3
   }
 
@@ -19,7 +20,7 @@ class Hole::Battle < ApplicationRecord
       [left_team.name.downcase, left_team.abbr.downcase, right_team.name.downcase, right_team.abbr.downcase]
     ]
   end
-  
+
   # 最近的比赛（1. 未开始但是开始时间在一个小时内的）
   scope :recents, -> { self.upcoming.merge(self.where("start_at < ?", Time.now + 45.minutes)) }
   scope :with_game, -> (game = nil) { where(type: game) if game }
