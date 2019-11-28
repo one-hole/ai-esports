@@ -24,6 +24,7 @@ official_id:    battle.steam_id.to_i,
 
   # 这里如果没有抓到应该重试
   def fetch_detail
+    return unless detail.detail
     resp = Live::MatchDetail::Request.run(self.official_id)
     body = JSON.parse(resp.body)
 
