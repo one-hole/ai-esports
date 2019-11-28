@@ -7,7 +7,7 @@ module Fetch
     sidekiq_options queue: 'fetch-match-detail',
                     retry: false,
                     on_conflict: :reject,
-                    lock: :until_and_while_executing,
+                    lock: :until_executed,
                     unique_args: :unique_args
 
 
