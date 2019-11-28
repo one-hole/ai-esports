@@ -10,5 +10,5 @@ production:
   - live-clean
   - fetch-info
   - fetch-battle
-  - fetch-match-detail
+  - [fetch-match-detail, 2]
   - mapping
