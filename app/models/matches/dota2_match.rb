@@ -6,7 +6,6 @@ class Dota2Match < Hole::Match
 
   end
 
-  # TODO 后面需要在 Redis 里面加入标识位用来减少 IO
   def self.build(battle)
 
     if battle.steam_id
@@ -19,6 +18,11 @@ official_id:    battle.steam_id.to_i,
     end
   end
 
+  def async_fetch_detail
+    Fetch::Dota2MatchDetailWorker.perform_in(2.minutes, self.id)
+  end
+
+  # 这里如果没有抓到应该重试
   def fetch_detail
     resp = Live::MatchDetail::Request.run(self.official_id)
     body = JSON.parse(resp.body)
