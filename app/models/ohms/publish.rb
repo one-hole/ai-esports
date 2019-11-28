@@ -30,7 +30,7 @@ module Ohms
     # 2. 需要请求 MatchDetail 判定比赛是否接触（但是比赛结束这个事情不应该是又这个事情判定的 - UNIQ）
     def do_match_check
       match = Dota2Match.build(@battle)
-      match.async_fetch_detail
+      # match.async_fetch_detail
     end
 
     # 1. 先匹配队伍的 ID
