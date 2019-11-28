@@ -13,6 +13,7 @@ module V2
       {
         id:           object.battle.id,
         status:       object.battle.status,
+        format:       object.battle.format,
         left_score:   object.battle.left_score,
         right_score:  object.battle.right_score,
         left_team:    ActiveModelSerializers::SerializableResource.new(object.battle.left_team, {serializer: TeamSerializer}),
