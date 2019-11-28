@@ -11,6 +11,9 @@ module Api
 
       # 查看赛程
       def show
+        battle = Hole::Battle.find_by(id: params[:id])
+        render json:
+          battle, serializer: ::V2::BattlesIndexSerializer
       end
 
       private
