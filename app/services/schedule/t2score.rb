@@ -32,7 +32,12 @@ module Schedule
     end
 
     def process_update(battle, battle_info)
+      left_team  = find_or_create_team(battle_info["left_team"])
+      right_team = find_or_create_team(battle_info["right_team"])
+
       battle.update(
+         left_team:   left_team,
+        right_team:   right_team,
         left_score:   battle_info["left_score"],
        right_score:   battle_info["right_score"],
           start_at:   battle_info["start_time"],
