@@ -24,8 +24,8 @@ module Live
 
         match.update(
              updated_at:    Time.now,
-             dire_score:    [scoreboard_info["dire"]["score"],    match.dire_score].max,
-             radiant_score: [scoreboard_info["radiant"]["score"], match.radiant_score].max,
+             dire_score:    [scoreboard_info["dire"]["score"].to_i,    match.dire_score.to_i].max,
+             radiant_score: [scoreboard_info["radiant"]["score"].to_i, match.radiant_score.to_i].max,
        dire_tower_state:    scoreboard_info["dire"]["tower_state"],
     radiant_tower_state:    scoreboard_info["radiant"]["tower_state"],
     dire_barracks_state:    scoreboard_info["dire"]["barracks_state"],
