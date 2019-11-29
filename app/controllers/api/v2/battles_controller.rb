@@ -19,14 +19,18 @@ module Api
       private
 
       def load_battles
-        @battles = Hole::Battle.includes(:left_team, :right_team).order(start_at: :desc).page(current_page).per(60)
+        @battles = Hole::Battle.filters(filter_params).eager_load(:left_team, :right_team).order(start_at: :desc).page(current_page).per(60)
+      end
+
+      def filter_params
+        params.permit!.slice(:from, :to, :status, :date, :game)
       end
 
       def meta
         {
           current_page: current_page.to_i,
           per_page:     60,
-          total_count:  Hole::Battle.count
+          total_count:  Hole::Battle.filters(filter_params).count
         }
       end
     end
@@ -38,3 +42,8 @@ end
 # 3. 可以按照游戏类型查询
 # 4. 可以按照队伍的 ID 查询
 # 5. 可以更具状态查询
+#
+# from =
+# end  =
+# game =
+# status[]

@@ -2,8 +2,13 @@ module V2
   class BattlesIndexSerializer < ActiveModel::Serializer
     attributes :id, :status
     attributes :start_at
+    attributes :game
     
     attributes :left_team, :right_team
+
+    def game
+      Hole::Battle::Types.invert[object.type.constantize]
+    end
 
     def left_team
       {
