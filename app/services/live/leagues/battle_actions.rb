@@ -12,7 +12,7 @@ module Live
 
       def process_battle(battle_info)
 
-        if battle = find_battle(battle_info["match_id"])
+        if battle = find_battle(battle_info["match_id"])          
           update_battle(battle, battle_info)
         else
           battle = create_battle(battle_info)
@@ -29,9 +29,7 @@ module Live
         battle = Ohms::Battle.create(
           steam_id:         battle_info["match_id"],
           dire_score:       battle_info["dire_series_wins"],
-          radiant_score:    battle_info["radiant_series_wins"],
-          dire_team_id:     battle_info["dire_team"]["team_id"],
-          radiant_team_id:  battle_info["radiant_team"]["team_id"]
+          radiant_score:    battle_info["radiant_series_wins"]
         )
 
         Ohms::Team.clean(battle_info["radiant_team"]["team_id"], battle.id)
@@ -51,6 +49,11 @@ module Live
                name: battle_info["dire_team"]["team_name"],
                logo: battle_info["dire_team"]["team_logo"],
           battle_id: battle.id,
+        )
+
+        battle.update(
+          dire_team_id:     dire_team.id,
+          radiant_team_id:  radiant_team.id
         )
 
         battle_info["players"].select { |item| item["team"] == 0}.each do |player_info|
@@ -81,7 +84,6 @@ module Live
           dire_score:       battle_info["dire_series_wins"],
           updated_at:       Time.now
         )
-
         process_match(battle, battle_info)
 
         battle_info["scoreboard"]["radiant"]["players"].each do |player_info|
@@ -92,6 +94,7 @@ module Live
           process_complex_player(battle.dire_team, player_info)
         end
 
+        return battle
       end
 
     end

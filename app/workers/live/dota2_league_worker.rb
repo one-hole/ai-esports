@@ -15,3 +15,5 @@ module Live
     end
   end
 end
+
+# Live::Dota2LeagueWorker

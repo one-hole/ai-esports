@@ -24,6 +24,11 @@ module Ohms
     reference(:dire_team, "Ohms::Team")
     collection(:players, "Ohms::Player")
 
+
+    def team_ids
+      [radiant_team.steam_id, dire_team.steam_id]
+    end
+
     def as_info
       {
         steam_id:        steam_id,

@@ -4,7 +4,7 @@ module Live
   module Leagues
     module PlayerActions
 
-      def process_player(team, player_info)
+      def process_player(team, player_info)        
         player = Ohms::Player.load_by(team.battle_id, player_info["account_id"])
 
         unless player
@@ -17,6 +17,7 @@ module Live
       # 物品暂时也没有处理掉
       # 应该根据 Duration 来判定才是合理的（TODO）
       def process_complex_player(team, player_info)
+        
         player = Ohms::Player.load_by(team.battle_id, player_info["account_id"])
 
         if player

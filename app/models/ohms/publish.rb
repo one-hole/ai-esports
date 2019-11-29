@@ -2,7 +2,7 @@ module Ohms
   class Publish
     def initialize(battle)
       @battle, @tag = battle, false
-      @battle_ids   = [battle.radiant_team_id.to_i, battle.dire_team_id.to_i]
+      @battle_ids   = [battle.radiant_team.steam_id.to_i, battle.dire_team.steam_id.to_i]
       @dire_name, @radiant_name = @battle.dire_team.name, @battle.radiant_team.name
     end
 
