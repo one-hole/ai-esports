@@ -30,8 +30,23 @@ module Live
     radiant_tower_state:    scoreboard_info["radiant"]["tower_state"],
     dire_barracks_state:    scoreboard_info["dire"]["barracks_state"],
  radiant_barracks_state:    scoreboard_info["radiant"]["barracks_state"],
-   roshan_respawn_timer:    scoreboard_info["roshan_respawn_timer"]
+   roshan_respawn_timer:    scoreboard_info["roshan_respawn_timer"],
+             dire_picks:       get_pick_or_bans(match.dire_picks, (scoreboard_info["dire"]["picks"].map { |item| item["hero_id"] } rescue [])),
+             radiant_picks:    get_pick_or_bans(match.radiant_picks, (scoreboard_info["radiant"]["picks"].map { |item| item["hero_id"] } rescue [])),
+             dire_bans:        get_pick_or_bans(match.dire_bans, (scoreboard_info["dire"]["bans"].map { |item| item["hero_id"] } rescue [])),
+             radiant_bans:     get_pick_or_bans(match.radiant_bans, (scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] } rescue [])),
+             updated_at:    Time.now
         )
+      end
+
+      def get_pick_or_bans(origin, income)
+        if origin.blank?
+          return income
+        end
+
+        return origin
+
+        # (scoreboard_info["dire"]["picks"].map { |item| item["hero_id"] } rescue [])
       end
 
       def build_match(battle, battle_info)
