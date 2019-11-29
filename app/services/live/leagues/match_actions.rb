@@ -34,8 +34,7 @@ module Live
              dire_picks:       get_pick_or_bans(match.dire_picks, (scoreboard_info["dire"]["picks"].map { |item| item["hero_id"] } rescue [])),
              radiant_picks:    get_pick_or_bans(match.radiant_picks, (scoreboard_info["radiant"]["picks"].map { |item| item["hero_id"] } rescue [])),
              dire_bans:        get_pick_or_bans(match.dire_bans, (scoreboard_info["dire"]["bans"].map { |item| item["hero_id"] } rescue [])),
-             radiant_bans:     get_pick_or_bans(match.radiant_bans, (scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] } rescue [])),
-             updated_at:    Time.now
+             radiant_bans:     get_pick_or_bans(match.radiant_bans, (scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] } rescue []))
         )
       end
 

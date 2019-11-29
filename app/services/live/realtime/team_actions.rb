@@ -13,19 +13,18 @@ module Live
 
       def process_players(team, players)
         players.each do |player_info|
-          player = find_or_create_player(player_info["accountid"])
+          player = find_or_create_player(team.battle_id, player_info["accountid"])
           process_player(team, player, player_info)
         end
       end
 
-      def find_or_create_player(account_id)
-        player = Ohms::Player.with(:account_id, account_id)
+      def find_or_create_player(battle_id, account_id)
+        player = Ohms::Player.load_by(battle_id, account_id)
         return player if player
-        return Ohms::Player.create(account_id: account_id) unless player
+        return Ohms::Player.create(account_id: account_id, battle_id: battle_id) unless player
       end
 
       # 这里还真的不一定需要判定大小
-      # TODO 这里的 Update 还是需要判定大小
       def process_player(team, player, player_info)
         player.update(
           team_id:        team.id,

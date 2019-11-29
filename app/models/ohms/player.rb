@@ -29,12 +29,15 @@ module Ohms
     attribute :x
     attribute :y
 
-    unique :account_id
+    index :account_id
     index :battle_id
 
     reference(:battle, "Ohms::Battle")
     reference(:team, "Ohms::Team")
 
+    def self.load_by(battle_id, account_id)
+      Ohms::Player.find(:battle_id  => battle_id, :account_id => account_id).first
+    end
 
     def as_info
       {

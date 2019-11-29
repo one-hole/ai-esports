@@ -5,10 +5,10 @@ class Hole::Battle < ApplicationRecord
   include FilterConcern
 
   Types = {
-    1 => Dota2Battle,
-    2 => CsgoBattle,
-    3 => LolBattle,
-    4 => KogBattle
+    1 => 'Dota2Battle',
+    2 => 'CsgoBattle',
+    3 => 'LolBattle',
+    4 => 'KogBattle'
   }
 
   belongs_to :left_team,  foreign_key: "left_team_id",  class_name: "Hole::Team"

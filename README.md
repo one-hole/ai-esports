@@ -1,9 +1,4 @@
-* 客户端若是服务端请求我们 - 需要在 HTTP 请求头里面设置 KeepAlive 字段
+TODO:
 
-  ```ruby
-  {
-    Connection: keep-alive,
-    Authorization: your-api-key,
-    Api-Version: 1
-  }
-  ```
+1. Duration
+2. Player Not Uniq By AccountID

@@ -1,3 +1,5 @@
+# TOP 里面有哪些信息可以统计一下
+
 module Live
   module Tops
     module PlayerActions
@@ -7,17 +9,11 @@ module Live
       end
 
       def process_player(battle_id, player_info)
-        if player = find_player(player_info["account_id"])
+        if player = Ohms::Player.load_by(battle_id, player_info["account_id"])
           update_player(player, player_info)
         else
           create_player(battle_id, player_info)
         end
-      end
-
-      private
-
-      def find_player(account_id)
-        Ohms::Player.with(:account_id, account_id)
       end
 
       def create_player(battle_id, player_info)
