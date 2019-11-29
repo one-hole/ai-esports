@@ -28,6 +28,7 @@ module Live
           created_at:    Time.now,
           updated_at:    Time.at(battle_info["last_update_time"]),
           building_state: battle_info["building_state"],
+          duration_by:   'top'
         )
       end
 
@@ -40,6 +41,7 @@ module Live
           dire_score:       battle_info["dire_score"],
           radiant_score:    battle_info["radiant_score"],
           radiant_lead:     battle_info["radiant_lead"],
+          duration_by:      'top'
         )
 
       end

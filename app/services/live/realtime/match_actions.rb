@@ -13,11 +13,11 @@ module Live
 
         match.update(
           radiant_score: get_radiant_score(match),
-          radiant_picks: get_radiant_picks,
-          radiant_bans:  get_radiant_bans,
+          radiant_picks: get_radiant_picks(match),
+          radiant_bans:  get_radiant_bans(match),
           dire_score:    get_dire_score(match),
-          dire_picks:    get_dire_picks,
-          dire_bans:     get_dire_bans,
+          dire_picks:    get_dire_picks(match),
+          dire_bans:     get_dire_bans(match),
           duration:      get_duration(match),
           radiant_net_worth: get_radiant_net_worth,
           dire_net_worth:    get_dire_net_worth
@@ -26,6 +26,10 @@ module Live
         process_team(@radiant_team_infos, match.battle_id)
         process_team(@dire_team_infos,    match.battle_id)
 
+      end
+
+      def can_update?(match)
+        @can_update ||= @battle_info["match"]["game_time"] > match.duration.to_i
       end
 
       def get_radiant_net_worth
@@ -37,46 +41,66 @@ module Live
       end
 
       def get_radiant_score(match)
-        [match.radiant_score.to_i, @radiant_team_infos["score"]].max
+        if can_update?(match)
+          [match.radiant_score.to_i, @radiant_team_infos["score"]].max
+        else
+          match.radiant_score
+        end
       end
 
       def get_dire_score(match)
-        [match.dire_score.to_i, @dire_team_infos["score"]].max
+        if can_update?(match)
+          [match.dire_score.to_i, @dire_team_infos["score"]].max
+        else
+          match.dire_score
+        end
       end
 
       def get_duration(match)
-        [@battle_info["match"]["game_time"], match.duration.to_i].max
+        if can_update?(match)
+          @battle_info["match"]["game_time"]
+        else
+          match.duration
+        end
       end
 
-      def get_radiant_picks
+      def get_radiant_picks(match)
         begin
           @battle_info["match"]["picks"].select { |item| item["team"] == 2 }.map { |item| item["hero"] }
         rescue => e
+          puts "Real Time get_radiant_picks"
           puts e
+          return match.radiant_picks
         end
       end
 
-      def get_radiant_bans
+      def get_radiant_bans(match)
         begin
           @battle_info["match"]["bans"].select { |item| item["team"] == 3 }.map { |item| item["hero"] }
         rescue => e
+          puts "Real Time get_radiant_bans"
           puts e
+          return match.radiant_bans
         end
       end
 
-      def get_dire_picks
+      def get_dire_picks(match)
         begin
           @battle_info["match"]["picks"].select { |item| item["team"] == 3 }.map { |item| item["hero"] }
         rescue => e
+          puts "Real Time get_dire_picks"
           puts e
+          return match.dire_picks
         end
       end
 
-      def get_dire_bans
+      def get_dire_bans(match)
         begin
           @battle_info["match"]["bans"].select { |item| item["team"] == 3 }.map { |item| item["hero"] }
         rescue => e
+          puts "Real Time get_dire_bans"
           puts e
+          return match.dire_bans
         end
       end
 

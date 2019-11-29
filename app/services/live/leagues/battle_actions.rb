@@ -12,7 +12,7 @@ module Live
 
       def process_battle(battle_info)
 
-        if battle = find_battle(battle_info["match_id"])          
+        if battle = find_battle(battle_info["match_id"])
           update_battle(battle, battle_info)
         else
           battle = create_battle(battle_info)

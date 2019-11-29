@@ -10,7 +10,7 @@ module Ohms
     attribute :radiant_tower_state        # Radiant 的塔状态
     attribute :dire_barracks_state
     attribute :radiant_barracks_state
-    attribute :duration
+    
     attribute :radiant_lead               # Radiant 领先的经济
     attribute :building_state             # 所有的建筑物的状态
 
@@ -24,12 +24,14 @@ module Ohms
     attribute :radiant_net_worth
     attribute :dire_net_worth
 
-    attribute :game_no  # 当前进行的是第几场
+    attribute :duration
+    attribute :duration_by                # 谁更新的这个 Duration（ top / league / real ）
 
+    attribute :game_no                    # 当前进行的是第几场
     attribute :created_at
     attribute :updated_at
 
-    unique :battle_id
+    unique :battle_id                     # (一个 Battle 唯一对应 Match)
     reference(:battle, "Ohms::Battle")
 
     def as_info
