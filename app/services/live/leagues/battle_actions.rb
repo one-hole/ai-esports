@@ -26,9 +26,6 @@ module Live
       end
 
       def create_battle(battle_info)
-        Ohms::Team.clean(battle_info["radiant_team"]["team_id"])
-        Ohms::Team.clean(battle_info["dire_team"]["team_id"])
-
         battle = Ohms::Battle.create(
           steam_id:         battle_info["match_id"],
           dire_score:       battle_info["dire_series_wins"],
@@ -37,8 +34,11 @@ module Live
           radiant_team_id:  battle_info["radiant_team"]["team_id"]
         )
 
+        Ohms::Team.clean(battle_info["radiant_team"]["team_id"], battle.id)
+        Ohms::Team.clean(battle_info["dire_team"]["team_id"],    battle.id)
+
         radiant_team = Ohms::Team.create(
-                 id: battle_info["radiant_team"]["team_id"],
+                #  id: battle_info["radiant_team"]["team_id"],
            steam_id: battle_info["radiant_team"]["team_id"],
                name: battle_info["radiant_team"]["team_name"],
                logo: battle_info["radiant_team"]["team_logo"],
@@ -46,7 +46,7 @@ module Live
         )
 
         dire_team = Ohms::Team.create(
-                 id: battle_info["dire_team"]["team_id"],
+                #  id: battle_info["dire_team"]["team_id"],
            steam_id: battle_info["dire_team"]["team_id"],
                name: battle_info["dire_team"]["team_name"],
                logo: battle_info["dire_team"]["team_logo"],

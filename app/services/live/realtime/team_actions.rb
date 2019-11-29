@@ -2,8 +2,12 @@ module Live
   module Realtime
     module TeamActions
 
-      def process_team(team_info)
-        team = Ohms::Team[team_info["team_id"]]
+      def process_team(team_info, battle_id)
+        # team = Ohms::Team[team_info["team_id"]]
+        unless battle_id
+          puts "BattleID Nil"
+        end
+        team = Ohms::Team.load_by(team_info["team_id"], battle_id)
         team.update(
           logo: team_info["team_logo_url"]
         )

@@ -14,3 +14,4 @@ module Live
   end
 end
 
+# Live::Dota2TopWorker.perform_async

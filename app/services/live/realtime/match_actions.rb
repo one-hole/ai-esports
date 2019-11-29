@@ -23,8 +23,8 @@ module Live
           dire_net_worth:    get_dire_net_worth
         )
 
-        process_team(@radiant_team_infos)
-        process_team(@dire_team_infos)
+        process_team(@radiant_team_infos, match.battle_id)
+        process_team(@dire_team_infos,    match.battle_id)
 
       end
 
