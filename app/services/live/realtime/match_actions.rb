@@ -7,7 +7,7 @@ module Live
       include TeamActions
 
       def process_match(match)
-
+        
         @radiant_team_infos = @battle_info["teams"].select { |team| team["team_number"] == 2 }[0]
         @dire_team_infos    = @battle_info["teams"].select { |team| team["team_number"] == 3 }[0]
 
@@ -28,6 +28,7 @@ module Live
 
       end
 
+      # 存在一种情况 。就是 BP 的时候持续进行
       def can_update?(match)
         @can_update ||= @battle_info["match"]["game_time"] > match.duration.to_i
       end

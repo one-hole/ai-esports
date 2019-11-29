@@ -29,20 +29,20 @@ module Live
       end
 
       # 这里还真的不一定需要判定大小
-      def process_player(team, player, player_info)
+      def process_player(team, player, player_info)        
         player.update(
           team_id:        team.id,
           battle_id:      team.battle_id,
           name:           player_info["name"],
           hero_id:        player_info["heroid"],
-          level:          player_info["level"],
-          kill_count:     player_info["kill_count"],
-          death_count:    player_info["death_count"],
-          assists_count:  player_info["assists_count"],
-          denies_count:   player_info["denies_count"],
-          last_hit_count: player_info["lh_count"],
+          level:          [player_info["level"],         player.level.to_i].max,
+          kill_count:     [player_info["kill_count"],    player.kill_count.to_i].max,
+          death_count:    [player_info["death_count"],   player.death_count.to_i].max,
+          assists_count:  [player_info["assists_count"], player.assists_count.to_i].max,
+          denies_count:   [player_info["denies_count"],  player.denies_count.to_i].max,
+          last_hit_count: [player_info["lh_count"],      player.last_hit_count.to_i].max,
           gold:           player_info["gold"],
-          net_worth:      player_info["net_worth"],
+          net_worth:      [player_info["net_worth"],     player.net_worth.to_i].max,
           abilities:      player_info["abilities"],
           items:          player_info["items"],
           x:              player_info["x"] * 20000,
