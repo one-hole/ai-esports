@@ -29,7 +29,7 @@ module Live
       end
 
       # 这里还真的不一定需要判定大小
-      def process_player(team, player, player_info)        
+      def process_player(team, player, player_info)
         player.update(
           team_id:        team.id,
           battle_id:      team.battle_id,

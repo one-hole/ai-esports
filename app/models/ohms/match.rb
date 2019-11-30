@@ -25,7 +25,6 @@ module Ohms
     attribute :dire_net_worth
 
     attribute :duration
-    attribute :duration_by                # 谁更新的这个 Duration（ top / league / real ）
 
     attribute :game_no                    # 当前进行的是第几场
     attribute :created_at
@@ -33,6 +32,13 @@ module Ohms
 
     unique :battle_id                     # (一个 Battle 唯一对应 Match)
     reference(:battle, "Ohms::Battle")
+
+    def bp_over?
+      if (eval(radiant_picks).length == 5 && eval(dire_picks).length == 5 && eval(radiant_bans).length == 6 && eval(dire_bans).length == 6)
+        return true
+      end
+      false
+    end
 
     def as_info
       {

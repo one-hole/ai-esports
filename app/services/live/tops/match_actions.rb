@@ -20,30 +20,45 @@ module Live
 
       def create_match(battle_id, battle_info)
         Ohms::Match.create(
-          battle_id:     battle_id,
-          duration:      battle_info["game_time"],
-          dire_score:    battle_info["dire_score"],
-          radiant_score: battle_info["radiant_score"],
-          radiant_lead:  battle_info["radiant_lead"],
-          created_at:    Time.now,
-          updated_at:    Time.at(battle_info["last_update_time"]),
+          battle_id:      battle_id,
+          duration:       battle_info["game_time"],
+          dire_score:     battle_info["dire_score"],
+          radiant_score:  battle_info["radiant_score"],
+          radiant_lead:   battle_info["radiant_lead"],
+          created_at:     Time.now,
+          updated_at:     Time.at(battle_info["last_update_time"]),
           building_state: battle_info["building_state"],
-          duration_by:   'top'
+          radiant_picks:  [],
+          radiant_bans:   [],
+          dire_picks:     [],
+          dire_bans:      []
         )
       end
 
+      # 这里的 UPDATE 需要有几个条件
+      # 1. BP 数据都必须全
       def update_match(match, battle_info)
 
         match.update(
           updated_at:       Time.at(battle_info["last_update_time"]),
           building_state:   battle_info["building_state"],
-          duration:         battle_info["game_time"],
+          duration:         get_duration(match, battle_info),
           dire_score:       battle_info["dire_score"],
           radiant_score:    battle_info["radiant_score"],
-          radiant_lead:     battle_info["radiant_lead"],
-          duration_by:      'top'
+          radiant_lead:     battle_info["radiant_lead"]
         )
+      end
 
+      def get_duration(match, battle_info)        
+        if can_update?(match)
+          return battle_info["game_time"]
+        end
+        return 0
+      end
+
+
+      def can_update?(match)
+        return match.bp_over?
       end
 
     end

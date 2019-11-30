@@ -6,16 +6,23 @@ class Dota2Match < Hole::Match
 
   end
 
-  def self.build(battle)
+  def self.log_battle(battle)
+    
+  end
 
-    if battle.steam_id
-      self.find_or_create_by(
-       type:    'Dota2Match',
-  battle_id:    battle.db_id.to_i,
-official_id:    battle.steam_id.to_i,
-    game_no:    (battle.radiant_score.to_i + battle.dire_score.to_i + 1)
-      )
+  def self.build(battle)
+    begin
+      if battle.steam_id
+        self.find_or_create_by(
+          battle_id: battle.db_id.to_i,
+          game_no:   (battle.radiant_score.to_i + battle.dire_score.to_i + 1)
+        )
+        self.update(official_id: battle.steam_id)
+      end
+    rescue => exception
+      log_battle(battle)
     end
+
   end
 
   def async_fetch_detail
