@@ -3,21 +3,24 @@
 class Dota2Match < Hole::Match
 
   def self.async_build(battle)
-
   end
 
-  def self.log_battle(battle)
-    
-  end
 
   def self.build(battle)
+
+    # 1. 如果存在 steam_id 的 match 那么直接 Pass
+    return if Dota2Match.find_by(official_id: battle.steam_id)
+
+    # 2. 需要先找到 对应的 battle
+    @battle = Dota2Battle.find_by(id: battle.db_id)
+
     begin
       if battle.steam_id
         self.find_or_create_by(
-          battle_id: battle.db_id.to_i,
-          game_no:   (battle.radiant_score.to_i + battle.dire_score.to_i + 1)
+          battle:       @battle,
+          official_id:  battle.steam_id,
+          game_no:      (@battle.left_score + @battle.right_score + 1)
         )
-        self.update(official_id: battle.steam_id)
       end
     rescue => exception
       log_battle(battle)
