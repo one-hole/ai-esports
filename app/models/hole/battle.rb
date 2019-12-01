@@ -31,6 +31,10 @@ class Hole::Battle < ApplicationRecord
     ]
   end
 
+  def current_game_no
+    left_score + right_score + 1
+  end
+
   # 最近的比赛（1. 未开始但是开始时间在一个小时内的）
   scope :recents,     -> { self.upcoming.merge(self.where("start_at < ?", Time.now + 45.minutes)) }
   scope :with_game,   -> (game = nil) { where(type: Types[game.to_i]) if game }

@@ -18,6 +18,7 @@ module Ohms
     attribute :db_id
 
     unique :steam_id
+    index :db_id
 
     reference(:match, "Ohms::Match")
     reference(:radiant_team, "Ohms::Team")

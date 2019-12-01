@@ -7,7 +7,7 @@ module V2
     attributes :left_team, :right_team
 
     def game
-      Hole::Battle::Types.invert[object.type.constantize]
+      Hole::Battle::Types.invert[object.type]
     end
 
     def left_team

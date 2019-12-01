@@ -41,7 +41,6 @@ module Live
       end
 
       # UpdateBattle 这里主要只能是
-      # 如果 Battle 是 Leagues 先创建的, 这里 Update 就需要重新写了 TODO
       # Update Match
       # Update Player
 
