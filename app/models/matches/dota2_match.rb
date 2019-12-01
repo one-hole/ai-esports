@@ -6,6 +6,7 @@ class Dota2Match < Hole::Match
   end
 
 
+  # 这里的 Battle 是 Ohms 的 Battle
   def self.build(battle)
 
     # 1. 如果存在 steam_id 的 match 那么直接 Pass
@@ -23,7 +24,7 @@ class Dota2Match < Hole::Match
         )
       end
     rescue => exception
-      log_battle(battle)
+      STDOUT.print exception
     end
 
   end

@@ -7,7 +7,7 @@ module Live
       include TeamActions
 
       def process_match(match)
-        
+
         @radiant_team_infos = @battle_info["teams"].select { |team| team["team_number"] == 2 }[0]
         @dire_team_infos    = @battle_info["teams"].select { |team| team["team_number"] == 3 }[0]
 
@@ -58,7 +58,7 @@ module Live
       end
 
       def get_duration(match)
-        if can_update?(match)
+        if (can_update?(match) && match.bp_over?)
           @battle_info["match"]["game_time"]
         else
           match.duration

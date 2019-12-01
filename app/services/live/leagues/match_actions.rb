@@ -24,6 +24,7 @@ module Live
 
         match.update(
              updated_at:    Time.now,
+               duration:    get_duration,
              dire_score:    [scoreboard_info["dire"]["score"].to_i,    match.dire_score.to_i].max,
              radiant_score: [scoreboard_info["radiant"]["score"].to_i, match.radiant_score.to_i].max,
        dire_tower_state:    scoreboard_info["dire"]["tower_state"],
@@ -36,6 +37,20 @@ module Live
              dire_bans:        get_pick_or_bans(match.dire_bans, (scoreboard_info["dire"]["bans"].map { |item| item["hero_id"] } rescue [])),
              radiant_bans:     get_pick_or_bans(match.radiant_bans, (scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] } rescue []))
         )
+      end
+
+      # match 表示现存的 ohms 的 match
+      # duration 表示传入进来的 duration
+      def can_update?(match, duration)
+        return true if (duration >= match.duration.to_i)
+      end
+
+      def get_duration(match, duration)
+        if can_update?(match, duration)
+          return duration
+        else
+          return match.duration.to_i
+        end
       end
 
       def get_pick_or_bans(origin, income)
