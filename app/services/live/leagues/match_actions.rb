@@ -24,7 +24,7 @@ module Live
 
         match.update(
              updated_at:    Time.now,
-               duration:    get_duration,
+               duration:    get_duration(match, scoreboard_info["duration"].to_i),
              dire_score:    [scoreboard_info["dire"]["score"].to_i,    match.dire_score.to_i].max,
              radiant_score: [scoreboard_info["radiant"]["score"].to_i, match.radiant_score.to_i].max,
        dire_tower_state:    scoreboard_info["dire"]["tower_state"],
