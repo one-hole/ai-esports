@@ -16,6 +16,8 @@ module Live
         else
           match = build_match(battle, battle_info)
         end
+        
+        return match
       end
 
       def update_match(match, battle_info)
@@ -38,7 +40,6 @@ module Live
              radiant_bans:     get_pick_or_bans(match.radiant_bans, (scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] } rescue []))
         )
 
-        match.add_diff
         return match
       end
 
@@ -88,8 +89,6 @@ radiant_barracks_state:  scoreboard_info["radiant"]["barracks_state"],
           created_at:    Time.now,
           updated_at:    Time.now
         )
-
-        match.add_diff
 
         battle.match_id = match.id
         battle.save

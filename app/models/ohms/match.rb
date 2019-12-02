@@ -35,8 +35,12 @@ module Ohms
 
     list(:diffs, "Ohms::Diff")
 
-    def add_diff
+    def add_diff_v2(diff)
+      diffs.push(diff)
+    end
 
+    def add_diff
+      
       if radiant_team && dire_team
         if self.duration.to_i > self.last_duration
           exp_diff  = radiant_exps - dire_exps

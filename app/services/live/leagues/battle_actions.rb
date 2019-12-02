@@ -74,6 +74,17 @@ module Live
           process_complex_player(dire_team, player_info)
         end
 
+
+        duration = battle_info["scoreboard"]["duration"]
+
+        diff = Ohms::Diff.create(
+          match_id:   match.id,
+          duration:   duration,
+          gold_lead:  (radiant_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60) - (dire_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60),
+          exp_lead:   (radiant_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60) - (dire_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60)
+        )
+        match.add_diff_v2(diff)
+
         return battle
       end
 
@@ -84,7 +95,7 @@ module Live
           dire_score:       battle_info["dire_series_wins"],
           updated_at:       Time.now
         )
-        process_match(battle, battle_info)
+        match = process_match(battle, battle_info)
 
         battle_info["scoreboard"]["radiant"]["players"].each do |player_info|
           process_complex_player(battle.radiant_team, player_info)
@@ -93,6 +104,16 @@ module Live
         battle_info["scoreboard"]["dire"]["players"].each do |player_info|
           process_complex_player(battle.dire_team, player_info)
         end
+
+        duration = battle_info["scoreboard"]["duration"]
+
+        diff = Ohms::Diff.create(
+          match_id:   match.id,
+          duration:   duration,
+          gold_lead:  (battle.radiant_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60) - (battle.dire_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60),
+          exp_lead:   (battle.radiant_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60) - (battle.dire_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60)
+        )
+        match.add_diff_v2(diff)
 
         return battle
       end
