@@ -11,7 +11,7 @@ module Live
 
         @redis = Redis.new
         resp = Request.run
-        battles = JSON.parse(resp.body)["game_list"]
+        battles = JSON.parse(resp.body, allow_nan: true)["game_list"]
         process(battles)
         return nil
       end

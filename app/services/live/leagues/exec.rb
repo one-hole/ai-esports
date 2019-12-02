@@ -10,7 +10,8 @@ module Live
         @redis = Redis.new
         resp = Request.run
         begin
-          battles = JSON.parse(resp.body)["result"]["games"]
+          battles = JSON.parse(resp.body, allow_nan: true)["result"]["games"]
+          # battles = ActiveSupport::JSON.decode(resp.body)["result"]["games"]
           process(battles.select { |battle| valid?(battle) })
         rescue => e
           puts e

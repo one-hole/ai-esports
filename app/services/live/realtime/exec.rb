@@ -9,7 +9,7 @@ module Live
       def self.start(server_steam_id)
         resp = Live::Realtime::Request.run(server_steam_id)
         begin
-          @battle_info = JSON.parse(resp.body)
+          @battle_info = JSON.parse(resp.body, allow_nan: true)
           process
         rescue => e
           puts e
