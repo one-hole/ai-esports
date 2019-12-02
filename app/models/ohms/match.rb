@@ -33,6 +33,48 @@ module Ohms
     unique :battle_id                     # (一个 Battle 唯一对应 Match)
     reference(:battle, "Ohms::Battle")
 
+    list(:diffs, "Ohms::Diff")
+
+    def add_diff
+
+      if radiant_team && dire_team
+        if self.duration.to_i > self.last_duration
+          exp_diff  = radiant_exps - dire_exps
+          
+          diffs.push(Ohms::Diff.create(
+            match_id:   self.id,
+            duration:   self.duration,
+            gold_lead:  self.gold_diff,
+            exp_lead:   exp_diff
+          ))
+        end
+      end
+    end
+
+    def gold_diff
+      if self.radiant_net_worth && self.dire_net_worth
+        radiant_net_worth.to_f - dire_net_worth.to_f
+      else
+        (radiant_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60) - (dire_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60)
+      end
+    end
+
+    def radiant_exps
+      radiant_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60
+    end
+
+    def dire_exps
+      dire_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60
+    end
+
+    def last_duration
+      if self.diffs.count > 0
+        diffs.last.duration.to_i
+      else
+        return 0
+      end
+    end
+
     def bp_over?
       if (eval(radiant_picks).length == 5 && eval(dire_picks).length == 5 && eval(radiant_bans).length == 6 && eval(dire_bans).length == 6)
         return true
@@ -57,9 +99,22 @@ module Ohms
         radiant_net_worth:      self.radiant_net_worth,
         dire_net_worth:         self.dire_net_worth,
         roshan_respawn_timer:   self.roshan_respawn_timer,
+        diffs:                  diff_infos
         # radiant_team:           self.radiant_team.as_info,
         # dire_team:              self.dire_team.as_info
       }
+    end
+    
+    def diff_infos
+      ary = []
+      diffs.each do |diff|
+        ary << {
+          duration:   diff.duration,
+          gold_lead:  diff.gold_lead,
+          exp_lead:   diff.exp_lead
+        }
+      end
+      ary
     end
 
     def radiant_team

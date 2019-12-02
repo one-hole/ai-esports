@@ -19,7 +19,7 @@ module Live
       end
 
       def create_match(battle_id, battle_info)
-        Ohms::Match.create(
+        match = Ohms::Match.create(
           battle_id:      battle_id,
           duration:       battle_info["game_time"],
           dire_score:     battle_info["dire_score"],
@@ -33,6 +33,9 @@ module Live
           dire_picks:     [],
           dire_bans:      []
         )
+
+        match.add_diff
+        return match
       end
 
       # 这里的 UPDATE 需要有几个条件
@@ -47,6 +50,9 @@ module Live
           radiant_score:    battle_info["radiant_score"],
           radiant_lead:     battle_info["radiant_lead"]
         )
+
+        match.add_diff
+        return match
       end
 
       def get_duration(match, battle_info)        

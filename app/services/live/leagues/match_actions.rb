@@ -37,6 +37,9 @@ module Live
              dire_bans:        get_pick_or_bans(match.dire_bans, (scoreboard_info["dire"]["bans"].map { |item| item["hero_id"] } rescue [])),
              radiant_bans:     get_pick_or_bans(match.radiant_bans, (scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] } rescue []))
         )
+
+        match.add_diff
+        return match
       end
 
       # match 表示现存的 ohms 的 match
@@ -86,8 +89,11 @@ radiant_barracks_state:  scoreboard_info["radiant"]["barracks_state"],
           updated_at:    Time.now
         )
 
+        match.add_diff
+
         battle.match_id = match.id
         battle.save
+
         return match
       end
 
