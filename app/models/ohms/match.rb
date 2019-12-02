@@ -52,6 +52,10 @@ module Ohms
     end
 
     def gold_diff
+      if self.radiant_lead
+        return radiant_lead
+      end
+      
       if self.radiant_net_worth && self.dire_net_worth
         radiant_net_worth.to_f - dire_net_worth.to_f
       else
