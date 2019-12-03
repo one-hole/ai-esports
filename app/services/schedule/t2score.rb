@@ -1,7 +1,7 @@
 module Schedule
   class T2score
 
-    URL = "https://47.107.17.205/api/front/schedule/schedule_three_days"
+    URL = "https://api.tuotugame.com/api/front/schedule/schedule_three_days?"
 
     def initialize
       begin
