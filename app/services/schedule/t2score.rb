@@ -45,23 +45,42 @@ module Schedule
           start_at:   battle_info["start_time"],
             status:   get_status[battle_info["state"]]
       ) unless battle.manual
+
+      process_ongoing(battle, battle_info) if (2 == get_status[battle_info["state"]].to_i)
+      # process_finish(battle, battle_info) if (3 == get_status[battle_info["state"]].to_i)
     end
+
 
     def process_create(battle_info)
       left_team  = find_or_create_team(battle_info["left_team"])
       right_team = find_or_create_team(battle_info["right_team"])
 
-      Dota2Battle.create(
-        manual:     false,
-        left_team:  left_team,
-        right_team: right_team,
-        format:     battle_info["bo"],
-        left_score: battle_info["left_score"],
+      battle = Dota2Battle.create(
+        manual:      false,
+        left_team:   left_team,
+        right_team:  right_team,
+        format:      battle_info["bo"],
+        left_score:  battle_info["left_score"],
         right_score: battle_info["right_score"],
         start_at:    battle_info["start_time"],
         status:      get_status[battle_info["state"]],
         trdid:       "t2_#{battle_info["_id"]}"
       )
+
+      process_ongoing(battle, battle_info) if (2 == get_status[battle_info["state"]].to_i)
+      # process_finish(battle, battle_info) if (3 == get_status[battle_info["state"]].to_i)
+    end
+
+    # 这边应该只用找、找不到就放弃处理
+    def process_ongoing(battle, battle_info)
+      match = battle.matches.find_by(game_no: battle.current_game_no)
+
+      if match
+        binding.pry
+      end
+    end
+
+    def process_finish(battle, battle_info)
     end
 
     # 1. 先用 ID 查找
