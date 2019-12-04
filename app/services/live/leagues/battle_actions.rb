@@ -80,8 +80,8 @@ module Live
         diff = Ohms::Diff.create(
           match_id:   match.id,
           duration:   duration,
-          gold_lead:  (radiant_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60) - (dire_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60),
-          exp_lead:   (radiant_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60) - (dire_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60)
+          gold_lead:  (radiant_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60) - (dire_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60).to_i,
+          exp_lead:   (radiant_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60) - (dire_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60).to_i
         )
         match.add_diff_v2(diff)
 
@@ -110,8 +110,8 @@ module Live
         diff = Ohms::Diff.create(
           match_id:   match.id,
           duration:   duration,
-          gold_lead:  (battle.radiant_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60) - (battle.dire_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60),
-          exp_lead:   (battle.radiant_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60) - (battle.dire_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60)
+          gold_lead:  (battle.radiant_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60) - (battle.dire_team.players.map { |player| player.gpm.to_f }.sum * duration.to_i / 60).to_i,
+          exp_lead:   (battle.radiant_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60) - (battle.dire_team.players.map { |player| player.xpm.to_f }.sum * duration.to_i / 60).to_i
         )
         match.add_diff_v2(diff)
 
