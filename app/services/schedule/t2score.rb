@@ -6,6 +6,8 @@ module Schedule
     def initialize
       begin
         @resp = Request.get(URL, {})
+        @dota2_battles = JSON.parse(@resp.body)["list"].select { |item| "dota2" == item["game_category"] }
+        @dota2_ids = @dota2_battles.map {|battle| battle["_id"] }
         filter
       rescue => exception
         puts exception
@@ -13,9 +15,8 @@ module Schedule
     end
 
     def filter
-      dota2_battles = JSON.parse(@resp.body)["list"].each do |battle|
-        process(battle) if ("dota2" == battle["game_category"])
-      end
+      @dota2_battles.each { |battle| process(battle) }
+      process_dota2_db_ongoing
     end
 
     # 1. 判断有没有 T2Score 之前创建的比赛
@@ -72,12 +73,39 @@ module Schedule
     end
 
     # 这边应该只用找、找不到就放弃处理
+    # 1. 获取 Match 信息
     def process_ongoing(battle, battle_info)
+
       match = battle.matches.find_by(game_no: battle.current_game_no)
 
       if match
-        binding.pry
+        do_match(match, battle_info)
       end
+    end
+
+
+    def process_dota2_db_ongoing
+      @db_ongoing = Dota2Battle.ongoing
+      @db_ongoing.each do |dota|
+        if find_battle_in_resp(dota)
+          puts "ininininiininininiininininiininininiinininini"
+          binding.pry
+        end
+      end
+    end
+
+
+    def do_battle
+    end
+
+    def do_match(match, battle_info)
+    end
+
+    # battle 是数据库里面查找的 进行中 的比赛
+    # 这里应该返回 True 或者 False
+    def find_battle_in_resp(battle)
+      binding.pry
+      @dota2_ids.include?(battle.trdid)
     end
 
     def process_finish(battle, battle_info)
