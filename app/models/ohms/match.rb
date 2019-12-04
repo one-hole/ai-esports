@@ -55,9 +55,9 @@ module Ohms
           
           diffs.push(Ohms::Diff.create(
             match_id:   self.id,
-            duration:   self.duration,
-            gold_lead:  self.gold_diff,
-            exp_lead:   exp_diff
+            duration:   self.duration.to_i,
+            gold_lead:  self.gold_diff.to_i,
+            exp_lead:   exp_diff.to_i
           ))
         end
       end
