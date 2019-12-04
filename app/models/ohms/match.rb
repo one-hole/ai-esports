@@ -36,7 +36,7 @@ module Ohms
     list(:diffs, "Ohms::Diff")
 
     def add_diff_v2(diff)
-      if diff.duration.to_i > last_duration.to_i
+      if diff.duration.to_i == last_duration.to_i
         diffs.push(diff)
       end
     end
