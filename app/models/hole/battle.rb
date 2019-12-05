@@ -4,6 +4,8 @@ class Hole::Battle < ApplicationRecord
 
   include FilterConcern
 
+  default_scope { where(hidden: false) }
+
   Types = {
     1 => 'Dota2Battle',
     2 => 'CsgoBattle',

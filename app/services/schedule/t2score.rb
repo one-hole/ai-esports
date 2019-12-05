@@ -7,7 +7,7 @@ module Schedule
       begin
         @resp = Request.get(URL, {})
         @dota2_battles = JSON.parse(@resp.body)["list"].select { |item| "dota2" == item["game_category"] }
-        @dota2_ids = @dota2_battles.map {|battle| battle["_id"] }
+        @dota2_ids = @dota2_battles.map {|battle| "t2_#{battle["_id"]}" }
         filter
       rescue => exception
         puts exception
@@ -83,20 +83,11 @@ module Schedule
       end
     end
 
-
+    # 处理数据库里面进行中的 Battle
     def process_dota2_db_ongoing
-      @db_ongoing = Dota2Battle.ongoing
-      @db_ongoing.each do |dota|
-        if find_battle_in_resp(dota)
-          puts "ininininiininininiininininiininininiinininini"
-          binding.pry
-        end
-      end
+      Dota2Battle.ongoing.each { |b| b.update(hidden: true) unless find_battle_in_resp(b) }
     end
 
-
-    def do_battle
-    end
 
     def do_match(match, battle_info)
     end
@@ -104,7 +95,6 @@ module Schedule
     # battle 是数据库里面查找的 进行中 的比赛
     # 这里应该返回 True 或者 False
     def find_battle_in_resp(battle)
-      binding.pry
       @dota2_ids.include?(battle.trdid)
     end
 
