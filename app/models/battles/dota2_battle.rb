@@ -5,6 +5,7 @@ class Dota2Battle < Hole::Battle
   end
 
   def check_match_detail
+<<<<<<< HEAD
     # 这里是比分有改变
     if self.changed.include?("left_score") or self.changed.include?("right_score")
       match = matches.find_by(game_no: (self.left_score + self.right_score))
@@ -18,6 +19,11 @@ class Dota2Battle < Hole::Battle
     # 全部 Fetch 一遍
     if self.changed.include?("status")
 
+=======
+    if self.changed.include?("left_score") or self.changed.include?("right_score")
+      match = matches.find_by(game_no: (self.left_score + self.right_score))
+
+>>>>>>> [TEMP] 准备拉 Match 详情
     end
   end
 end
