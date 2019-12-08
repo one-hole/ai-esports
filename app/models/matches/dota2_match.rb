@@ -30,7 +30,7 @@ class Dota2Match < Hole::Match
   end
 
   def async_fetch_detail
-    Fetch::Dota2MatchDetailWorker.perform_in(2.minutes, self.id)
+    Fetch::Dota2MatchDetailWorker.perform_in(30.seconds, self.id)
   end
 
   # 这里如果没有抓到应该重试
