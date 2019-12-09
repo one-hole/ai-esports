@@ -1,9 +1,6 @@
 module V2
   class LivesIndexSerializer < BattlesIndexSerializer
     attributes :current_game_no
-    # attributes :left_first_blood
-    # attributes :left_first_tower
-    # attributes :left_ten_kills
 
     has_many :matches
 
@@ -17,6 +14,8 @@ module V2
       Ohms::Battle.find(:db_id => object.id).count > 0
     end
 
-    # has_many :matches
+    def matches
+      Dota2Match.where(id: Dota2Match.find_by_sql([" (SELECT SUBSTRING_INDEX(GROUP_CONCAT(id), ',' ,-1) AS id FROM hole_matches WHERE `battle_id`= ? GROUP BY `battle_id`, `game_no`)", object.id]).pluck(:id)).eager_load(:detail)
+    end
   end
 end

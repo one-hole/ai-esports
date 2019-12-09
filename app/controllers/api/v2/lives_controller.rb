@@ -10,7 +10,7 @@ module Api
       private
 
       def load_battles
-        @battles = Hole::Battle.eager_load(:left_team, :right_team, [matches: :detail]).ongoing
+        @battles = Hole::Battle.eager_load(:left_team, :right_team, :matches).ongoing
       end
     end
   end
