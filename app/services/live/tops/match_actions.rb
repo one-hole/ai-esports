@@ -34,7 +34,7 @@ module Live
           dire_bans:      []
         )
 
-        match.add_diff
+        #match.add_diff
         return match
       end
 
@@ -51,7 +51,7 @@ module Live
           radiant_lead:     battle_info["radiant_lead"]
         )
 
-        match.add_diff
+        #match.add_diff
         return match
       end
 
