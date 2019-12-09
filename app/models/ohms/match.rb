@@ -114,10 +114,10 @@ module Ohms
         dire_bans:              self.dire_bans,
         radiant_net_worth:      self.radiant_net_worth,
         dire_net_worth:         self.dire_net_worth,
+        radiant_exps:           self.radiant_exps,
+        dire_exps:              self.dire_exps,
         roshan_respawn_timer:   self.roshan_respawn_timer,
         diffs:                  diff_infos
-        # radiant_team:           self.radiant_team.as_info,
-        # dire_team:              self.dire_team.as_info
       }
     end
     
