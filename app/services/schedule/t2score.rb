@@ -75,7 +75,7 @@ module Schedule
     # 1. 获取 Match 信息
     def process_ongoing(battle, battle_info)
 
-      match = battle.matches.find_by(game_no: battle.current_game_no)
+      match = battle.matches.where(game_no: battle.current_game_no).last
 
       if match
         do_match(match, battle_info)
