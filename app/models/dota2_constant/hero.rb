@@ -25,6 +25,22 @@ module Dota2Constant
         hero.save
       end
     end
+
+    def self.replace
+      self.find_each do |item|
+        t1 = item.full_avatar.split("/").last
+        t2 = item.lg_avatar.split("/").last
+        t3 = item.sm_avatar.split("/").last
+        t4 = item.vert_avatar.split("/").last
+        
+        item.update(
+          full_avatar: "http://onehole-assets.oss-cn-hangzhou.aliyuncs.com/dota2/heros/#{t1}",
+          lg_avatar: "http://onehole-assets.oss-cn-hangzhou.aliyuncs.com/dota2/heros/#{t2}",
+          sm_avatar: "http://onehole-assets.oss-cn-hangzhou.aliyuncs.com/dota2/heros/#{t3}",
+          vert_avatar: "http://onehole-assets.oss-cn-hangzhou.aliyuncs.com/dota2/heros/#{t4}"
+        )
+      end
+    end
   end
 end
 
