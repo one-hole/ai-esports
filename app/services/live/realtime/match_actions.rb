@@ -79,7 +79,7 @@ module Live
 
       def get_radiant_bans(match)
         begin
-          @battle_info["match"]["bans"].select { |item| item["team"] == 3 }.map { |item| item["hero"] }
+          @battle_info["match"]["bans"].select { |item| item["team"] == 2 }.map { |item| item["hero"] }
         rescue => e
           puts "Real Time get_radiant_bans"
           puts e
