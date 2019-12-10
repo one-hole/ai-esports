@@ -4,7 +4,7 @@ module Api
       def index
         load_battles
         render json:
-                 @battles, each_serializer: ::V2::LivesIndexSerializer, root: 'data'
+          @battles, each_serializer: ::V2::LivesIndexSerializer, root: 'data'
       end
 
       private

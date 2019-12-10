@@ -2,6 +2,7 @@ module V2
   class LivesIndexSerializer < BattlesIndexSerializer
     attributes :current_game_no
 
+    belongs_to :league
     has_many :matches
 
     class MatchSerializer < ActiveModel::Serializer
