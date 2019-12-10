@@ -3,8 +3,14 @@ module V2
     attributes :id, :status
     attributes :start_at
     attributes :game
-    
+
+    belongs_to :league
+
     attributes :left_team, :right_team
+
+    class LeagueSerializer < ActiveModel::Serializer
+      attributes :id, :name, :abbr, :logo
+    end
 
     def game
       Hole::Battle::Types.invert[object.type]

@@ -16,6 +16,7 @@ class Hole::Battle < ApplicationRecord
   belongs_to :left_team,  foreign_key: "left_team_id",  class_name: "Hole::Team"
   belongs_to :right_team, foreign_key: "right_team_id", class_name: "Hole::Team"
 
+  belongs_to :league, optional: true
   has_many :matches
 
   enum status: {

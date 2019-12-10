@@ -24,22 +24,24 @@ module Schedule
     # 3. 暂时只有 T2 一家的赛程
     # 4. 进行中的比赛需要进行特殊处理 & 因为能抓到 Match 里面的一些盘口的细节
     def process(battle_info)
+      league = process_league(battle_info)
       battle = Hole::Battle.find_by("trdid": "t2_#{battle_info["_id"]}")
 
       if battle
-        process_update(battle, battle_info)
+        process_update(league, battle, battle_info)
       else
-        process_create(battle_info)
+        process_create(league, battle_info)
       end
     end
 
-    def process_update(battle, battle_info)
+    def process_update(league, battle, battle_info)
       left_team  = find_or_create_team(battle_info["left_team"])
       right_team = find_or_create_team(battle_info["right_team"])
 
       battle.update(
          left_team:   left_team,
         right_team:   right_team,
+            league:   league,
         left_score:   battle_info["left_score"],
        right_score:   battle_info["right_score"],
           start_at:   battle_info["start_time"],
@@ -51,7 +53,7 @@ module Schedule
     end
 
 
-    def process_create(battle_info)
+    def process_create(league, battle_info)
       left_team  = find_or_create_team(battle_info["left_team"])
       right_team = find_or_create_team(battle_info["right_team"])
 
@@ -64,7 +66,8 @@ module Schedule
         right_score: battle_info["right_score"],
         start_at:    battle_info["start_time"],
         status:      get_status[battle_info["state"]],
-        trdid:       "t2_#{battle_info["_id"]}"
+        trdid:       "t2_#{battle_info["_id"]}",
+        league:      league
       )
 
       process_ongoing(battle, battle_info) if (2 == get_status[battle_info["state"]].to_i)
@@ -106,6 +109,22 @@ module Schedule
     end
 
     def process_finish(battle, battle_info)
+    end
+
+    def process_league(battle_info)
+      league_info = battle_info["league_id"]
+      league = Hole::League.find_by("trdid": "t2_#{league_info["_id"]}")
+
+      unless league
+        league = Hole::League.create(
+          name: league_info["name"],
+          abbr: league_info["tag"],
+          logo: "https://cdn.wanjujianghu.xyz#{league_info["icon"]}",
+          trdid: "t2_#{league_info["_id"]}"
+        )
+      end
+
+      return league
     end
 
     # 1. 先用 ID 查找
