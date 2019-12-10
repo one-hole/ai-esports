@@ -10,6 +10,7 @@ class Dota2Battle < Hole::Battle
       match = matches.where(game_no: (self.left_score + self.right_score)).last
 
       if match
+        match.sync_detail
         match.async_fetch_detail
       end
     end

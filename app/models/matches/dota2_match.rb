@@ -29,6 +29,17 @@ class Dota2Match < Hole::Match
 
   end
 
+  # 将 OHM 里面的数据同步到数据库里面
+  def sync_detail
+    ohm_battle = Ohms::Battle.with(:steam_id, self.official_id)
+    self.ensure_detail unless detail
+
+    detail.update(
+      live_detail: ohm_battle.as_info.to_json
+    )
+    
+  end
+
   def async_fetch_detail
     Fetch::Dota2MatchDetailWorker.perform_in(30.seconds, self.id)
   end
@@ -43,9 +54,7 @@ class Dota2Match < Hole::Match
     resp = Live::MatchDetail::Request.run(self.official_id)
     body = JSON.parse(resp.body)
 
-    unless detail
-      self.ensure_detail
-    end
+    self.ensure_detail unless detail
 
     unless body["result"].has_key?("error") # 如果有错误就什么都不管
       detail.detail = resp.body
