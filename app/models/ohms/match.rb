@@ -38,7 +38,7 @@ module Ohms
     # TODO 这里需要思考一下如何防止重复的时间出现
     #
     def add_diff_v2(diff)
-      if self.durations.include?(diff.duration.to_i)
+      unless self.durations.include?(diff.duration.to_i)
         diffs.push(diff)
       end
     end
