@@ -1,13 +1,14 @@
 module Schedule
   class T2score
 
-    URL = "https://www.t2score.com/api/front/schedule/schedule_three_days?"
+    URL = "https://api.tuotugame.com/api/front/schedule/schedule_three_days?"
 
     def initialize
       begin
         @resp = Request.get(URL, {})
         @dota2_battles = JSON.parse(@resp.body)["list"].select { |item| "dota2" == item["game_category"] }
         @dota2_ids = @dota2_battles.map {|battle| "t2_#{battle["_id"]}" }
+        
         filter
       rescue => exception
         puts exception
@@ -24,9 +25,12 @@ module Schedule
     # 3. 暂时只有 T2 一家的赛程
     # 4. 进行中的比赛需要进行特殊处理 & 因为能抓到 Match 里面的一些盘口的细节
     def process(battle_info)
-      league = process_league(battle_info)
-      battle = Hole::Battle.find_by("trdid": "t2_#{battle_info["_id"]}")
 
+      league = process_league(battle_info) rescue nil
+      return unless league
+
+      battle = Hole::Battle.find_by("trdid": "t2_#{battle_info["_id"]}")
+      
       if battle
         process_update(league, battle, battle_info)
       else
