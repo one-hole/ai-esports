@@ -1,14 +1,17 @@
 module Schedule
   class T2score
 
+    include T2Csgo
+
     URL = "https://www.t2score.com/api/front/schedule/schedule_three_days?"
 
     def initialize
       begin
         @resp = Request.get(URL, {})
         @dota2_battles = JSON.parse(@resp.body)["list"].select { |item| "dota2" == item["game_category"] }
+        @csgo_battles  = JSON.parse(@resp.body)["list"].select { |item| "csgo" == item["game_category"] }
         @dota2_ids = @dota2_battles.map {|battle| "t2_#{battle["_id"]}" }
-        
+      
         filter
       rescue => exception
         puts exception
@@ -17,6 +20,8 @@ module Schedule
 
     def filter
       @dota2_battles.each { |battle| process(battle) }
+      @csgo_battles.each  { |battle| process_csgo(battle) }
+
       process_dota2_db_ongoing
     end
 
@@ -124,7 +129,8 @@ module Schedule
           name: league_info["name"],
           abbr: league_info["tag"],
           logo: "https://cdn.wanjujianghu.xyz#{league_info["icon"]}",
-          trdid: "t2_#{league_info["_id"]}"
+          trdid: "t2_#{league_info["_id"]}",
+          game_id: 1
         )
       end
 
