@@ -2,6 +2,7 @@ module V2
   class BattlesIndexSerializer < ActiveModel::Serializer
     attributes :id, :status
     attributes :start_at
+    attributes :round
     attributes :game
 
     belongs_to :league
@@ -10,6 +11,10 @@ module V2
 
     class LeagueSerializer < ActiveModel::Serializer
       attributes :id, :name, :abbr, :logo
+    end
+
+    def round
+      object.format
     end
 
     def game
