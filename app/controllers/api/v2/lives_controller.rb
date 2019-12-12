@@ -10,7 +10,11 @@ module Api
       private
 
       def load_battles
-        @battles = Hole::Battle.eager_load(:left_team, :right_team, :matches).ongoing
+        @battles = Hole::Battle.filters(filter_params).eager_load(:left_team, :right_team, :matches).ongoing
+      end
+
+      def filter_params
+        params.permit!.slice(:game)
       end
     end
   end
