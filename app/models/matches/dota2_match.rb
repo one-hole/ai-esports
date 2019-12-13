@@ -2,6 +2,9 @@
 
 class Dota2Match < Hole::Match
 
+  has_one    :detail, foreign_key: "match_id", class_name: "MatchDetail"
+  delegate   :left_first_blood, :left_first_tower, :left_five_kills, :left_ten_kills, :left_lead, to: :detail
+
   def self.async_build(battle)
   end
 
