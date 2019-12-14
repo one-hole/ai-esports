@@ -67,7 +67,7 @@ module Schedule
     def do_csgo_match(match, battle_info)
 
       match_info = battle_info["match"]
-      
+
       unless match.detail
         match.ensure_detail
       end

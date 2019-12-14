@@ -1,5 +1,8 @@
 class CsgoBattle < Hole::Battle
 
+  scope :no_official, -> { where(official_id: nil) }
+  scope :for_hltv, -> { no_official.ongoing }
+
   after_create_commit do
     build_matches
   end
