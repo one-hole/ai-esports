@@ -16,10 +16,12 @@ module Mapping
           # 如果是 data 。 先找到 Maped 的 Battle .没有找到那就去 Mapping .找到了直接推送
           if info.keys.include?("data")
             battle = CsgoBattle.find_by(official_id: info["id"])
+
             if battle
               info["id"] = battle.id
               new_redis = Redis.new
               new_redis.publish("aiesports-csgo-websocket", info.to_json)
+            else
               mapping(info)
             end
 

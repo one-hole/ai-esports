@@ -30,7 +30,7 @@ class Hole::Battle < ApplicationRecord
   def team_official_infos
     [
       [left_team.official_id.to_i, right_team.official_id.to_i],
-      [left_team.name.downcase, left_team.abbr.downcase, right_team.name.downcase, right_team.abbr.downcase]
+      [left_team.name ? left_team.name.downcase : "" , left_team.abbr ? left_team.abbr.downcase : "",  right_team.name ? right_team.name.downcase : "" , right_team.abbr ? right_team.abbr.downcase : ""]
     ]
   end
 
