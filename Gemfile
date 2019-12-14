@@ -20,6 +20,7 @@ gem 'active_type'
 
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'active_model_serializers', '~> 0.10.7'
+# gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'ohm'
 gem 'sidekiq', '5.2.5'
 gem 'sidekiq-unique-jobs'

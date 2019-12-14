@@ -25,6 +25,9 @@ module Schedule
           start_at:   battle_info["start_time"],
             status:   get_status[battle_info["state"]]
       ) unless battle.manual
+
+      process_csgo_ongoing(battle, battle_info) if (2 == get_status[battle_info["state"]].to_i)
+      return battle
     end
 
     def process_csgo_create(league, battle_info)
@@ -42,6 +45,43 @@ module Schedule
         status:      get_status[battle_info["state"]],
         trdid:       "t2_#{battle_info["_id"]}",
         league:      league
+      )
+
+      process_csgo_ongoing(battle, battle_info) if (2 == get_status[battle_info["state"]].to_i)
+      return battle
+    end
+
+    def process_csgo_ongoing(battle, battle_info)
+      match = CsgoMatch.where(game_no: battle.current_game_no, battle_id: battle.id).last
+
+      match = battle.matches.create(
+        game_no: battle.current_game_no,
+        type:  "CsgoMatch"
+      ) unless match
+
+      if match
+        do_csgo_match(match, battle_info)
+      end
+    end
+
+    def do_csgo_match(match, battle_info)
+
+      match_info = battle_info["match"]
+      
+      unless match.detail
+        match.ensure_detail
+      end
+
+      match.detail.update(
+        first_half_left_t:      match_info["match_first_half"]["left_side"] == "t",
+        first_half_left_score:  match_info["match_first_half"]["left_score"],
+        first_half_right_score: match_info["match_first_half"]["right_score"],
+        second_half_left_score:   match_info["match_second_half"]["left_score"],
+        second_half_right_score:  match_info["match_second_half"]["right_score"],
+        left_win_five:            match_info["match_w5"] == "" ? "" : match_info["match_w5"] == "left",
+        left_win_1:               match_info["match_r1"] == "" ? "" : match_info["match_r1"] == "left",
+        left_win_16:              match_info["match_r16"] == "" ? "" : match_info["match_r16"] == "left",
+        map: match_info["match_map"]
       )
     end
 

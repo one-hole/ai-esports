@@ -87,7 +87,7 @@ module Schedule
     # 1. 获取 Match 信息
     def process_ongoing(battle, battle_info)
 
-      match = battle.matches.where(game_no: battle.current_game_no).last
+      match = battle.matches.where(game_no: battle.current_game_no, type: "Dota2Match").last
 
       if match
         do_match(match, battle_info)
@@ -100,8 +100,8 @@ module Schedule
     end
 
 
-    def do_match(match, battle_info)     
-             
+    def do_match(match, battle_info)
+
       match.detail.update(
         left_first_blood: (battle_info["match"]["match_first_blood"] == "" ? nil : battle_info["match"]["match_first_blood"] == "left"),
         left_first_tower: (battle_info["match"]["match_first_tower"] == "" ? nil : battle_info["match"]["match_first_tower"] == "left"),

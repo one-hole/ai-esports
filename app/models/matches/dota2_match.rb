@@ -8,6 +8,14 @@ class Dota2Match < Hole::Match
   def self.async_build(battle)
   end
 
+  after_create_commit do
+    ensure_detail
+  end
+
+  def ensure_detail
+    self.create_detail
+  end
+
 
   # 这里的 Battle 是 Ohms 的 Battle
   def self.build(battle)
