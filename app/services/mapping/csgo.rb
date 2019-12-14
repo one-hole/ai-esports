@@ -45,6 +45,7 @@ module Mapping
       CsgoBattle.for_hltv.each do |battle|
         if judge(battle.team_official_infos, abstract(message))
           battle.official_id = message["id"]
+          battle.has_live = true
           battle.save
         end
       end
