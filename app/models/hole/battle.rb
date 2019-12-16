@@ -4,7 +4,7 @@ class Hole::Battle < ApplicationRecord
 
   include FilterConcern
 
-  default_scope { where(hidden: false) }
+  default_scope { where(hidden: false).where.enot(status: nil ) }
 
   Types = {
     1 => 'Dota2Battle',
