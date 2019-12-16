@@ -17,7 +17,11 @@ module Api
       private
 
       def load_teams
-        @teams = Hole::Team.page(current_page).per(60)
+        @teams = Hole::Team.filters(filter_params).page(current_page).per(60)
+      end
+
+      def filter_params
+        params.permit!.slice(:game)
       end
 
       def meta
