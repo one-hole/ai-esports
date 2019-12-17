@@ -21,10 +21,24 @@ module Mapping
               info["id"] = battle.id
               new_redis = Redis.new
               new_redis.publish("aiesports-csgo-websocket", info.to_json)
+              write_detail(battle, info.to_json)
             else
               mapping(info)
             end
+          end
 
+
+          def write_detail(battle, info)
+            match = battle.current_match
+            detail = match.detail
+
+            if detail.info == nil
+              detail.update(info: info)
+            else
+              if detail.info.length < info.length
+                detail.update(info: info)
+              end
+            end
           end
 
           # 日志那么就直接去找
