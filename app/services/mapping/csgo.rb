@@ -27,20 +27,6 @@ module Mapping
             end
           end
 
-
-          def write_detail(battle, info)
-            match = battle.current_match
-            detail = match.detail
-
-            if detail.info == nil
-              detail.update(info: info)
-            else
-              if detail.info.length < info.length
-                detail.update(info: info)
-              end
-            end
-          end
-
           # 日志那么就直接去找
           if info.keys.include?("logs")
             battle = CsgoBattle.find_by(official_id: info["id"])
@@ -51,6 +37,19 @@ module Mapping
               new_redis.publish("aiesports-csgo-websocket", info.to_json)
             end
           end
+        end
+      end
+    end
+
+    def self.write_detail(battle, info)
+      match = battle.current_match
+      detail = match.detail
+
+      if detail.info == nil
+        detail.update(info: info)
+      else
+        if detail.info.length < info.length
+          detail.update(info: info)
         end
       end
     end
