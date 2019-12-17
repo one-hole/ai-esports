@@ -29,7 +29,7 @@ module Mapping
 
           # 日志那么就直接去找
           if info.keys.include?("logs")
-            battle = CsgoBattle.find_by(official_id: info["id"])
+            battle = CsgoBattle.where(official_id: info["id"]).last
 
             if battle
               info["id"] = battle.id

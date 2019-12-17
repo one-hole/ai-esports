@@ -25,5 +25,6 @@ namespace :api do
     resources :battles, only: [:index, :show]
     resources :teams,   only: [:index, :show]
     resource  :result,  only: [:show]
+    resource  :csgo_result,  only: [:show]
   end
 end
