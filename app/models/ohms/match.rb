@@ -126,8 +126,8 @@ module Ohms
       diffs.each do |diff|
         ary << {
           duration:   diff.duration,
-          gold_lead:  diff.gold_lead,
-          exp_lead:   diff.exp_lead
+          gold_lead:  diff.gold_lead.to_i,
+          exp_lead:   diff.exp_lead.to_i
         }
       end
       ary
