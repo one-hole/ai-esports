@@ -10,7 +10,7 @@ module V2
     end
 
     class CsgoMatchSerializer < ActiveModel::Serializer
-      attributes :id, :game_no, :first_half_left_t, :left_win_five, :left_win_1, :left_win_16, :first_half_left_score, :first_half_right_score, :second_half_left_score, :second_half_right_score, :map
+      attributes :id, :game_no, :left_score, :right_score, :first_half_left_t, :left_win_five, :left_win_1, :left_win_16, :first_half_left_score, :first_half_right_score, :second_half_left_score, :second_half_right_score, :map
     end
 
     attribute :has_live, if: -> { object.class == Dota2Battle }
