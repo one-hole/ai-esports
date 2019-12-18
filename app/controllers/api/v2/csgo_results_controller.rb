@@ -4,7 +4,7 @@ module Api
       def show
         load_match
         render json:
-          @match
+          @match, serializer: ::V2::CsgoResultsIndexSerializer, root: 'data'
       end
 
       private
