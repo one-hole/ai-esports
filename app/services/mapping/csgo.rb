@@ -1,5 +1,6 @@
 # 有个全局的线程来做这个事情
 #
+# 如果 CSGO 有 Live 、那么全部由 Live 来更新
 module Mapping
   class Csgo
 
@@ -15,7 +16,7 @@ module Mapping
 
           # 如果是 data 。 先找到 Maped 的 Battle .没有找到那就去 Mapping .找到了直接推送
           if info.keys.include?("data")
-            battle = CsgoBattle.find_by(official_id: info["id"])
+            battle = CsgoBattle.find_by(official_id: info["id"])  # 这里是已经 Map 上的
 
             if battle
               info["id"] = battle.id
@@ -42,8 +43,15 @@ module Mapping
     end
 
     def self.write_detail(battle, info)
+      # 这里就存在问题了
+      pre_match = battle.pre_match
       match = battle.current_match
-      detail = match.detail
+
+      if pre_match.over?
+        detail = match.detail
+      else
+        detail = pre_match.detail
+      end
 
       if detail.info == nil
         detail.update(info: info)

@@ -7,6 +7,14 @@ class CsgoBattle < Hole::Battle
     build_matches
   end
 
+  def pre_match
+    if 1 == current_game_no
+      return current_match
+    else
+      return matches.find_by(game_no: (left_score + right_score))
+    end
+  end
+
   def build_matches
     (1..format).each do |i|
       matches.create(
