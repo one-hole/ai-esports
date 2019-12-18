@@ -48,7 +48,7 @@ module Mapping
       if detail.info == nil
         detail.update(info: info)
       else
-        if detail.info.length < info.length
+        if detail.info.length <= info.length
           detail.update(info: info)
         end
       end
