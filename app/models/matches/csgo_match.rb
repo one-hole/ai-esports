@@ -11,6 +11,76 @@ class CsgoMatch < Hole::Match
     self.create_detail
   end
 
+  delegate :left_team, :right_team, to: :battle
+
+  def handler(info)
+
+    # 1：判定哪边是 T & 如果这个不存在 那么进行处理
+    if detail.first_half_left_t.nil?
+
+      if left_team.team_names.include?(info["data"]["terroristTeamName"].downcase)
+        if info["data"]["currentRound"] < 15
+          detail.first_half_left_t = true
+        elsif info["data"]["currentRound"] > 15
+          detail.first_half_left_t = false
+        end
+
+        detail.save
+      end
+
+      if detail.first_half_left_t.nil?
+        if right_team.team_names.include?(info["data"]["terroristTeamName"].downcase)
+          if info["data"]["currentRound"] < 15
+            detail.first_half_left_t = false
+          elsif info["data"]["currentRound"] > 15
+            detail.first_half_left_t = true
+          end
+        end
+        detail.save
+      end
+    end
+
+    # --------------------------- 函数内部分割线 ---------------------------
+    # 2：更新比分
+    #
+    unless detail.first_half_left_t.nil?
+
+      if detail.first_half_left_t == true
+        left_first_log  = info["data"]["terroristMatchHistory"]["firstHalf"]
+        left_second_log = info["data"]["ctMatchHistory"]["secondHalf"]
+
+        right_first_log  = info["data"]["ctMatchHistory"]["firstHalf"]
+        right_second_log = info["data"]["terroristMatchHistory"]["secondHalf"]
+
+        left_score  = info["data"]["terroristScore"]
+        right_score = info["data"]["counterTerroristScore"]
+      else
+        left_first_log  = info["data"]["ctMatchHistory"]["firstHalf"]
+        left_second_log = info["data"]["terroristMatchHistory"]["secondHalf"]
+
+        right_first_log  = info["data"]["terroristMatchHistory"]["firstHalf"]
+        right_second_log = info["data"]["ctMatchHistory"]["secondHalf"]
+
+        left_score  = info["data"]["counterTerroristScore"]
+        right_score = info["data"]["terroristScore"]
+      end
+
+      self.update(
+        left_score: left_score,
+        right_score: right_score
+      )
+    end
+
+    # 3：更新 Info
+    if detail.info == nil
+      detail.update(info: info.to_json)
+    else
+      if detail.info.length <= info.length
+        detail.update(info: info.to_json)
+      end
+    end
+  end
+
   def over?
     if (left_score + right_score) <= 30
       if left_score >= 16 || right_score >= 16

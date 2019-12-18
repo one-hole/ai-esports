@@ -22,7 +22,7 @@ module Mapping
               info["id"] = battle.id
               new_redis = Redis.new
               new_redis.publish("aiesports-csgo-websocket", info.to_json)
-              write_detail(battle, info.to_json)
+              write_detail(battle, info)
             else
               mapping(info)
             end
@@ -48,17 +48,12 @@ module Mapping
       match = battle.current_match
 
       if pre_match.over?
-        detail = match.detail
-      else
-        detail = pre_match.detail
-      end
 
-      if detail.info == nil
-        detail.update(info: info)
+        match.handler(info)
+        # detail = match.detail
       else
-        if detail.info.length <= info.length
-          detail.update(info: info)
-        end
+        # detail = pre_match.detail
+        pre_match.handler(info)
       end
     end
 

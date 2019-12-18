@@ -72,6 +72,11 @@ module Schedule
         match.ensure_detail
       end
 
+      match.update(
+        left_score:   match_info["match_left_score"],
+        right_score:  match_info["match_right_score"]
+      )
+
       match.detail.update(
         first_half_left_t:      match_info["match_first_half"]["left_side"] == "t",
         first_half_left_score:  match_info["match_first_half"]["left_score"],
