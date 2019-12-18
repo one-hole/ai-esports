@@ -26,7 +26,7 @@ module V2
       end
 
       if object.class == CsgoBattle
-        return object.matches
+        return object.matches.where(game_no: 1..(object.left_score + object.right_score + 1))
       end
 
     end
