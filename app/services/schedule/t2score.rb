@@ -30,16 +30,20 @@ module Schedule
     # 3. 暂时只有 T2 一家的赛程
     # 4. 进行中的比赛需要进行特殊处理 & 因为能抓到 Match 里面的一些盘口的细节
     def process(battle_info)
-
-      league = process_league(battle_info) rescue nil
-      return unless league
-
-      battle = Hole::Battle.find_by("trdid": "t2_#{battle_info["_id"]}")
       
-      if battle
-        process_update(league, battle, battle_info)
-      else
-        process_create(league, battle_info)
+      begin
+        league = process_league(battle_info) rescue nil
+        return unless league
+
+        battle = Hole::Battle.find_by("trdid": "t2_#{battle_info["_id"]}")
+        
+        if battle
+          process_update(league, battle, battle_info)
+        else
+          process_create(league, battle_info)
+        end
+      rescue
+        
       end
     end
 

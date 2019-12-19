@@ -2,13 +2,17 @@ module Schedule
   module T2Csgo
 
     def process_csgo(battle_info)
-      league = prcess_csgo_league(battle_info)
-      battle = CsgoBattle.find_by("trdid": "t2_#{battle_info["_id"]}")
+      begin
+        league = prcess_csgo_league(battle_info)
+        battle = CsgoBattle.find_by("trdid": "t2_#{battle_info["_id"]}")
 
-      if battle
-        process_csgo_update(league, battle, battle_info)
-      else
-        process_csgo_create(league, battle_info)
+        if battle
+          process_csgo_update(league, battle, battle_info)
+        else
+          process_csgo_create(league, battle_info)
+        end        
+      rescue => exception
+        
       end
     end
     
