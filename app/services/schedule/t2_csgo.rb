@@ -52,6 +52,7 @@ module Schedule
     end
 
     def process_csgo_ongoing(battle, battle_info)
+      # 1. 如果超过了 Format
       match = CsgoMatch.where(game_no: battle.current_game_no, battle_id: battle.id).last
 
       match = battle.matches.create(

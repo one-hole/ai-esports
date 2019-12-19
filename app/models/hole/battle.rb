@@ -35,7 +35,11 @@ class Hole::Battle < ApplicationRecord
   end
 
   def current_game_no
-    left_score + right_score + 1
+    if (format == (left_score + right_score))
+      return format
+    else
+      return left_score + right_score + 1
+    end
   end
 
   def current_match
