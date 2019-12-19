@@ -47,6 +47,9 @@ module Mapping
       pre_match = battle.pre_match
       match = battle.current_match
 
+      return unless pre_match
+      return unless match
+
       if pre_match.over?
 
         match.handler(info)
