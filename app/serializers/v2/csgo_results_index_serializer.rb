@@ -1,6 +1,6 @@
 module V2
   class CsgoResultsIndexSerializer < ActiveModel::Serializer
-    attributes :id, :game_no, :battle, :detail
+    attributes :id, :game_no, :battle, :left_score, :right_score, :detail
 
     class TeamSerializer < ActiveModel::Serializer
       attributes :id, :name, :country, :logo
