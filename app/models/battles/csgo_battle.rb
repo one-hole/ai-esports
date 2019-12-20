@@ -8,6 +8,10 @@ class CsgoBattle < Hole::Battle
   end
 
   def pre_match
+    if format == 1
+      return current_match
+    end
+
     if 1 == current_game_no
       return current_match
     else

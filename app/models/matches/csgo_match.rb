@@ -87,7 +87,7 @@ class CsgoMatch < Hole::Match
         detail.update(info: info.to_json)
       end
     end
-  end 
+  end
 
 
   def over?
