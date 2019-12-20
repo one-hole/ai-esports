@@ -16,7 +16,7 @@ class CsgoMatch < Hole::Match
   def handler(info)
 
     detail_round = JSON.parse(detail.info).fetch("data", nil).fetch("currentRound") rescue 1   # 已经存储的 Info
-    info_round  = JSON.parse(info).fetch("data", nil).fetch("currentRound") rescue 0          # 等待处理的 Info
+    info_round   = JSON.parse(info).fetch("data", nil).fetch("currentRound") rescue 0          # 等待处理的 Info
     
     return if (detail_round > info_round)
 
@@ -80,17 +80,14 @@ class CsgoMatch < Hole::Match
     if detail.info == nil
       detail.update(info: info.to_json)
     else
-      # if detail.info.length <= info.length
+      detail_round = JSON.parse(detail.info).fetch("data", nil).fetch("currentRound") rescue 1
+      info_round  = JSON.parse(info).fetch("data", nil).fetch("currentRound") rescue 0
 
-        deail_round = JSON.parse(detail.info).fetch("data", nil).fetch("currentRound") rescue 1
-        info_round  = JSON.parse(info).fetch("data", nil).fetch("currentRound") rescue 0
-
-        if detail.round < info_round
-          detail.update(info: info.to_json)
-        end
+      if detail_round < info_round
+        detail.update(info: info.to_json)
       end
     end
-  end
+  end 
 
 
   def over?
@@ -111,6 +108,7 @@ class CsgoMatch < Hole::Match
     end
     return false
   end
+
 end
 
 # 总局数小于 30 的时候 有一方达到 16
