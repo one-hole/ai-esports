@@ -15,7 +15,7 @@ class CsgoMatch < Hole::Match
 
   def handler(info)
 
-    deail_round = JSON.parse(detail.info).fetch("data", nil).fetch("currentRound") rescue 1   # 已经存储的 Info
+    detail_round = JSON.parse(detail.info).fetch("data", nil).fetch("currentRound") rescue 1   # 已经存储的 Info
     info_round  = JSON.parse(info).fetch("data", nil).fetch("currentRound") rescue 0          # 等待处理的 Info
     
     return if (detail_round > info_round)
