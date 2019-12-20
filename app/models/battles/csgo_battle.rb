@@ -24,7 +24,8 @@ class CsgoBattle < Hole::Battle
       matches.create(
         type:   'CsgoMatch',
         battle: self,
-        game_no: i
+        game_no: i,
+        detail_attributes: {}
       )
     end
   end
