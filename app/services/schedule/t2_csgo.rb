@@ -20,6 +20,7 @@ module Schedule
       left_team  = find_or_create_csgo_team(battle_info["left_team"])
       right_team = find_or_create_csgo_team(battle_info["right_team"])
 
+      # TODO BO1 的时候需要特殊处理
       battle.update(
          left_team:   left_team,
         right_team:   right_team,
@@ -64,6 +65,23 @@ module Schedule
         type:  "CsgoMatch"
       ) unless match
 
+      # 这里需要判断 match 是不是新的 Match
+      # BO1
+
+      if 1 == match.game_no
+        pre_match = nil
+      else
+        pre_match = CsgoMatch.where(game_no: (match.game_no - 1), battle_id: battle.id).last
+      end
+
+      if pre_match
+        if (pre_match.first_half_left_score == battle_info["match"]["match_first_half"]["left_score"] && pre_match.first_half_right_score == battle_info["match"]["match_first_half"]["right_score"])
+          if (match.first_half_left_score == nil && match.first_half_right_score == nil)
+            match = pre_match
+          end
+        end
+      end
+
       if match
         do_csgo_match(match, battle_info)
       end
@@ -83,15 +101,15 @@ module Schedule
       )
 
       match.detail.update(
-        first_half_left_t:      match_info["match_first_half"]["left_side"] == "t",
-        first_half_left_score:  match_info["match_first_half"]["left_score"],
-        first_half_right_score: match_info["match_first_half"]["right_score"],
+        first_half_left_t:        match_info["match_first_half"]["left_side"] == "t",
+        first_half_left_score:    match_info["match_first_half"]["left_score"],
+        first_half_right_score:   match_info["match_first_half"]["right_score"],
         second_half_left_score:   match_info["match_second_half"]["left_score"],
         second_half_right_score:  match_info["match_second_half"]["right_score"],
         left_win_five:            match_info["match_w5"] == "" ? "" : match_info["match_w5"] == "left",
         left_win_1:               match_info["match_r1"] == "" ? "" : match_info["match_r1"] == "left",
         left_win_16:              match_info["match_r16"] == "" ? "" : match_info["match_r16"] == "left",
-        map: match_info["match_map"]
+        map:                      match_info["match_map"]
       )
     end
 
