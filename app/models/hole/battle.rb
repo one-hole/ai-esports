@@ -39,10 +39,10 @@ class Hole::Battle < ApplicationRecord
       return 1
     end
 
-    if (format == (left_score + right_score))
+    if (format == (left_score.to_i + right_score.to_i))
       return format
     else
-      return left_score + right_score + 1
+      return left_score.to_i + right_score.to_i + 1
     end
   end
 

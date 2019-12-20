@@ -11,7 +11,7 @@ class CsgoMatch < Hole::Match
 
     detail_round = JSON.parse(detail.info).fetch("data", nil).fetch("currentRound") rescue 1   # 已经存储的 Info
     info_round   = info.fetch("data", nil).fetch("currentRound") rescue 0          # 等待处理的 Info
-    
+
     return if (detail_round > info_round)
 
     # 1：判定哪边是 T & 如果这个不存在 那么进行处理
@@ -39,6 +39,7 @@ class CsgoMatch < Hole::Match
       end
     end
 
+
     # --------------------------- 函数内部分割线 ---------------------------
     # 2：更新比分
     #
@@ -64,16 +65,17 @@ class CsgoMatch < Hole::Match
 
 
   def over?
-    if (left_score + right_score) <= 30
-      if left_score >= 16 || right_score >= 16
+
+    if (self.left_score + self.right_score) <= 30
+      if self.left_score >= 16 || self.right_score >= 16
         return true
       end
     else # 需要判定打了几个加时
-      over_score = left_score + right_score - 30
+      over_score = self.left_score + self.right_score - 30
       over_count = (over_score.to_f / 6.to_f).floor
-
-      left_score  = left_score - 15 - over_count * 3
-      right_score = right_score - 15 - over_count * 3
+      
+      left_score  = self.left_score - 15 - over_count * 3
+      right_score = self.right_score - 15 - over_count * 3
 
       if (left_score >= 4 || right_score >=4)
         return true
@@ -86,3 +88,6 @@ end
 
 # 总局数小于 30 的时候 有一方达到 16
 # 总局数大于 30 的时候 - 30
+
+# str = CsgoMatchDetail.find 386
+# Redis.new.publish("aiesports-csgo-websocket-to-back", str.info)
