@@ -15,6 +15,11 @@ class CsgoMatch < Hole::Match
 
   def handler(info)
 
+    deail_round = JSON.parse(detail.info).fetch("data", nil).fetch("currentRound") rescue 1   # 已经存储的 Info
+    info_round  = JSON.parse(info).fetch("data", nil).fetch("currentRound") rescue 0          # 等待处理的 Info
+    
+    return if (detail_round > info_round)
+
     # 1：判定哪边是 T & 如果这个不存在 那么进行处理
     if detail.first_half_left_t.nil?
 
@@ -75,11 +80,18 @@ class CsgoMatch < Hole::Match
     if detail.info == nil
       detail.update(info: info.to_json)
     else
-      if detail.info.length <= info.length
-        detail.update(info: info.to_json)
+      # if detail.info.length <= info.length
+
+        deail_round = JSON.parse(detail.info).fetch("data", nil).fetch("currentRound") rescue 1
+        info_round  = JSON.parse(info).fetch("data", nil).fetch("currentRound") rescue 0
+
+        if detail.round < info_round
+          detail.update(info: info.to_json)
+        end
       end
     end
   end
+
 
   def over?
     if (left_score + right_score) <= 30
