@@ -10,7 +10,7 @@ class CsgoMatch < Hole::Match
   def handler(info)
 
     detail_round = JSON.parse(detail.info).fetch("data", nil).fetch("currentRound") rescue 1   # 已经存储的 Info
-    info_round   = JSON.parse(info).fetch("data", nil).fetch("currentRound") rescue 0          # 等待处理的 Info
+    info_round   = info.fetch("data", nil).fetch("currentRound") rescue 0          # 等待处理的 Info
     
     return if (detail_round > info_round)
 
@@ -45,21 +45,9 @@ class CsgoMatch < Hole::Match
     unless detail.first_half_left_t.nil?
 
       if detail.first_half_left_t == true
-        left_first_log  = info["data"]["terroristMatchHistory"]["firstHalf"]
-        left_second_log = info["data"]["ctMatchHistory"]["secondHalf"]
-
-        right_first_log  = info["data"]["ctMatchHistory"]["firstHalf"]
-        right_second_log = info["data"]["terroristMatchHistory"]["secondHalf"]
-
         left_score  = info["data"]["terroristScore"]
         right_score = info["data"]["counterTerroristScore"]
       else
-        left_first_log  = info["data"]["ctMatchHistory"]["firstHalf"]
-        left_second_log = info["data"]["terroristMatchHistory"]["secondHalf"]
-
-        right_first_log  = info["data"]["terroristMatchHistory"]["firstHalf"]
-        right_second_log = info["data"]["ctMatchHistory"]["secondHalf"]
-
         left_score  = info["data"]["counterTerroristScore"]
         right_score = info["data"]["terroristScore"]
       end
@@ -71,16 +59,7 @@ class CsgoMatch < Hole::Match
     end
 
     # 3：更新 Info
-    if detail.info == nil
-      detail.update(info: info.to_json)
-    else
-      detail_round = JSON.parse(detail.info).fetch("data", nil).fetch("currentRound") rescue 1
-      info_round  = JSON.parse(info).fetch("data", nil).fetch("currentRound") rescue 0
-
-      if detail_round < info_round
-        detail.update(info: info.to_json)
-      end
-    end
+    detail.update(info: info.to_json)
   end
 
 
