@@ -5,7 +5,15 @@ module Mapping
   class Csgo
 
     def self.run
-      thread = Thread.new(&method(:subhltv))
+      thread = Thread.new(&method(:subwaper))
+    end
+
+    def self.subwaper
+      begin
+        subhltv
+      rescue
+        subhltv
+      end
     end
 
     def self.subhltv
