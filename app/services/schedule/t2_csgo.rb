@@ -2,6 +2,9 @@ module Schedule
   module T2Csgo
 
     def process_csgo(battle_info)
+
+      return unless get_status[battle_info["state"]]
+
       begin
         league = prcess_csgo_league(battle_info)
         battle = CsgoBattle.find_by("trdid": "t2_#{battle_info["_id"]}")

@@ -30,6 +30,8 @@ module Schedule
     # 3. 暂时只有 T2 一家的赛程
     # 4. 进行中的比赛需要进行特殊处理 & 因为能抓到 Match 里面的一些盘口的细节
     def process(battle_info)
+
+      return unless get_status[battle_info["state"]]
       
       begin
         league = process_league(battle_info) rescue nil
