@@ -23,7 +23,7 @@ module Live
       def update_match(match, battle_info)
         # 这里需要确定哪些是 LiveLeague 特有的
         scoreboard_info = battle_info["scoreboard"]
-
+      
         match.update(
              updated_at:       Time.now,
                duration:       get_duration(match, scoreboard_info["duration"].to_i),
@@ -37,7 +37,9 @@ module Live
              dire_picks:       (scoreboard_info["dire"]["picks"].map { |item| item["hero_id"] } rescue []),
              radiant_picks:    (scoreboard_info["radiant"]["picks"].map { |item| item["hero_id"] } rescue []),
              dire_bans:        (scoreboard_info["dire"]["bans"].map { |item| item["hero_id"] } rescue []),
-             radiant_bans:     (scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] } rescue [])
+             radiant_bans:     (scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] } rescue []),
+        radiant_net_worth:     (scoreboard_info["radiant"]["players"].map { |player| player["net_worth"].to_i }.sum rescue 0),
+           dire_net_worth:     (scoreboard_info["dire"]["players"].map    { |player| player["net_worth"].to_i }.sum rescue 0)
         )
 
         return match
