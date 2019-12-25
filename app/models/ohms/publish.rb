@@ -56,6 +56,7 @@ module Ohms
         end        
 
         if @flag
+        
           if live_battle.left_team.info.to_set.intersect?(@battle.radiant_team.info.to_set)
             match = @battle.match
             match.left_radiant = 1
@@ -64,6 +65,10 @@ module Ohms
             @battle.dire_team.db_id       = live_battle.right_team.id
             @battle.radiant_team.save
             @battle.dire_team.save
+
+            if live_battle.current_match
+              live_battle.current_match.detail.update(left_radiant: true)
+            end
           else
             match = @battle.match
             match.left_radiant = 0
@@ -72,6 +77,11 @@ module Ohms
             @battle.dire_team.db_id       = live_battle.left_team.id
             @battle.radiant_team.save
             @battle.dire_team.save
+
+
+            if live_battle.current_match
+              live_battle.current_match.detail.update(left_radiant: false)
+            end
           end
         end
 

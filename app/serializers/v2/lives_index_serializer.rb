@@ -6,7 +6,7 @@ module V2
     has_one :matches
 
     class Dota2MatchSerializer < ActiveModel::Serializer
-      attributes :id, :game_no, :left_first_blood, :left_first_tower, :left_five_kills, :left_ten_kills, :left_lead
+      attributes :id, :game_no, :left_first_blood, :left_first_tower, :left_five_kills, :left_ten_kills, :left_lead, :left_radiant
     end
 
     class CsgoMatchSerializer < ActiveModel::Serializer
