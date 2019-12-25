@@ -44,7 +44,6 @@ module Live
       end
 
       def get_items(player, player_info)
-        return player.items if player.items
         return [player_info["item0"], player_info["item1"], player_info["item2"], player_info["item3"], player_info["item4"], player_info["item5"]]
       end
 
