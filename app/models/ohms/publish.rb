@@ -12,7 +12,7 @@ module Ohms
         @flag = true
       end
 
-      live_battles unless @flag
+      live_battles
       upcoming_battles unless @flag
       
       if @flag
@@ -39,21 +39,47 @@ module Ohms
       Dota2Battle.ongoing.each do |live_battle|
         @ids, @names = live_battle.team_official_infos
         
-        if @ids.to_set.intersect?(@battle_ids.to_set)
-          @flag = true
-          @battle.db_id = live_battle.id
-          @battle.save
-          return
+        unless @flag
+          if @ids.to_set.intersect?(@battle_ids.to_set)
+            @flag = true
+            @battle.db_id = live_battle.id
+            @battle.save
+          end
         end
 
-        if @names.to_set.intersect?([@dire_name.downcase, @radiant_name.downcase].to_set)
-          @flag = true
-          @battle.db_id = live_battle.id
-          @battle.save
-          return
+        unless @flag
+          if @names.to_set.intersect?([@dire_name.downcase, @radiant_name.downcase].to_set)
+            @flag = true
+            @battle.db_id = live_battle.id
+            @battle.save
+          end
+        end        
+
+        if @flag
+          if live_battle.left_team.info.to_set.intersect?(@battle.radiant_team.info.to_set)
+            match = @battle.match
+            match.left_radiant = 1
+            match.save
+            @battle.radiant_team.db_id    = live_battle.left_team.id
+            @battle.dire_team.db_id       = live_battle.right_team.id
+            @battle.radiant_team.save
+            @battle.dire_team.save
+          else
+            match = @battle.match
+            match.left_radiant = 0
+            match.save
+            @battle.radiant_team.db_id    = live_battle.right_team.id
+            @battle.dire_team.db_id       = live_battle.left_team.id
+            @battle.radiant_team.save
+            @battle.dire_team.save
+          end
         end
 
       end
+    end
+
+    def set_team_id(ohm_team, db_team)
+      
     end
 
     def upcoming_battles

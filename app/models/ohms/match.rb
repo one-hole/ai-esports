@@ -2,6 +2,7 @@
 module Ohms
   class Match < Ohm::Model
 
+    attribute :left_radiant
     attribute :steam_id
     attribute :battle_id                  # 对应的 Battle
     attribute :dire_score                 # Dire 小比分
@@ -100,6 +101,7 @@ module Ohms
 
     def as_info
       {
+        left_radiant:           self.get_left_radiant,
         dire_score:             self.dire_score,
         radiant_score:          self.radiant_score,
         dire_tower_state:       self.dire_tower_state,
@@ -119,6 +121,14 @@ module Ohms
         roshan_respawn_timer:   self.roshan_respawn_timer,
         diffs:                  diff_infos
       }
+    end
+
+    def get_left_radiant
+      if "0" == self.left_radiant
+        return false
+      else
+        return true
+      end
     end
     
     def diff_infos

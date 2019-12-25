@@ -1,6 +1,7 @@
 module Ohms
   class Team < Ohm::Model
 
+    attribute :db_id        # 队伍对应的数据库 ID
     attribute :battle_id    # Ohms::Battle 的 ID
     attribute :steam_id
     attribute :name
@@ -13,9 +14,14 @@ module Ohms
     reference(:battle, "Ohms::Battle")
     collection(:players, "Ohms::Player")
 
+    def info
+      [self.steam_id.to_i, self.name.downcase.strip]
+    end
+
     def as_info
       {
         steam_id:   self.steam_id,
+        db_id:      self.db_id,
         name:       self.name,
         logo:       self.logo,
         players:    self.players_info

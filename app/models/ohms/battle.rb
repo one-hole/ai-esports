@@ -25,6 +25,10 @@ module Ohms
     reference(:dire_team, "Ohms::Team")
     collection(:players, "Ohms::Player")
 
+    def teams_has_dbid?      
+      return (radiant_team.db_id.present? && dire_team.db_id.present?)
+      return false
+    end
 
     def team_ids
       [radiant_team.steam_id, dire_team.steam_id]
