@@ -25,19 +25,19 @@ module Live
         scoreboard_info = battle_info["scoreboard"]
 
         match.update(
-             updated_at:    Time.now,
-               duration:    get_duration(match, scoreboard_info["duration"].to_i),
-             dire_score:    [scoreboard_info["dire"]["score"].to_i,    match.dire_score.to_i].max,
-             radiant_score: [scoreboard_info["radiant"]["score"].to_i, match.radiant_score.to_i].max,
-       dire_tower_state:    scoreboard_info["dire"]["tower_state"],
-    radiant_tower_state:    scoreboard_info["radiant"]["tower_state"],
-    dire_barracks_state:    scoreboard_info["dire"]["barracks_state"],
- radiant_barracks_state:    scoreboard_info["radiant"]["barracks_state"],
-   roshan_respawn_timer:    scoreboard_info["roshan_respawn_timer"],
-             dire_picks:       get_pick_or_bans(match.dire_picks, (scoreboard_info["dire"]["picks"].map { |item| item["hero_id"] } rescue [])),
-             radiant_picks:    get_pick_or_bans(match.radiant_picks, (scoreboard_info["radiant"]["picks"].map { |item| item["hero_id"] } rescue [])),
-             dire_bans:        get_pick_or_bans(match.dire_bans, (scoreboard_info["dire"]["bans"].map { |item| item["hero_id"] } rescue [])),
-             radiant_bans:     get_pick_or_bans(match.radiant_bans, (scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] } rescue []))
+             updated_at:       Time.now,
+               duration:       get_duration(match, scoreboard_info["duration"].to_i),
+             dire_score:       [scoreboard_info["dire"]["score"].to_i,    match.dire_score.to_i].max,
+             radiant_score:    [scoreboard_info["radiant"]["score"].to_i, match.radiant_score.to_i].max,
+       dire_tower_state:       scoreboard_info["dire"]["tower_state"],
+    radiant_tower_state:       scoreboard_info["radiant"]["tower_state"],
+    dire_barracks_state:       scoreboard_info["dire"]["barracks_state"],
+ radiant_barracks_state:       scoreboard_info["radiant"]["barracks_state"],
+   roshan_respawn_timer:       scoreboard_info["roshan_respawn_timer"],
+             dire_picks:       (scoreboard_info["dire"]["picks"].map { |item| item["hero_id"] } rescue []),
+             radiant_picks:    (scoreboard_info["radiant"]["picks"].map { |item| item["hero_id"] } rescue []),
+             dire_bans:        (scoreboard_info["dire"]["bans"].map { |item| item["hero_id"] } rescue []),
+             radiant_bans:     (scoreboard_info["radiant"]["bans"].map { |item| item["hero_id"] } rescue [])
         )
 
         return match
@@ -55,16 +55,6 @@ module Live
         else
           return match.duration.to_i
         end
-      end
-
-      def get_pick_or_bans(origin, income)
-        if origin.blank?
-          return income
-        end
-
-        return origin
-
-        # (scoreboard_info["dire"]["picks"].map { |item| item["hero_id"] } rescue [])
       end
 
       def build_match(battle, battle_info)
