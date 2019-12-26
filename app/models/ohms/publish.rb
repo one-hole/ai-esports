@@ -13,8 +13,7 @@ module Ohms
       end
 
       live_battles
-      upcoming_battles unless @flag
-      
+
       if @flag
         redis.publish("aiesports-dota2-websocket-v2", @battle.as_info.to_json)
       end
@@ -44,6 +43,37 @@ module Ohms
             @flag = true
             @battle.db_id = live_battle.id
             @battle.save
+
+            if @flag
+
+              if live_battle.left_team.info.to_set.intersect?(@battle.radiant_team.info.to_set)
+                match = @battle.match
+                match.left_radiant = 1
+                match.save
+                @battle.radiant_team.db_id    = live_battle.left_team.id
+                @battle.dire_team.db_id       = live_battle.right_team.id
+                @battle.radiant_team.save
+                @battle.dire_team.save
+
+                if live_battle.current_match
+                  live_battle.current_match.detail.update(left_radiant: true)
+                end
+              else
+                match = @battle.match
+                match.left_radiant = 0
+                match.save
+                @battle.radiant_team.db_id    = live_battle.right_team.id
+                @battle.dire_team.db_id       = live_battle.left_team.id
+                @battle.radiant_team.save
+                @battle.dire_team.save
+
+
+                if live_battle.current_match
+                  live_battle.current_match.detail.update(left_radiant: false)
+                end
+              end
+            end
+
           end
         end
 
@@ -52,38 +82,41 @@ module Ohms
             @flag = true
             @battle.db_id = live_battle.id
             @battle.save
+
+            if @flag
+
+              if live_battle.left_team.info.to_set.intersect?(@battle.radiant_team.info.to_set)
+                match = @battle.match
+                match.left_radiant = 1
+                match.save
+                @battle.radiant_team.db_id    = live_battle.left_team.id
+                @battle.dire_team.db_id       = live_battle.right_team.id
+                @battle.radiant_team.save
+                @battle.dire_team.save
+
+                if live_battle.current_match
+                  live_battle.current_match.detail.update(left_radiant: true)
+                end
+              else
+                match = @battle.match
+                match.left_radiant = 0
+                match.save
+                @battle.radiant_team.db_id    = live_battle.right_team.id
+                @battle.dire_team.db_id       = live_battle.left_team.id
+                @battle.radiant_team.save
+                @battle.dire_team.save
+
+
+                if live_battle.current_match
+                  live_battle.current_match.detail.update(left_radiant: false)
+                end
+              end
+            end
           end
         end        
 
-        if @flag
-        
-          if live_battle.left_team.info.to_set.intersect?(@battle.radiant_team.info.to_set)
-            match = @battle.match
-            match.left_radiant = 1
-            match.save
-            @battle.radiant_team.db_id    = live_battle.left_team.id
-            @battle.dire_team.db_id       = live_battle.right_team.id
-            @battle.radiant_team.save
-            @battle.dire_team.save
+        # 匹配上了
 
-            if live_battle.current_match
-              live_battle.current_match.detail.update(left_radiant: true)
-            end
-          else
-            match = @battle.match
-            match.left_radiant = 0
-            match.save
-            @battle.radiant_team.db_id    = live_battle.right_team.id
-            @battle.dire_team.db_id       = live_battle.left_team.id
-            @battle.radiant_team.save
-            @battle.dire_team.save
-
-
-            if live_battle.current_match
-              live_battle.current_match.detail.update(left_radiant: false)
-            end
-          end
-        end
 
       end
     end
