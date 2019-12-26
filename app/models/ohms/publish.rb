@@ -55,6 +55,8 @@ module Ohms
                 @battle.radiant_team.save
                 @battle.dire_team.save
 
+                do_match_check unless live_battle.current_match
+
                 if live_battle.current_match
                   live_battle.current_match.detail.update(left_radiant: true)
                 end
@@ -67,6 +69,7 @@ module Ohms
                 @battle.radiant_team.save
                 @battle.dire_team.save
 
+                do_match_check unless live_battle.current_match
 
                 if live_battle.current_match
                   live_battle.current_match.detail.update(left_radiant: false)
@@ -80,6 +83,7 @@ module Ohms
                 @battle.radiant_team.save
                 @battle.dire_team.save
 
+                do_match_check unless live_battle.current_match
 
                 if live_battle.current_match
                   live_battle.current_match.detail.update(left_radiant: false)
@@ -93,6 +97,8 @@ module Ohms
                 @battle.dire_team.db_id       = live_battle.right_team.id
                 @battle.radiant_team.save
                 @battle.dire_team.save
+
+                do_match_check unless live_battle.current_match
 
                 if live_battle.current_match
                   live_battle.current_match.detail.update(left_radiant: true)
@@ -120,6 +126,8 @@ module Ohms
                 @battle.radiant_team.save
                 @battle.dire_team.save
 
+                do_match_check unless live_battle.current_match
+
                 if live_battle.current_match
                   live_battle.current_match.detail.update(left_radiant: true)
                 end
@@ -132,6 +140,7 @@ module Ohms
                 @battle.radiant_team.save
                 @battle.dire_team.save
 
+                do_match_check unless live_battle.current_match
 
                 if live_battle.current_match
                   live_battle.current_match.detail.update(left_radiant: false)
@@ -145,6 +154,7 @@ module Ohms
                 @battle.radiant_team.save
                 @battle.dire_team.save
 
+                do_match_check unless live_battle.current_match
 
                 if live_battle.current_match
                   live_battle.current_match.detail.update(left_radiant: false)
@@ -158,6 +168,8 @@ module Ohms
                 @battle.dire_team.db_id       = live_battle.right_team.id
                 @battle.radiant_team.save
                 @battle.dire_team.save
+
+                do_match_check unless live_battle.current_match
 
                 if live_battle.current_match
                   live_battle.current_match.detail.update(left_radiant: true)
