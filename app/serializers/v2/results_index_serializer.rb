@@ -1,8 +1,11 @@
 module V2
   class ResultsIndexSerializer < ActiveModel::Serializer
 
-    attributes :id, :game_no, :battle, :infos, :detail
+    attributes :id, :game_no, :left_radiant, :battle, :infos, :detail
 
+    def left_radiant
+      object.left_radiant
+    end
 
 
     class TeamSerializer < ActiveModel::Serializer
