@@ -12,6 +12,7 @@ module Api
       def load_match
         @match = CsgoMatch.where(battle_id: params[:battle_id], game_no: params[:game_no]).last
         raise CurrentMatchNotStart unless @match
+        raise CurrentMatchNotStart if (0 == (@match.left_score + @match.right_score))
       end
     end
   end
