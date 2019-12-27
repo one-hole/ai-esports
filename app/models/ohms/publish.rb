@@ -38,7 +38,7 @@ module Ohms
       Dota2Battle.ongoing.each do |live_battle|
         @ids, @names = live_battle.team_official_infos
         
-        unless @flag
+        if true
           if @ids.to_set.intersect?(@battle_ids.to_set)
             @flag = true
             @battle.db_id = live_battle.id
@@ -109,7 +109,7 @@ module Ohms
           end
         end
 
-        unless @flag
+        if true
           if @names.to_set.intersect?([@dire_name.downcase, @radiant_name.downcase].to_set)
             @flag = true
             @battle.db_id = live_battle.id
