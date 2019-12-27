@@ -1,7 +1,16 @@
 module V2
   class ResultsIndexSerializer < ActiveModel::Serializer
 
-    attributes :id, :game_no, :left_radiant, :battle, :infos, :detail
+    attributes :id, :game_no, :left_radiant, :battle
+
+    attributes :left_first_blood
+    attributes :left_first_tower
+    attributes :left_five_kills
+    attributes :left_ten_kills
+    attributes :left_lead
+    attributes :left_radiant
+
+    attributes :infos, :detail
 
     def left_radiant
       object.left_radiant
