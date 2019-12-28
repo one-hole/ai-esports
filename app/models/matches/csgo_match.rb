@@ -73,6 +73,10 @@ class CsgoMatch < Hole::Match
     else # 需要判定打了几个加时
       over_score = self.left_score + self.right_score - 30
       over_count = (over_score.to_f / 6.to_f).floor
+
+      if over_score % 6 == 0
+        over_count = over_count - 1
+      end
       
       left_score  = self.left_score - 15 - over_count * 3
       right_score = self.right_score - 15 - over_count * 3
