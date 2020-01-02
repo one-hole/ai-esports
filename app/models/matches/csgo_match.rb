@@ -42,15 +42,40 @@ class CsgoMatch < Hole::Match
 
     # --------------------------- 函数内部分割线 ---------------------------
     # 2：更新比分
-    #
+    # 如果不为空
+    # 这里需要判定加时的次数 # BUG
     unless detail.first_half_left_t.nil?
 
+      # 需要判定比分
+      #
+      flag = false
+      total_score = info["data"]["terroristScore"].to_i + info["data"]["counterTerroristScore"].to_i
+
+      if (total_score > 30)
+        if ((total_score - 30) / 6.0).ceil.even?   # 复
+          flag = false                         # 偶数次加时
+        else
+          flag = true                          # 奇数次加时
+        end
+      end
+
+      # 如果左边是 T
       if detail.first_half_left_t == true
-        left_score  = info["data"]["terroristScore"]
-        right_score = info["data"]["counterTerroristScore"]
+        if flag # 奇数次加时
+          left_score  = info["data"]["terroristScore"]
+          right_score = info["data"]["counterTerroristScore"]
+        else
+          left_score  = info["data"]["counterTerroristScore"]
+          right_score = info["data"]["terroristScore"]
+        end
       else
-        left_score  = info["data"]["counterTerroristScore"]
-        right_score = info["data"]["terroristScore"]
+        if flag # 奇数次加时 左边队伍是 CT
+          left_score  = info["data"]["counterTerroristScore"]
+          right_score = info["data"]["terroristScore"]
+        else
+          left_score  = info["data"]["terroristScore"]
+          right_score = info["data"]["counterTerroristScore"]
+        end
       end
 
       self.update(
