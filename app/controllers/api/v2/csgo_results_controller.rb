@@ -29,6 +29,24 @@ module Api
           end
         end
 
+        if @battle.format == 5
+          if @battle.left_score == 3 && @battle.right_score == 0 && (@match.game_no == 4 || @match.game_no == 5)
+            return true
+          end
+
+          if @battle.left_score == 0 && @battle.right_score == 3 && (@match.game_no == 4 || @match.game_no == 5)
+            return true
+          end
+
+          if @battle.left_score == 3 && @battle.right_score == 1 && @match.game_no == 5
+            return true
+          end
+
+          if @battle.left_score == 1 && @battle.right_score == 3 && @match.game_no == 5
+            return true
+          end
+        end
+
         return false
       end
     end
