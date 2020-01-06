@@ -18,18 +18,12 @@ module Api
       def not_start
         @battle = @match.battle
 
-        if @battle.format == 3
+        if @battle.format == 3 && @match.game_no == 3
           if @battle.left_score == 2 && @battle.right_score == 0
             return true
           end
 
           if @battle.left_score == 0 && @battle.right_score == 2
-            return true
-          end
-        end
-
-        if @battle.format == 5
-          if (@battle.left_score - @battle.right_score).abs == 3
             return true
           end
         end
