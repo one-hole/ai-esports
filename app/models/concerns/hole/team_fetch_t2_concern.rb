@@ -5,7 +5,7 @@ module Hole
     included do
       # 只有 T2 创建的战队才会调用这个方法
       def fetch_t2
-        resp = Typhoeus.get("https://www.t2score.com/api/front/team/#{self.trdid.split("_")[1]}")
+        resp = Typhoeus.get("https://api.tuotugame.com/api/front/team/#{self.trdid.split("_")[1]}")
         begin
           info = JSON.parse(resp.body)
           self.update(
