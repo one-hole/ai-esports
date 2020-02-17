@@ -9,7 +9,7 @@ module Fetch
       begin
         Schedule::T2score.new
       ensure
-        Fetch::T2BattleWorker.perform_in(10.seconds)
+        Fetch::T2BattleWorker.perform_in(30.seconds)
       end
     end
   end
