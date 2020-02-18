@@ -15,6 +15,7 @@ gem 'connection_pool', '~> 2.2', '>= 2.2.2'
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 gem 'rsa-tools'
 gem 'typhoeus', '~> 1.3'
+gem 'rest-client', '~> 2.1'
 
 gem 'active_type'
 
