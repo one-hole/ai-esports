@@ -9,8 +9,6 @@ module Schedule
     def initialize
       begin
         @resp = Request.get(URL)
-
-        binding.pry
         @dota2_battles = JSON.parse(@resp.body)["list"].select { |item| "dota2" == item["game_category"] }
         @csgo_battles  = JSON.parse(@resp.body)["list"].select { |item| "csgo" == item["game_category"] }
         @dota2_ids = @dota2_battles.map {|battle| "t2_#{battle["_id"]}" }
