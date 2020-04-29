@@ -1,4 +1,4 @@
-source 'https://rubygems.org/'
+source 'https://gems.ruby-china.com/'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
@@ -24,7 +24,7 @@ gem 'active_model_serializers', '~> 0.10.7'
 # gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'ohm'
 gem 'sidekiq', '5.2.5'
-gem 'sidekiq-unique-jobs'
+gem 'sidekiq-unique-jobs', '~> 6.0', '>= 6.0.21'
 
 gem 'rack-cors', require: 'rack/cors'
 

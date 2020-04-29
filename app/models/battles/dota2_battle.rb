@@ -4,6 +4,10 @@ class Dota2Battle < Hole::Battle
     check_match_detail
   end
 
+  scope :recent_3_hours, -> (t) {
+    where("start_at <= ? && start_at >= ?", t + 90.minutes, t - 90.minutes)
+  }
+
   def check_match_detail
     # 这里是比分有改变
     if self.changed.include?("left_score") or self.changed.include?("right_score")
