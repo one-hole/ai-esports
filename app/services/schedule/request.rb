@@ -4,7 +4,7 @@ module Schedule
     def self.get(url)
       begin
         resp = RestClient::Request.execute(
-          url: "https://api.tuotugame.com/api/front/schedule/schedule_three_days",
+          url: "https://api.tuotu.live/api/front/schedule/schedule_three_days?day=today",
           method: :get,
           timeout: 20
         )
