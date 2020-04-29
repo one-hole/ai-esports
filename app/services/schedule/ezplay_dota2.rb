@@ -17,7 +17,7 @@ module Schedule
 
 
     def find_dota2_team(team)
-      team = Dota2Team.find_by()
+      # team = Dota2Team.find_by()
     end
 
     # 比赛开始时间上下 90 分钟

@@ -4,7 +4,7 @@ module Schedule
     include T2Csgo
 
     #URL = "https://www.t2score.com/api/front/schedule/schedule_three_days?"
-    URL = "https://api.tuotugame.com/api/front/schedule/schedule_three_days"
+    URL = "https://api.tuotu.live/api/front/schedule/schedule_three_days?day=today"
 
     def initialize
       begin
