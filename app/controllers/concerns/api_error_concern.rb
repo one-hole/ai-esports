@@ -9,13 +9,13 @@ module ApiErrorConcern
 
   class AuthenticateError < ApiError
     def initialize
-      super code: 1001, text: '无法拿到商户APi令牌', status: 401
+      super code: 1001, text: 'Authorization 请求头错误 或 APIKey 错误 ', status: 401
     end
   end
 
   class ApiKeyExpiredError < ApiError
     def initialize
-      super code: 1002, text: '商户的APi令牌已经过期', status: 403
+      super code: 1002, text: '商户的 APIKey 已经过期', status: 403
     end
   end
 
