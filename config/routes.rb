@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   draw :api
+  draw :interface
   
   mount Sidekiq::Web => '/sidekiq'
 end
