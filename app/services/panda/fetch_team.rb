@@ -3,7 +3,7 @@ module Panda
     def self.run
       # fetch_lol_team
       # fetch_dota_team
-      fetch_csgo_team
+      # fetch_csgo_team
     end
 
     def self.fetch_lol_team
