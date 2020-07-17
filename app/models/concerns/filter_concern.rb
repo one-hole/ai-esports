@@ -5,7 +5,7 @@ module FilterConcern
     def filters(filters_params, prefix = 'with')
       records = self.where(nil)
       filters_params.each { |key, value| records = records.public_send("#{prefix}_#{key}", value) if value.present? }
-      return records
+      records
     end
   end
 end

@@ -3,19 +3,30 @@ module Panda
     def self.run
       fetch_dota_league
       fetch_lol_league
+      fetch_csgo_league
     end
 
     def self.fetch_dota_league
+      url, game_id = 'https://api.pandascore.co/dota2/leagues', 1
       (1..3).each do |page|
-        resp = Request.get('https://api.pandascore.co/dota2/leagues', page)
-        handler_league(resp, 1)
+        resp = Request.get(url, page)
+        handler_league(resp, game_id)
       end
     end
 
     def self.fetch_lol_league
+      url, game_id = 'https://api.pandascore.co/lol/leagues', 2
       (1..2).each do |page|
-        resp = Request.get('https://api.pandascore.co/lol/leagues', page)
-        handler_league(resp, 2)
+        resp = Request.get(url, page)
+        handler_league(resp, game_id)
+      end
+    end
+
+    def self.fetch_csgo_league
+      url, game_id = 'https://api.pandascore.co/csgo/leagues', 3
+      (1..3).each do |page|
+        resp = Request.get(url, page)
+        handler_league(resp, game_id)
       end
     end
 
@@ -70,3 +81,4 @@ end
 # PerPage 50
 # DotA 3 页 5
 # LOL  2 页 13
+# CSGO 3 页 36
