@@ -3,24 +3,24 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
-gem 'rails', '~> 6.0.2', '>= 6.0.3 '
+gem 'jbuilder', '~> 2.5'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '~> 4.3'
-gem 'jbuilder', '~> 2.5'
+gem 'rails', '~> 6.0.2', '>= 6.0.3 '
 
+gem 'connection_pool', '~> 2.2', '>= 2.2.2'
 gem 'redis', '~> 4.0'
 gem 'redis-objects', '~> 1.4', '>= 1.4.3'
-gem 'connection_pool', '~> 2.2', '>= 2.2.2'
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+gem 'rest-client', '~> 2.1'
 gem 'rsa-tools'
 gem 'typhoeus', '~> 1.3'
-gem 'rest-client', '~> 2.1'
 
 gem 'active_type'
 
-gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'active_model_serializers', '~> 0.10.7'
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 # gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'ohm'
 gem 'sidekiq', '5.2.5'
@@ -33,12 +33,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dota2-constant', github: 'w-zengtao/dota2-constant-rb' 
 
 group :development, :test do
-  gem 'pry'
   gem 'awesome_print'
-  gem 'rspec-rails', '~> 3.7'
+  gem 'amazing_print'
   gem 'factory_bot_rails', '~> 4.10'
   gem 'mina'
   gem 'mina-puma', require: false
+  gem 'pry'
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :test do
@@ -46,11 +47,11 @@ group :test do
 end
 
 group :development do
-  gem 'pry-rails'
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'pry-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
