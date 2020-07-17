@@ -33,7 +33,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dota2-constant', github: 'w-zengtao/dota2-constant-rb' 
 
 group :development, :test do
-  gem 'awesome_print'
+  gem 'rubocop'
   gem 'amazing_print'
   gem 'factory_bot_rails', '~> 4.10'
   gem 'mina'
