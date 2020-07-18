@@ -7,7 +7,8 @@ module Panda
     end
 
     def self.fetch_dota_league
-      url, game_id = 'https://api.pandascore.co/dota2/leagues', 1
+      url = 'https://api.pandascore.co/dota2/leagues'
+      game_id = 1
       (1..3).each do |page|
         resp = Request.get(url, page)
         handler_league(resp, game_id)
@@ -15,7 +16,8 @@ module Panda
     end
 
     def self.fetch_lol_league
-      url, game_id = 'https://api.pandascore.co/lol/leagues', 2
+      url = 'https://api.pandascore.co/lol/leagues'
+      game_id = 2
       (1..2).each do |page|
         resp = Request.get(url, page)
         handler_league(resp, game_id)
@@ -23,7 +25,8 @@ module Panda
     end
 
     def self.fetch_csgo_league
-      url, game_id = 'https://api.pandascore.co/csgo/leagues', 3
+      url = 'https://api.pandascore.co/csgo/leagues'
+      game_id = 3
       (1..3).each do |page|
         resp = Request.get(url, page)
         handler_league(resp, game_id)

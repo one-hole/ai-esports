@@ -23,7 +23,7 @@ module Mapping
           info = JSON.parse(message)
 
           # 如果是 data 。 先找到 Maped 的 Battle .没有找到那就去 Mapping .找到了直接推送
-          if info.keys.include?("data")
+          if info.key?('data')
             battle = CsgoBattle.find_by(official_id: info["id"])  # 这里是已经 Map 上的
 
             if battle
@@ -37,7 +37,7 @@ module Mapping
           end
 
           # 日志那么就直接去找
-          if info.keys.include?("logs")
+          if info.key?("logs")
             battle = CsgoBattle.where(official_id: info["id"]).last
 
             if battle

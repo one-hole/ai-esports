@@ -33,13 +33,16 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dota2-constant', github: 'w-zengtao/dota2-constant-rb' 
 
 group :development, :test do
-  gem 'rubocop'
   gem 'amazing_print'
   gem 'factory_bot_rails', '~> 4.10'
   gem 'mina'
   gem 'mina-puma', require: false
   gem 'pry'
   gem 'rspec-rails', '~> 3.7'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance'
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec'
 end
 
 group :test do

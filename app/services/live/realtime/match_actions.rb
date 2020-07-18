@@ -1,4 +1,4 @@
-require_relative "./team_actions.rb"
+require_relative './team_actions'
 
 module Live
   module Realtime

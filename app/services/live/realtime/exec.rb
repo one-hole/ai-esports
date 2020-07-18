@@ -1,4 +1,4 @@
-require_relative "./match_actions.rb"
+require_relative './match_actions'
 
 module Live
   module Realtime

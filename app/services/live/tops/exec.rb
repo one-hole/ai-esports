@@ -1,5 +1,5 @@
-require_relative "./request.rb"
-require_relative "./battle_actions.rb"
+require_relative './request'
+require_relative './battle_actions'
 
 module Live
   module Tops

@@ -1,9 +1,12 @@
 module Panda
   class FetchTeam
     def self.run
-      # fetch_lol_team
-      # fetch_dota_team
-      # fetch_csgo_team
+      fetch_lol_team
+      logger.info('LOL Team Fetched')
+      fetch_dota_team
+      logger.info('DotA Team Fetched')
+      fetch_csgo_team
+      logger.info('CSGO Team Fetched')
     end
 
     def self.fetch_lol_team
