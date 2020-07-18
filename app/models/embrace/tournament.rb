@@ -10,5 +10,7 @@ module Embrace
     belongs_to :game
     belongs_to :league
     belongs_to :series
+
+    has_many :battles
   end
 end

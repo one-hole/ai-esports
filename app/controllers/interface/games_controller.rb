@@ -4,7 +4,7 @@ module Interface
     def index
       games = Embrace::Game.all
       render json:
-               games, each_serializer: GameIndex, root: 'data'
+        games, each_serializer: GameIndex, root: 'data'
     end
   end
 end

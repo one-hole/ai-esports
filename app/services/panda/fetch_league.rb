@@ -63,7 +63,8 @@ module Panda
           season: single_series['season'],
           year: single_series['year'],
           begin_at: single_series['begin_at'],
-          end_at: single_series['end_at']
+          end_at: single_series['end_at'],
+          full_name: single_series['full_name']
         )
       else
         Embrace::Series.create(
@@ -74,7 +75,8 @@ module Panda
           season: single_series['season'],
           year: single_series['year'],
           begin_at: single_series['begin_at'],
-          end_at: single_series['end_at']
+          end_at: single_series['end_at'],
+          full_name: single_series['full_name']
         )
       end
     end

@@ -3,7 +3,7 @@ module Interface
     def index
       leagues = Embrace::League.filters(filter_params).page(current_page).per(per_page)
       render json:
-               leagues, each_serializer: Interface::LeagueIndex, root: 'data', meta: meta
+        leagues, each_serializer: Interface::LeagueIndex, root: 'data', meta: meta
     end
 
     private

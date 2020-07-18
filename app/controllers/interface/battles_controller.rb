@@ -4,7 +4,7 @@ module Interface
     def index
       battles = Embrace::Battle.all
       render json:
-               battles, root: 'data'
+        battles, root: 'data'
     end
   end
 end

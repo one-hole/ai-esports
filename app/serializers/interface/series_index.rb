@@ -2,6 +2,7 @@ module Interface
   class SeriesIndex < ActiveModel::Serializer
     attribute :id
     attribute :name
+    attribute :full_name
     attribute :season
     attribute :game_id
     attribute :cn_name

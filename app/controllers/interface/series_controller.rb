@@ -3,7 +3,7 @@ module Interface
     def index
       series = Embrace::Series.page(current_page).per(per_page)
       render json:
-               series, each_serializer: Interface::SeriesIndex, root: 'data', meta: meta
+        series, each_serializer: Interface::SeriesIndex, root: 'data', meta: meta
     end
 
     private
