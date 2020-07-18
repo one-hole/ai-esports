@@ -272,9 +272,6 @@ Layout/SpaceBeforeComma:
 Layout/SpaceInLambdaLiteral:
   Exclude:
     - 'app/models/battles/dota2_battle.rb'
-    - 'app/models/embrace/league.rb'
-    - 'app/models/embrace/series.rb'
-    - 'app/models/embrace/tournament.rb'
     - 'app/models/hole/battle.rb'
     - 'app/models/league.rb'
     - 'app/models/match_series.rb'
@@ -1037,4 +1034,12 @@ Style/ZeroLengthPredicate:
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Layout/LineLength:
+  Exclude:
+    - 'app/services/schedule/t2score.rb'
+    - 'app/services/schedule/ezplay.rb'
+    - 'app/services/live/realtime/request.rb'
+    - 'app/services/live/match_detail/request.rb'
+    - 'app/models/dota2_constant/*.rb'
+    - 'app/services/live/leagues/*.rb'
+    - 'app/services/live/realtime/*.rb'
   Max: 43620

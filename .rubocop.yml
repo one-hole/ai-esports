@@ -76,13 +76,16 @@ Layout/HashAlignment:
 Layout/LineLength:
   Exclude:
     - 'db/schema.rb'
+    - 'config/deploy.rb'
+    - 'config/deploy/sidekiq.rb'
+    - 'config/initializers/*.rb'
     - 'app/models/lol_constant/hero.rb'
     - 'lib/constants/lol_heros.rb'
     - 'app/models/dota2_constant/hero.rb'
     - 'app/models/dota2_constant/item.rb'
     - 'db/migrate/*.rb'
     - 'db/seeds.rb'
-  Max: 120
+  Max: 100
   IgnoredPatterns:
     - !ruby/regexp /\A +(it|describe|context|shared_examples|include_examples|it_behaves_like) ["']/
 
