@@ -1,47 +1,62 @@
 module Panda
   class FetchBattle
     def self.run(date = Date.today)
-      fetch_dota_battle(date)
+      yesterday = date.yesterday
+      fetch_dota_battle(yesterday)
+      # fetch_lol_battle(yesterday)
+      # fetch_csgo_battle(yesterday)
     end
 
-    def self.fetch_dota_battle(date)
-
-      date_beginning = date.beginning_of_day
-      date_end = date.end_of_day
-
+    def self.fetch_battles(date, url, game_id, page)
+      date_beginning = date.beginning_of_day.iso8601
       puts date_beginning
+      date = date + 3.days
+      date_end = date.end_of_day.iso8601
       puts date_end
+      resp = Request.get(url, page, 100, { "range[begin_at]" => "#{date_beginning},#{date_end}" })
+      if resp.code == 200
+        handler_battles(resp, game_id)
+        if JSON.parse(resp.body).count == 100
+          puts '-------------------------'
+          resp = Request.get(url, page + 1, 100, { "range[begin_at]" => "#{date_beginning},#{date_end}" })
+          handler_battles(resp, game_id) if resp.code == 200
+        end
+      end
+    end
 
+    # 暂时约定抓取 昨天（时长 6 天以内的比赛）（记录 TDB 的比赛）
+    # 步长暂定为 4 天
+    # 如果存在数量大于 100 的天数 那么就调用分页
+    def self.fetch_dota_battle(date)
       url = 'https://api.pandascore.co/dota2/matches'
       game_id = 1
-      resp = Request.get(url, 1, 100, {
-                           "range[begin_at]" => "#{'2020-07-17T13:33:26Z'},#{'2020-07-18T13:33:26Z'}"
-                         })
-
-      binding.pry
-      # handler_battles(resp, game_id) if resp.code == 200
+      page = 1
+      fetch_battles(date, url, game_id, page)
+      fetch_battles((date + 4.days), url, game_id, page)
     end
 
-    def self.fetch_lol_battle
+    def self.fetch_lol_battle(date)
       url = 'https://api.pandascore.co/lol/matches'
       game_id = 2
-      resp = Request.get(url)
-      handler_battles(resp, game_id) if resp.code == 200
+      page = 1
+      fetch_battles(date, url, game_id, page)
+      fetch_battles((date + 4.days), url, game_id, page)
     end
 
-    def self.fetch_csgo_battle
+    def self.fetch_csgo_battle(date)
       url = 'https://api.pandascore.co/csgo/matches'
       game_id = 3
-      resp = Request.get(url)
-      handler_battles(resp, game_id) if resp.code == 200
+      page = 1
+      fetch_battles(date, url, game_id, page)
+      fetch_battles((date + 4.days), url, game_id, page)
     end
 
     private
 
     def self.handler_battles(resp, game_id)
-      JSON.parse(resp.body).each do |panda_battle|
-        handler_battle(panda_battle, game_id)
-      end
+      # JSON.parse(resp.body).each do |panda_battle|
+      #   handler_battle(panda_battle, game_id)
+      # end
     end
 
     # Battle belongs_to tournament
