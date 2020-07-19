@@ -2,7 +2,9 @@ module Panda
   class FetchBattle
     def self.run(date = Date.today)
       yesterday = date.yesterday
-      fetch_dota_battle(yesterday)
+
+      binding.pry
+      # fetch_dota_battle(yesterday)
       # fetch_lol_battle(yesterday)
       # fetch_csgo_battle(yesterday)
     end
@@ -54,9 +56,9 @@ module Panda
     private
 
     def self.handler_battles(resp, game_id)
-      # JSON.parse(resp.body).each do |panda_battle|
-      #   handler_battle(panda_battle, game_id)
-      # end
+      JSON.parse(resp.body).each do |panda_battle|
+        handler_battle(panda_battle, game_id)
+      end
     end
 
     # Battle belongs_to tournament
